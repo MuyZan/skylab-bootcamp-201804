@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Task-App</title>
+    <link rel="stylesheet" href="vendor/bootstrap/4.1.0/css/bootstrap.min.css">
+</head>
+<body>
+
+
+    <header class="container">
+            <h1>Task App</h1>
+            <form id="taskform">
+                <label for="input">Task</label>
+                <input id="input" type="text" placeholder="Description:">
+                <button type="submit">Add!</button>
+            </form>
+    </header>
+
+<section id="todo" class="container">
+    <h2>Todo List</h2>
+    <ul>
+    </ul>
+
+</section>
+<section id="done" class="container">
+    <h2>Done List</h2>
+    <ul>
+        <li>Tarea 4 <button class="btnRemove">✘</button></li>
+        <li>Tarea 5 <button class="btnRemove">✘</button></li>
+        <li>Tarea 6 <button class="btnRemove">✘</button></li>
+        <li>Tarea 7 <button class="btnRemove">✘</button></li>
+        <li>Tarea 8 <button class="btnRemove">✘</button></li>
+    </ul>
+</section>
+
+
+    <script src="vendor/jquery/3.3.1/jquery-3.3.1.min.js"></script>
+    <script src="vendor/popper/1.14.3/popper.min.js"></script>
+    <script src="vendor/bootstrap/4.1.0/bootstrap.min.js"></script>
+    <script src="scripts/logic.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

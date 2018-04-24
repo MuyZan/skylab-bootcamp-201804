@@ -1,0 +1,27 @@
+
+.btnRemove{
+    background: red;
+    color: white !important;
+}
+
+.btnDone{
+    background: green;
+    color: white !important;
+}
+
+.btnDone:hover{
+    background: rgb(51, 219, 51);
+}
+
+
+
+.btnRemove, .btnDone{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+
+}
+
+#todo li {
+    color: darkslategrey;
+}
