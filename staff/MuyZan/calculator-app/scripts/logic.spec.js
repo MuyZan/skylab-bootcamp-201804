@@ -28,10 +28,10 @@ describe('logic (calculator)', function() {
 
         calc.sum()
         expect(calc.status()).toBe(1)
-/*
+
         calc.one()
         expect(calc.status()).toBe(1)
-
+/*
         calc.sum()
         expect(calc.status()).toBe(2)
 

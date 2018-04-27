@@ -8,37 +8,45 @@ var Calculator = (function() {
     }
 
     one() {
-      this._prevStatus += String(1);
+      this._status += String(1);
     }
     two() {
-      this._prevStatus += String(2);
+      this._status += String(2);
     }
     three() {
-      this._prevStatus += String(3);
+      this._status += String(3);
     }
     four() {
-      this._prevStatus += String(4);
+      this._status += String(4);
     }
     five() {
-      this._prevStatus += String(5);
+      this._status += String(5);
     }
     six() {
-      this._prevStatus += String(6);
+      this._status += String(6);
     }
     seven() {
-      this._prevStatus += String(7);
+      this._status += String(7);
     }
     eight() {
-      this._prevStatus += String(8);
+      this._status += String(8);
     }
     nine() {
-      this._prevStatus += String(9);
+      this._status += String(9);
     }
     zero() {
-      this._prevStatus += String(0);
+      this._status += String(0);
     }
 
     sum() {
+
+        let acumm =[];
+
+        acumm.push(this._status);
+
+
+        console.log(acumm)
+
 
     }
 
