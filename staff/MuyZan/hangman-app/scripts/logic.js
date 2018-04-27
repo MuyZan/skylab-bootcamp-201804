@@ -2,16 +2,17 @@
 
 class Hangman {
   constructor(wordToGuess, numAttempts) {
+
     if (!(typeof wordToGuess === "string")) {
       throw Error("invalid word " + wordToGuess);
     }
 
-    (this.word = wordToGuess),
-      (this.wordArray = this.word.split("")),
-      (this.count = numAttempts || 10),
-      this.matched,
-      // this.guess = new Array(this.wordArray.length).fill('_')
-      this.guess = this.fun(this.wordArray)
+    this.word = wordToGuess),
+    this.wordArray = this.word.split(""),
+    this.count = numAttempts || 10,
+    this.matched,
+    // this.guess = new Array(this.wordArray.length).fill('_')
+    this.guess = this.fun(this.wordArray)
   }
 
   fun(word) {
