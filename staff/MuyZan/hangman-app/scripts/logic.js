@@ -7,7 +7,7 @@ class Hangman {
       throw Error("invalid word " + wordToGuess);
     }
 
-    this.word = wordToGuess),
+    this.word = wordToGuess,
     this.wordArray = this.word.split(""),
     this.count = numAttempts || 10,
     this.matched,
