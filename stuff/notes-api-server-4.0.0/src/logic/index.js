@@ -74,11 +74,14 @@ const logic = {
      * @throws
      */
     listNotes(userId) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(() => {
+                if (typeof userId !== 'string') throw Error('userId is not a string')
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
 
-        return this._notes.filter(note => note.userId === userId)
+                return this._notes.find({ userId }).toArray()
+            })
     },
 
     /**
