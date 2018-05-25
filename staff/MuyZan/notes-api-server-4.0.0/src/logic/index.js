@@ -1,5 +1,7 @@
 'use strict'
 
+const { ObjectId } = require('mongodb')
+
 /**
  * Note abstraction
  */
@@ -53,19 +55,24 @@ const logic = {
      * @throws
      */
     retrieveNote(userId, id) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(()=>{
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+                if (typeof userId !== 'string') throw Error('userId is not a string')
+        
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+        
+                if (typeof id !== 'string') throw Error('id is not a string')
+        
+                if (!(id = id.trim())) throw Error('id is empty or blank')
 
-        if (typeof id !== 'string') throw Error('id is not a string')
+                return this._notes.findOne({ _id: ObjectId(id), userId })
+                    .then(note => {
+                        if(!note) throw Error (`note with id ${id} does not exist for userId ${userId}`)
 
-        if (!(id = id.trim())) throw Error('id is empty or blank')
-
-        const index = this._notes.findIndex(note => note.id === id && note.userId === userId)
-
-        if (index < 0) throw Error(`note with id ${id} does not exist for userId ${userId}`)
-
-        return this._notes[index]
+                        return { id: note_id.toString(), userId: note.userId, text: note.text}
+                    })
+            })
     },
 
     /**
@@ -74,11 +81,16 @@ const logic = {
      * @throws
      */
     listNotes(userId) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(() => {
+                if (typeof userId !== 'string') throw Error('userId is not a string')
+        
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+                return this._notes.find({ userId }).toArray()
+                    .then(notes => notes.map(({ _id, userId, text }) => ({ id: _id.toString(), userId, text})))
 
-        return this._notes.filter(note => note.userId === userId)
+            })
     },
 
     /**
@@ -89,21 +101,23 @@ const logic = {
      * @throws
      */
     removeNote(userId, id) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(()=>{
+                if (typeof userId !== 'string') throw Error('userId is not a string')
+        
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+        
+                if (typeof id !== 'string') throw Error('id is not a string')
+        
+                if (!(id = id.trim())) throw Error('id is empty or blank')
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+                return this._notes.findOneAndDelete({ _id: ObjectId(id), userId})
+                    .then(res => {
+                        if(!res.value) throw Error(`note with id ${id} does not exist for userId ${userId}`)
+                    })
 
-        if (typeof id !== 'string') throw Error('id is not a string')
+            })
 
-        if (!(id = id.trim())) throw Error('id is empty or blank')
-
-        const index = this._notes.findIndex(note => note.id === id && note.userId === userId)
-
-        if (index < 0) throw Error(`note with id ${id} does not exist for userId ${userId}`)
-
-        this._notes.splice(index, 1)
-
-        save()
     },
 
     /**
@@ -115,25 +129,27 @@ const logic = {
      * @throws
      */
     updateNote(userId, id, text) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(()=> {
+                if (typeof userId !== 'string') throw Error('userId is not a string')
+        
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+        
+                if (typeof id !== 'string') throw Error('id is not a string')
+        
+                if (!(id = id.trim())) throw Error('id is empty or blank')
+        
+                if (typeof text !== 'string') throw Error('text is not a string')
+        
+                if ((text = text.trim()).length === 0) throw Error('text is empty or blank')
+                
+                return this._notes.findOneAndUpdate({ _id: ObjectId(id), userId}, {$set: {text}})
+                    .then(res => {
+                        if(!res.value) throw Error(`note with ${id} dies not exist for userId ${userId}`)
+                    })
+            })
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
 
-        if (typeof id !== 'string') throw Error('id is not a string')
-
-        if (!(id = id.trim())) throw Error('id is empty or blank')
-
-        if (typeof text !== 'string') throw Error('text is not a string')
-
-        if ((text = text.trim()).length === 0) throw Error('text is empty or blank')
-
-        const note = this._notes.find(note => note.id === id && note.userId === userId)
-
-        if (!note) throw Error(`note with id ${id} does not exist for userId ${userId}`)
-
-        note.text = text
-
-        save()
     },
 
     /**
@@ -144,16 +160,22 @@ const logic = {
      * @throws
      */
     findNotes(userId, text) {
-        if (typeof userId !== 'string') throw Error('userId is not a string')
+        return Promise.resolve()
+            .then(()=>{
+                if (typeof userId !== 'string') throw Error('userId is not a string')
+                if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
+                if (typeof text !== 'string') throw Error('text is not a string')
+        
+                if (!text.length) throw Error('text is empty')
+        
+                return this._notes.find({ userId, text: { $regex: text}}).toArray()
+                    .then(notes => notes.map(({ _id, userId, text }) => ({ id: _id.toString(), userId, text})))
+            })
+            }
 
-        if (!(userId = userId.trim()).length) throw Error('userId is empty or blank')
 
-        if (typeof text !== 'string') throw Error('text is not a string')
+            
 
-        if (!text.length) throw Error('text is empty')
-
-        return this._notes.filter(note => note.text.includes(text) && note.userId === userId)
-    }
 }
 
 module.exports = logic

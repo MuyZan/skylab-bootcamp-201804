@@ -7,6 +7,9 @@ const logic = require('.')
 describe('logic (notes)', () => {
     let cn, db, cl
     const userId = '123'
+    const noteText = 'mi nota'
+    const indexes = []
+
 
     before(done => {
         MongoClient.connect('mongodb://localhost:27017/skylab-bootcamp-201804-test', { useNewUrlParser: true }, (err, conn) => {
@@ -22,7 +25,13 @@ describe('logic (notes)', () => {
         })
     })
 
-    beforeEach(() => cl.deleteMany())
+    beforeEach(() => {
+        let count = 10 + Math.floor(Math.random() * 10)
+        indexes.length = 0
+        while (count --)indexes.push(count)
+
+        return cl.deleteMany()
+    }
 
     after(done => db.dropDatabase(() => cn.close(done)))
 
