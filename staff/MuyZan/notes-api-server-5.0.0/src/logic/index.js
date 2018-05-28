@@ -201,11 +201,11 @@ const logic = {
 
                 if (!(id = id.trim())) throw Error('id is empty or blank')
 
-                return this._notes.findOne({ _id: ObjectId(id), userId })
-                    .then(note => {
-                        if (!note) throw Error(`note with id ${id} does not exist for userId ${userId}`)
+                return User.findOne({ _id: userId }).select({ notes: { $elemMatch: { _id:id} }})
+                    .then(user => {
+                        if (!user) throw Error(`note with id ${id} does not exist for userId ${userId}`)
 
-                        return { id: note._id.toString(), userId: note.userId, text: note.text }
+                        return user.notes
                     })
             })
     },
