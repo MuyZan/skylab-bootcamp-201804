@@ -204,7 +204,7 @@ const logic = {
                 return User.findOne({ _id: userId }).select({ notes: { $elemMatch: { _id:id} }})
                     .then(user => {
                         if (!user) throw Error(`note with id ${id} does not exist for userId ${userId}`)
-
+                    
                         return user.notes
                     })
             })
@@ -323,9 +323,12 @@ const logic = {
                 if (!text.length) throw Error('text is empty')
 
                 return User.findBy(userId)
-                    .then(user => user.notes.map(({ text }) => ({ notes: { $elemMatch: { text :text }} })))
+                    .then(user => {
+                        if(!user) throw Error(`no user found with id ${userId}`)
 
-                    
+                        return user.notes.filter(note => note.text.includes(text)).map(({id, text}) => ({id, text}))
+
+                    })
             })
     }
 }
