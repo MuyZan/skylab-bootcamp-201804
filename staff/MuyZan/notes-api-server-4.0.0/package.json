@@ -14,6 +14,11 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+<<<<<<< HEAD:staff/MuyZan/notes-api-server-4.0.0/package.json
+=======
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+>>>>>>> upstream/develop:stuff/notes-api-server-5.0.0/package.json
     "express": "^4.16.3",
     "mongodb": "^3.1.0-beta4"
   },
