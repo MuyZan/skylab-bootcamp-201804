@@ -7,8 +7,15 @@ document.forms[0].addEventListener("submit", function(e) {
 
   var query = input.value;
 
-  logic.searchBeers(query, function(beers) {
-    listBeers(beers);
+  logic.searchBeers(query, function(error, beers) {
+
+    if(error){
+      alert('sorry, something is wrong...')
+    }else{
+      listBeers(beers);
+    }
+
+    
   });
 
   input.value = "";
@@ -38,15 +45,21 @@ function listBeers(beers) {
     var id = beer.id;
 
     item.addEventListener("click", function(){
-        logic.getBeerInfo(id, function(beerInfo) {
+        logic.getBeerInfo(id, function(error, beerInfo) {
             
+          if(error){
+            alert("sorry, something is wrong...")
+          }else{
+            if(beerDescription){
+              beerDescription.innerHTML="";
+            }
+              showInfo(beerInfo);
+            }
+
+          })
           
 
-          if(beerDescription){
-            beerDescription.innerHTML="";
-          }
-            showInfo(beerInfo);
-          });
+         
     })
   });
 

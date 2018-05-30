@@ -11,6 +11,17 @@ describe('logic (beers)', function() {
         });
     });
 
+    it("should search beers fail on wrong matching", function(done){
+        logic.searchBeers("watafac", function(error, beers){
+            expect(error).toBeDefined();
+
+            expect(beers).toBeUndefined();
+
+            done();
+        })
+
+    })
+
     it('should get beer info', function(done) {
         logic.getBeerInfo('xnRniA', function(beer) {
             expect(beer).toBeDefined();
@@ -20,4 +31,15 @@ describe('logic (beers)', function() {
             done();
         });
     });
+
+    it("should get beer info fail on wrong id", function(done){
+        logic.getBeerInfo("watafac", function(error, beer){
+            expect(error).toBeDefined();
+
+            expect(beer).toBeUndefined();
+
+            done();
+
+        })
+    })
 });
