@@ -2,11 +2,21 @@
   "name": "notes-logic",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/",
+    "coverage": "nyc mocha src/",
+    "coverage-report": "nyc --reporter=html --reporter=text mocha src/"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "notes-data": "file:../../../notes-data/1.0.0/notes-data"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "dotenv": "^5.0.1",
+    "lodash": "^4.17.10"
+  }
 }

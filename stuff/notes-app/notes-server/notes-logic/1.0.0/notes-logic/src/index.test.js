@@ -10,8 +10,6 @@ const _ = require('lodash')
 const { env: { DB_URL } } = process
 
 describe('logic (notes)', () => {
-    debugger
-
     const userData = { name: 'John', surname: 'Doe', email: 'jd@mail.com', password: '123' }
     const otherUserData = { name: 'Jack', surname: 'Wayne', email: 'jw@mail.com', password: '456' }
     const dummyUserId = '123456781234567812345678'

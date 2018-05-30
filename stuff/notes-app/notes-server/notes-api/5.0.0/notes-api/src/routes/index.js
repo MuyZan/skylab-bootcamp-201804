@@ -1,5 +1,5 @@
 const express = require('express')
-const logic = require('../logic')
+const logic = require('notes-logic')
 
 const router = express.Router()
 

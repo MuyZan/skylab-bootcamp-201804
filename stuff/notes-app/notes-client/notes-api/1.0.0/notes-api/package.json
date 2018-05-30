@@ -12,12 +12,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.18.0",
-    "notes-data": "file:../../../../notes-server/notes-data/1.0.0/notes-data"
+    "axios": "^0.18.0"
   },
   "devDependencies": {
     "chai": "^4.1.2",
     "dotenv": "^5.0.1",
-    "lodash": "^4.17.10"
+    "lodash": "^4.17.10",
+    "notes-data": "file:../../../../notes-server/notes-data/1.0.0/notes-data"
   }
 }

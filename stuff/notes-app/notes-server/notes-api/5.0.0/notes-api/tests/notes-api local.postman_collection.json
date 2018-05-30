@@ -20,7 +20,7 @@
 					"raw": "{ \"text\": \"my note 3\" }"
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/123/notes",
+					"raw": "http://localhost:3000/api/users/5b0eacb56967749118bcf7d8/notes",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -29,7 +29,7 @@
 					"path": [
 						"api",
 						"users",
-						"123",
+						"5b0eacb56967749118bcf7d8",
 						"notes"
 					]
 				}
@@ -165,8 +165,8 @@
 					}
 				],
 				"body": {
-					"mode": "file",
-					"file": {}
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Jack\",\n\t\"surname\": \"Wayne\",\n\t\"email\": \"jw@mail.com\",\n\t\"password\": \"123\"\n}"
 				},
 				"url": {
 					"raw": "http://localhost:3000/api/users",

@@ -6,10 +6,7 @@
   "scripts": {
     "start": "node .",
     "watch": "nodemon .",
-    "debug": "node debug .",
-    "test": "mocha src/logic/",
-    "coverage": "nyc mocha src/logic/",
-    "coverage-report": "nyc --reporter=html --reporter=text mocha src/logic/"
+    "debug": "node debug ."
   },
   "keywords": [],
   "author": "",
@@ -19,10 +16,7 @@
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
-    "notes-data": "file:../../../notes-data/1.0.0/notes-data"
-  },
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "lodash": "^4.17.10"
+    "notes-data": "file:../../../notes-data/1.0.0/notes-data",
+    "notes-logic": "file:../../../notes-logic/1.0.0/notes-logic"
   }
 }
