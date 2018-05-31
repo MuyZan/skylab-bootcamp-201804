@@ -13,13 +13,12 @@ const logic = {
         return fetch(`${this.url}/search/users?q=${query}`, this.headers())
             .then(resp => resp.json())
             .then(data => data.items)
-            .catch(err => (err))
+         
     },
 
     retrieveUser(username) {
         return fetch(`${this.url}/users/${username}`, this.headers())
             .then(resp => resp.json())
-            .then(data => data)
-            .catch(err => err)
+           
     }
 }
