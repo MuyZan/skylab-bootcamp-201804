@@ -122,7 +122,60 @@ const notesApi = {
                         } else throw err
                     })
             })
+    },
+
+    updateUser(id, name, surname, email, password, newEmail, newPassword){
+        return Promise.resolve()
+            .then(() =>{
+
+                return axios.patch(`${this.url}/users/${id}`,{name, surname, email, password, newEmail, newPassword} ,{ headers: { authorization: `Bearer ${this.token}` }} )
+
+            })
+    },
+    unregisterUser(id, email, password){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    addNote(id, text){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    retrieveNote(id, noteId){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    listNotes(id){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    removeNote(id, noteId){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    updateNote(id, noteId, text){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
+    },
+    findNote(id, text){
+        return Promise.resolve()
+        .then(() =>{
+            
+        })
     }
+
+
 }
 
 module.exports = notesApi
