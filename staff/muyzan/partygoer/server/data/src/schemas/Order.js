@@ -1,17 +1,19 @@
 'use strict'
 
-const { Schema } = require('mongoose')
+const { Schema, Schema: { ObjectId } } = require('mongoose')
 const PaymentMethod = require('./PaymentMethod')
 
 module.exports = new Schema({
 
     events: {
-        type: [Object],
+        type: ObjectId,
+        ref: 'Event',
         required: true
     },
 
     user: {
-        type: Object,
+        type: ObjectId,
+        ref: 'User',
         required: true
     },
 
@@ -32,9 +34,10 @@ module.exports = new Schema({
         required: true
     },
 
-    tickets: {
-        type: [Object],
+    tickets: [{
+        type: ObjectId,
+        ref: 'Ticket',
         required: true
-    }
+    }]
 
 })

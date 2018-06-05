@@ -1,6 +1,6 @@
 'use strict'
 
-const { Schema } = require('mongoose')
+const { Schema, Schema: { ObjectId } } = require('mongoose')
 
 module.exports = new Schema({
     username: {
@@ -19,6 +19,11 @@ module.exports = new Schema({
         required: true
     },
 
+    newPassword: {
+        type: 'String',
+        required: false
+    },
+
     name: {
         type: String,
         required: true
@@ -32,22 +37,23 @@ module.exports = new Schema({
     photo: {
         type: String,
         required: false
-    },
+    }, 
 
-    geolocation: {
-        type: [Number],
-        required: true
-    },
-
-    interested: {
-        type: [Object],
+    geolocation: [{
+        type: Number,
         required: false
-    },
+    }],
 
-    orders: {
-        type: [Object],
+    interested: [{
+        type: ObjectId,
+        ref: 'Event',
         required: false
-    }
+    }],
 
+    orders: [{
+        type: ObjectId,
+        ref: 'Order',
+        required: false
+    }]
 })
 

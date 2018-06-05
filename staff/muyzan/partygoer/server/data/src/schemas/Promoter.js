@@ -1,6 +1,6 @@
 'use strict'
 
-const { Schema } = require('mongoose')
+const { Schema, Schema: { ObjectId } } = require('mongoose')
 
 module.exports = new Schema({
     username: {
@@ -19,6 +19,11 @@ module.exports = new Schema({
         required: true
     },
 
+    newPassword: {
+        type: String,
+        required: false
+    },
+
     name: {
         type: String,
         required: true
@@ -34,10 +39,10 @@ module.exports = new Schema({
         required: false
     },
 
-    events: {
-        type: [Object],
+    events: [{
+        type: ObjectId,
         required: false
-    }
+    }]
 
 })
 

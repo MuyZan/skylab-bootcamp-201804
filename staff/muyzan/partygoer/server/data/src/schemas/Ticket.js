@@ -1,10 +1,11 @@
 'use strict'
 
-const { Schema } = require('mongoose')
+const { Schema, Schema: { ObjectId } } = require('mongoose')
 
 module.exports = new Schema({
     tickedType: {
-        type: Object,
+        type: ObjectId,
+        ref: 'TicketType',
         required: true
     }
 })
