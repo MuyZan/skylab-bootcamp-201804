@@ -1,8 +1,7 @@
 'use strict'
 
 require('dotenv').config()
-
-const { mongoose } = require('./../.')
+const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType } } = require('./../.')
 const { env: { DB_URL } } = process;
 const url = DB_URL;
 
@@ -25,16 +24,42 @@ const url = DB_URL;
  */
 const scriptRunner = {
 
+
+    createData(data, modelName){
+        const dataObjects = []
+        for (let i = 0; i < data.length; i++) {
+            dataObjects[i] = new modelName(data[i])
+        }
+        return dataObjects
+    },
+
+    saveData(dataObjects){
+        mongoose.connect(url)
+        .then((connection) => {
+            console.log(`connected to ${url}`)
+            const promises = []
+            for (let i = 0; i < dataObjects.length; i++) {
+                promises[i] = dataObjects[i].save()
+            }
+            return Promise.all(promises)           
+        })
+        .then(() => mongoose.connection.close())
+        .catch(console.error)
+    },
+
+
     /**
     * @function createAndSaveData(array, Model) - This function receives an array of the (-minimum of-) necessary
     * data for required fields from model-Schema and a Model type and creates an array of pending promises of 
     * created and saved data on database.
     * Then resolve this pending promises and return and array of ids.
     * 
+    * 
+    * ¡¡¡ARREGLAR!!!! Conseguir que devuelva los IDS!!!!
     */
 
     createAndSaveData(data, modelName) {
-        return mongoose.connect(url)
+         mongoose.connect(url)
             .then((connection) => {
                 console.log(`connected to ${url}`)
                 const promises = []
@@ -47,7 +72,7 @@ const scriptRunner = {
                         res.forEach(element => {
                             ids.push(element._id)
                         })
-                        return res
+                        return ids
                     })
                     .then(() => {
                         mongoose.connection.close()
@@ -75,7 +100,7 @@ const scriptRunner = {
 
     eraseCollection(collection) {
         mongoose.connect(url)
-            .then((connection) => collection.remove(() => mongoose.connection.close()))
+            .then((connection) => mongoose.connection.db.collection.remove(() => mongoose.connection.close()))
             .catch(console.error)
     },
 
@@ -83,9 +108,10 @@ const scriptRunner = {
     * @function eraseCollection(collectionName) - Drop a concrete collection.
     */
 
-    dropCollection(collection) {
+    dropCollection(model) {
         mongoose.connect(url)
-            .then((connection) => collection.drop(() => mongoose.connection.close()))
+            .then((connection) => model.collection.drop())
+            .then(() => mongoose.connection.close())
             .catch(console.log)
     }
 
