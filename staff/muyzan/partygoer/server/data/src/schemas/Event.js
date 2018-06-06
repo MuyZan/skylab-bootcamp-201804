@@ -6,6 +6,11 @@ const TicketType = require('./TicketType')
 
 module.exports = new Schema({
 
+    name: {
+        type: 'String',
+        required: true
+    },
+
     date: {
         type: Date,
         required: true
@@ -21,38 +26,18 @@ module.exports = new Schema({
         type: Number,
         required: true
     }],
-
-    /* 
-    First release: hard coding mode :(  
-    */
-
-    eventType: {
-        type: Number,
-        required: true,
-        enum: [10, 11]
-    },
-
-    musicStyle: [{
-        type: Number,
-        required: true,
-        enum: [20, 21]
-    }],
-
-    /* Future release: Model mode.
     
     eventType: [{
         type: ObjectId,
-        ref = 'EventType',
+        ref: 'EventType',
         required: true
     }],
 
     musicStyle: [{
         type: ObjectId,
-        ref = 'MusicStyle',
+        ref: 'MusicStyle',
         required: true
-    }]
-  
-    */
+    }],
 
     image: {
         type: String,
@@ -72,9 +57,9 @@ module.exports = new Schema({
         enum: [0, 1, 2, 3]
     },
 
-    capacity:{
+    capacity: {
         type: Number,
-        required: true
+        required: false
     },
 
     soldTickets: [Ticket]

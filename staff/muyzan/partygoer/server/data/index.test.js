@@ -2,16 +2,34 @@
 
 require('dotenv').config()
 
-const { mongoose, models: { User, Event, Order, Promoter } } = require('.');
+const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType } } = require('.');
 const { expect, should } = require('chai');
+
+/* Import dummies */
+const users = require('./modelDummies/userDummies')
+const events = require('./modelDummies/eventDummies')
+const promoters = require('./modelDummies/promoterDummies')
+
+const [user1, userData1] = users;
+const [event1, eventData1] = events;
+const [promoter1, promoterData1] = promoters;
+
+/* Import dataScripts */
+const eventTypes = require('./dataScripts/eventTypeScript')
+const musicStyles = require('./dataScripts/musicStyleScript')
+const [concert, musicalAtmosphere, festival, blockParty, electronicLive, karaoke, culturalEvent] = eventTypes;
+
+
 
 const { env: { DB_URL } } = process;
 const url = DB_URL
   
-
 describe('Models test', () =>{
 
-    const userZan =  {username: 'Zan', email: 'zan@zan.com', password: '123', newPassword: '456', name: 'Sandy', surname: 'Vargas', photo: 'photo', geolocation: [30,50]}; /*, interested: [{_id: 'eventId'}], orders: [{_id: 'orderId'}]*/
+    const eventDay = new Date()
+
+    const userZan =  {username: 'Zan', email: 'zan@zan.com', password: '123', newPassword: '456', name: 'Sandy', surname: 'Vargas', photo: 'photo', geolocation: [30,50]};
+    const eventData = {name: 'Day of the Droids', date: eventDay, promoter: {_id: promoter1.id}, geolocation: [5, 10], eventType: 10, musicStyle: [21], image: 'flyer', description: 'Badalona event', ticketTypes: null, purchaseType: 0, capacity: 200, soldTickets: null }
  
     before(() => mongoose.connect(url))
 
@@ -46,14 +64,54 @@ describe('Models test', () =>{
                     expect(user.photo).to.equal(userZan.photo)
                     expect(user.geolocation).to.be.an('array').that.includes(30)
                     expect(user.geolocation).to.be.an('array').that.includes(50)
-                  //  expect(user.interested).to.equal(userZan.interested)
-                  //  expect(user.orders).to.equal(userZan.orders)
+                })
+        })
+    })
+
+    describe('create event', () => {
+
+        it('should succeed on correct data', () => {
+
+            const event = new Event(eventData)
+
+            return event.save()
+                .then(event => {
+                    expect(event).to.exist
+                    expect(event._id).to.exist
+
+                    expect(event).to.have.a.property('name')
+                    expect(event).to.have.a.property('date')
+                    expect(event).to.have.a.property('promoter')
+                    expect(event).to.have.a.property('geolocation')
+                    expect(event).to.have.a.property('eventType')
+                    expect(event).to.have.a.property('musicStyle')
+                    expect(event).to.have.a.property('image')
+                    expect(event).to.have.a.property('description')
+                    expect(event).to.have.a.property('ticketTypes')
+                    expect(event).to.have.a.property('purchaseType')
+                    expect(event).to.have.a.property('capacity')
+                    expect(event).to.have.a.property('soldTickets')
+
+                    expect(event.name).to.equal(eventData.name)
+                    expect(event.date).to.equal(eventData.date)
+                    expect(event.promoter).to.exist
+                    expect(event.geolocation).to.be.an('array').that.includes(5)
+                    expect(event.geolocation).to.be.an('array').that.includes(10)
+                    expect(event.eventType).to.equal(eventData.eventType)
+                    expect(event.musicStyle).to.be.an('array').that.includes(21)
+                    expect(event.image).to.equal(eventData.image)
+                    expect(event.description).to.equal(eventData.description)
+                    expect(event.ticketTypes).to.equal(eventData.ticketTypes)
+                    expect(event.purchaseType).to.equal(eventData.purchaseType)
+                    expect(event.capacity).to.equal(eventData.capacity)
+                    expect(event.soldTickets).to.equal(eventData.soldTickets)
+
                 })
         })
     })
 
     after(done => mongoose.connection.db.dropDatabase(() => mongoose.connection.close(done) ))
+
 })
 
 
-//expect(user.geolocation).to.be.an('array').that.includes(30)

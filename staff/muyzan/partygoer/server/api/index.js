@@ -1,6 +1,6 @@
 'use strict'
 
-const mongoose = require('mongoose')
+const { mongoose } = require('./../data/.')
 const express = require('express')
 const router = require('./routes')
 
