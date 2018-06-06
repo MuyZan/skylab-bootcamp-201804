@@ -3,99 +3,95 @@
 require('dotenv').config()
 
 const { mongoose } = require('./../.')
-const { env: { PORT, DB_URL } } = process;
+const { env: { DB_URL } } = process;
 const url = DB_URL;
 
-/**
- * Import all pending promises from data Scripts (fixed data that app needs) or data dummies for testing/demostration
- */
+/** Import here the peding promises if it is necessary to resolve them.*/
 
-const pendingEventTypes = require('./eventTypeScript')
-const pendingMusicStyles = require('./musicStyleScript')
 
 /**
- * Save the docs from eventTypes and musicStyles. 
- * If collections are deleted and created again, 
- * references in other docs to the category and tag id's will still working.
+ * @constant scriptRunner 
+ * 
+ *- Contains methods that need a concrete enviroment:
+ * 
+ * @example require('dotenv').config()
+ * 
+ * const { mongoose } = require('<mongoose path>')
+ * 
+ * // .env at the same level of target file.
+ * const { env: { DB_URL } } = process; 
+ * 
+ * const url = DB_URL; 
  */
-
-const eventTypes = [];
-const musicStyles = [];
-
-
-
 const scriptRunner = {
 
-    createData(promises) {
-        mongoose.connect(url)
+    /**
+    * @function createAndSaveData(array, Model) - This function receives an array of the (-minimum of-) necessary
+    * data for required fields from model-Schema and a Model type and creates an array of pending promises of 
+    * created and saved data on database.
+    * Then resolve this pending promises and return and array of ids.
+    * 
+    */
+
+    createAndSaveData(data, modelName) {
+        return mongoose.connect(url)
             .then((connection) => {
                 console.log(`connected to ${url}`)
+                const promises = []
+                for (let i = 0; i < data.length; i++) {
+                    promises[i] = new modelName(data[i]).save()
+                }
                 return Promise.all(promises)
                     .then(res => {
-                        console.log(res)
+                       const ids = []
+                        res.forEach(element => {
+                            ids.push(element._id)
+                        })
+                        return res
                     })
-                    .then(() =>{
+                    .then(() => {
                         mongoose.connection.close()
                     })
             })
             .catch(console.error)
     },
 
-    createEventTypes(promises){
+
+    /**
+    * @function eraseDataBase() - Drop all data base.
+    */
+
+    eraseDataBase() {
         mongoose.connect(url)
-        .then((connection) => {
-            console.log(`connected to ${url}`)
-            return Promise.all(promises)
-                .then(res => {
-                    console.log(res)
-                    res.forEach(event => eventTypes.push(event))
-                })
-                .then(() =>{
-                    mongoose.connection.close()
-                })
-        })
-        .catch(console.error)
-    },
-
-    createMusicStyles(promises){
-        mongoose.connect(url)
-        .then((connection) => {
-            console.log(`connected to ${url}`)
-            return Promise.all(promises)
-                .then(res => {
-                    console.log(res)
-                    res.forEach(style => musicStyles.push(style))
-                })
-                .then(() =>{
-                    mongoose.connection.close()
-                })
-        })
-        .catch(console.error)
-    },
-
-
-
-    
-
-    eraseDataBase(){
-        mongoose.connect(url)
-            .then((connection) =>{
+            .then((connection) => {
                 mongoose.connection.db.dropDatabase(() => mongoose.connection.close())
             })
             .catch(console.error)
     },
 
-    eraseCollection(collection){
+    /**
+    * @function eraseCollection(collectionName) - Remove a concrete collection.
+    */
+
+    eraseCollection(collection) {
         mongoose.connect(url)
-            .then((connection) =>{
-                collection.remove(() => mongoose.connection.close())
-            })
+            .then((connection) => collection.remove(() => mongoose.connection.close()))
             .catch(console.error)
+    },
+
+    /**
+    * @function eraseCollection(collectionName) - Drop a concrete collection.
+    */
+
+    dropCollection(collection) {
+        mongoose.connect(url)
+            .then((connection) => collection.drop(() => mongoose.connection.close()))
+            .catch(console.log)
     }
+
 }
 
-
-module.exports = scriptRunner, eventTypes, musicStyles;
+module.exports = scriptRunner;
 
 
 

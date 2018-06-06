@@ -10,7 +10,9 @@ const user1 = new User(userData1)
 const user2 = new User(userData2)
 const user3 = new User(userData3)
 
-module.exports = [user1, user2. user3, userData1, userData2, userData3]
+const users = [user1, user2, user3]
+
+module.exports = {users, userData1, userData2, userData3}
 
 
 

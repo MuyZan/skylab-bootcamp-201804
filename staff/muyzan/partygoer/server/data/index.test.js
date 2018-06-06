@@ -6,42 +6,34 @@ const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType 
 const { expect, should } = require('chai');
 
 /* Import dummies */
-const users = require('./modelDummies/userDummies')
-const events = require('./modelDummies/eventDummies')
-const promoters = require('./modelDummies/promoterDummies')
+const { pedingUsers, userData1, userData2, userData3} = require('./dataDummies/userDummies')
+const { pendingEvents, eventData1, eventData2, eventData3, ticketTypeData1, ticketTypeData2, ticketTypeData3} = require('./dataDummies/eventDummies')
+const { pendingPromoters, promoterData1, promoterData2, promoterData3 } = require('./dataDummies/promoterDummies')
+const { pendingOrders, orderData1 ,orderData2, orderData3} = require('./dataDummies/orderDummies')
 
-const [user1, userData1] = users;
-const [event1, eventData1] = events;
-const [promoter1, promoterData1] = promoters;
-
-/* Import dataScripts */
-const eventTypes = require('./dataScripts/eventTypeScript')
-const musicStyles = require('./dataScripts/musicStyleScript')
-const [concert, musicalAtmosphere, festival, blockParty, electronicLive, karaoke, culturalEvent] = eventTypes;
-
-
+console.log(pendingEvents)
 
 const { env: { DB_URL } } = process;
 const url = DB_URL
   
 describe('Models test', () =>{
 
+    /*
     const eventDay = new Date()
 
     const userZan =  {username: 'Zan', email: 'zan@zan.com', password: '123', newPassword: '456', name: 'Sandy', surname: 'Vargas', photo: 'photo', geolocation: [30,50]};
     const eventData = {name: 'Day of the Droids', date: eventDay, promoter: {_id: promoter1.id}, geolocation: [5, 10], eventType: 10, musicStyle: [21], image: 'flyer', description: 'Badalona event', ticketTypes: null, purchaseType: 0, capacity: 200, soldTickets: null }
- 
+ */
     before(() => mongoose.connect(url))
 
     beforeEach(() => Promise.all([User.remove(), Event.remove(), Order.remove(), Promoter.remove()]))
     
-    describe('create user', () => {
+    describe('create user', () =>{
+        it('should succeed on correc data', () => {
 
-        it('should succeed on correct data', () => {
+            const [user1] = pedingUsers;
 
-            const user = new User(userZan)
-
-            return user.save()
+            return user1.save()
                 .then(user => {
                     expect(user).to.exist
                     expect(user._id).to.exist
@@ -64,11 +56,50 @@ describe('Models test', () =>{
                     expect(user.photo).to.equal(userZan.photo)
                     expect(user.geolocation).to.be.an('array').that.includes(30)
                     expect(user.geolocation).to.be.an('array').that.includes(50)
+
+                })
+
+        })
+    })
+
+
+
+
+
+    false&&describe('create user', () => {
+
+        it('should succeed on correct data', () => {
+
+            const user = new User(userZan)
+
+            return user.save()
+                .then(user => {
+                    expect(user).to.exist
+                    expect(user._id).to.exist
+                    expect(user).to.have.a.property('username')
+                    expect(user).to.have.a.property('email')
+                    expect(user).to.have.a.property('password')
+                    expect(user).to.have.a.property('newPassword')
+                    expect(user).to.have.a.property('name')
+                    expect(user).to.have.a.property('surname')
+                    expect(user).to.have.a.property('photo')
+                    expect(user).to.have.a.property('geolocation')
+                    expect(user).to.have.a.property('interested')
+                    expect(user).to.have.a.property('orders')
+                    expect(user.username).to.equal(userData1.username)
+                    expect(user.email).to.equal(userData1.email)
+                    expect(user.password).to.equal(userData1.password)
+                    expect(user.newPassword).to.equal(userData1.newPassword)
+                    expect(user.name).to.equal(userData1.name)
+                    expect(user.surname).to.equal(userData1.surname)
+                    expect(user.photo).to.equal(userData1.photo)
+                    expect(user.geolocation).to.be.an('array').that.includes(30)
+                    expect(user.geolocation).to.be.an('array').that.includes(50)
                 })
         })
     })
 
-    describe('create event', () => {
+    false&&describe('create event', () => {
 
         it('should succeed on correct data', () => {
 
