@@ -21,7 +21,6 @@ module.exports = new Schema({
 
     newPassword: {
         type: 'String',
-        required: false
     },
 
     name: {
@@ -36,24 +35,21 @@ module.exports = new Schema({
 
     photo: {
         type: String,
-        required: false
     }, 
 
-    geolocation: [{
-        type: Number,
-        required: false
-    }],
+    geolocation: {
+        type: [Number],
+        index: '2d',
+    },
 
     interested: [{
         type: ObjectId,
         ref: 'Event',
-        required: false
     }],
 
     orders: [{
         type: ObjectId,
         ref: 'Order',
-        required: false
     }]
 })
 

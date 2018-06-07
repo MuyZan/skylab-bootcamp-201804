@@ -22,10 +22,11 @@ module.exports = new Schema({
         required: true
     },
 
-    geolocation: [{
-        type: Number,
+    geolocation: {
+        type: [Number],
+        index: '2d',
         required: true
-    }],
+    },
     
     eventType: [{
         type: ObjectId,

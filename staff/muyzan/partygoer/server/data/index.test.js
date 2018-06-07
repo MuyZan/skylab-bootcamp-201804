@@ -5,30 +5,22 @@ require('dotenv').config()
 const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType } } = require('.');
 const { expect, should } = require('chai');
 
-/* Import dummies */
-const { pedingUsers, userData1, userData2, userData3} = require('./dataDummies/userDummies')
-const { pendingEvents, eventData1, eventData2, eventData3, ticketTypeData1, ticketTypeData2, ticketTypeData3} = require('./dataDummies/eventDummies')
-const { pendingPromoters, promoterData1, promoterData2, promoterData3 } = require('./dataDummies/promoterDummies')
-const { pendingOrders, orderData1 ,orderData2, orderData3} = require('./dataDummies/orderDummies')
-
-console.log(pendingEvents)
-
 const { env: { DB_URL } } = process;
 const url = DB_URL
-  
-describe('Models test', () =>{
 
-    /*
+describe('Models test', () => {
+
+    
     const eventDay = new Date()
 
     const userZan =  {username: 'Zan', email: 'zan@zan.com', password: '123', newPassword: '456', name: 'Sandy', surname: 'Vargas', photo: 'photo', geolocation: [30,50]};
     const eventData = {name: 'Day of the Droids', date: eventDay, promoter: {_id: promoter1.id}, geolocation: [5, 10], eventType: 10, musicStyle: [21], image: 'flyer', description: 'Badalona event', ticketTypes: null, purchaseType: 0, capacity: 200, soldTickets: null }
- */
+ 
     before(() => mongoose.connect(url))
 
     beforeEach(() => Promise.all([User.remove(), Event.remove(), Order.remove(), Promoter.remove()]))
-    
-    describe('create user', () =>{
+
+    describe('create user', () => {
         it('should succeed on correc data', () => {
 
             const [user1] = pedingUsers;
@@ -66,7 +58,7 @@ describe('Models test', () =>{
 
 
 
-    false&&describe('create user', () => {
+    describe('create user', () => {
 
         it('should succeed on correct data', () => {
 
@@ -99,7 +91,7 @@ describe('Models test', () =>{
         })
     })
 
-    false&&describe('create event', () => {
+   describe('create event', () => {
 
         it('should succeed on correct data', () => {
 
@@ -141,7 +133,7 @@ describe('Models test', () =>{
         })
     })
 
-    after(done => mongoose.connection.db.dropDatabase(() => mongoose.connection.close(done) ))
+    after(done => mongoose.connection.db.dropDatabase(() => mongoose.connection.close(done)))
 
 })
 

@@ -1,5 +1,11 @@
 'use strict'
 
+const moment = require('moment')
+const now = new Date(moment().format('L'))
+
+
+
+
 const { models: { User, Event, Order, Promoter, EventType, MusicStyle } } = require('data')
 
 const logic = {
@@ -39,7 +45,8 @@ const logic = {
                     .then(user =>{
                         if (user) throw Error(`user with username ${username} already exists`);
 
-                        return User.create( {username, email, password, name, surname} )
+                
+                        return User.create( {username, email, password, name, surname } )
                         .then(()=> true)
                     })
             })
@@ -89,7 +96,7 @@ const logic = {
                 if(typeof userId !== 'string') throw Error('user userId is not a string')
                 if(!(userId = userId.trim()).length) throw Error('user userId is empty or blank')
 
-                return User.findById(userId).select({ _id: 0, username: 1, email: 1, name: 1, surname: 2, photo: 1})
+                return User.findById(userId).select({ _id: 0, username: 1, email: 1, name: 1, surname: 1, photo: 1})
             })
             .then(user => {
                 if (!user) throw Error(`no user found with id ${userId}`)
@@ -112,7 +119,7 @@ const logic = {
     * @return {Promise<boolean>}
     */
 
-    updateUser(userId, name, surname, email, password, newPassword = undefined, photo = undefined){
+    updateUser(userId, name, surname, email, password, newPassword, photo){
         return Promise.resolve()
             .then(()=>{
 
@@ -139,7 +146,9 @@ const logic = {
                     if(!(photo = photo.trim()).length) throw Error('user photo is empty or blank') 
                  }
 
-                 return User.findOne({ username, password} )    
+
+
+                 return User.findById({ username, password } )    
             })
             .then(user =>{
 
@@ -221,11 +230,35 @@ const logic = {
 
     /*EVENTS*/
 
-    searchEvents(){}, /*geolocalitation */
+    searchEvents(geolocalitation){
 
-    listEvents(){},
+             //PRIMERO FILTRAR LAS CERCANAS
+        //LUEGO LAS POR LAS QUE ESTÉN OCURRIENDO EN EL TIEMPO
+   
+        return Promise.resolve()
+        .then(()=>{
 
-    filterEvents(){},
+        })
+
+
+
+    }, /*geolocalitation */
+
+    listEvents(nearEventsArray){ //quizás puede borrarse
+
+
+    },
+
+    filterEventsByType(typeId){
+
+        return Event.find(typeId)
+
+    },
+
+    filterEventsByStyle(style){
+
+    },
+
 
     /* USER AND EVENTS, TICKETS */
 
@@ -237,7 +270,7 @@ const logic = {
 
     shareEvent(){},
 
-    listAddedEvents(){},
+    listAddedEvents(userId){},
 
     listPurchasedEvents(){},
 

@@ -36,14 +36,15 @@ const scriptRunner = {
     saveData(dataObjects){
         mongoose.connect(url)
         .then((connection) => {
-            console.log(`connected to ${url}`)
+            console.log(`connected to ${url} creating ${dataObjects}`)
             const promises = []
             for (let i = 0; i < dataObjects.length; i++) {
                 promises[i] = dataObjects[i].save()
             }
-            return Promise.all(promises)           
+            return Promise.all(promises)
+            .then(() => mongoose.connection.close())        
         })
-        .then(() => mongoose.connection.close())
+
         .catch(console.error)
     },
 
@@ -74,9 +75,7 @@ const scriptRunner = {
                         })
                         return ids
                     })
-                    .then(() => {
-                        mongoose.connection.close()
-                    })
+                    .then(() => mongoose.connection.close())
             })
             .catch(console.error)
     },
@@ -95,17 +94,7 @@ const scriptRunner = {
     },
 
     /**
-    * @function eraseCollection(collectionName) - Remove a concrete collection.
-    */
-
-    eraseCollection(collection) {
-        mongoose.connect(url)
-            .then((connection) => mongoose.connection.db.collection.remove(() => mongoose.connection.close()))
-            .catch(console.error)
-    },
-
-    /**
-    * @function eraseCollection(collectionName) - Drop a concrete collection.
+    * @function dropCollection(model) - Drop a concrete collection.
     */
 
     dropCollection(model) {
