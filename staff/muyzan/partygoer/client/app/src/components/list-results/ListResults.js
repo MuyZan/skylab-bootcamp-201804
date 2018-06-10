@@ -13,7 +13,7 @@ class ListResults extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         document.body.style.background = 'white'
       
         logic.listEvents()
