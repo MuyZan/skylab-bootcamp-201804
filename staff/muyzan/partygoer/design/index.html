@@ -20,21 +20,18 @@
             <h2>Look for nearby events </h2>
         </div>
         <form class="content-wrap" action="">
-            <select name="eventType-list" id="" class="search-option-list">
+            <select name="eventType-list" id="eventTyp" class="search-option-list">
                 <option value="All" selected="selected">All</option>
                 <option value="Concert">Concert</option>
                 <option value="Festival">Festival</option>
             </select>
-            <select name="musicStyle-list" id="" class="search-option-list">
+            <select name="musicStyle-list" id="musicStyle" class="search-option-list">
                 <option value="All" selected="selected">All</option>
                 <option value="Techno">Techno</option>
                 <option value="Rock">Rock</option>
             </select>
             <button class="search-btn">Search!</button>
         </form>
-
-
-
     </header>
 
     <!-- Main Area -->
@@ -46,7 +43,6 @@
         <section id="map" class="grid">
             <div class="content-wrap">
                 <h2 class="content-title">Here a map</h2>
-
             </div>
             <div class="content-wrap filter-gradient">
                 <img src="https://images.pexels.com/photos/41949/earth-earth-at-night-night-lights-41949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
@@ -65,16 +61,17 @@
                 </div>
 
 
-                <div class="card ">
-                    <div class="card-content content-wrap">
-                        <h3 class="card-title">Razzmatazz</h3>
-<div class="content-text">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati, iusto aliquid
-                            ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam maxime necessitatibus
-                            aperiam. Autem?
-                        </p>
-                    </div>
-
+                <div class="card">
+                    <div class="content-wrap">
+                        <div class="card-content">
+                            <h3 class="card-title">Razzmatazz</h3>
+                            <div class="content-text">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?
+                                </p>
+                            </div>
+                        </div>
                     </div>
                     <button class="more-info">+info</button>
                     <button class="add-event">Add event</button>
@@ -87,63 +84,65 @@
         <!-- Events List showcase section -->
 
         <section id="events-list-showcase" class="grid">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="filter-one">
-                            <div class="img-container filter-two">
-                                <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+            <div class="content-wrap">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="filter-one">
+                                <div class="img-container filter-two">
+                                    <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="card-content">
-                            <h3 class="card-title">List Event 1</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati, iusto
-                                aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam maxime
-                                necessitatibus aperiam. Autem?</p>
+                            <div class="card-content">
+                                <h3 class="card-title">List Event 1</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
 
-                        </div>
-                        <button class="more-info">+info</button>
-                        <button class="add-event">Add event</button>
-                    </div>
-                </li>
-                <li>
-                    <div class="card ">
-                        <div class="filter-one">
-                            <div class="img-container filter-two">
-                                <img src="https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                             </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
                         </div>
-                        <div class="card-content ">
-                            <h3 class="card-title">List Event 2</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati, iusto
-                                aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam maxime
-                                necessitatibus aperiam. Autem?</p>
-                        </div>
-                        <button class="more-info">+info</button>
-                        <button class="add-event">Add event</button>
-
-                    </div>
-                </li>
-                <li>
-                    <div class="card">
-                        <div class="filter-one">
-                            <div class="img-container filter-two">
-                                <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                    </li>
+                    <li>
+                        <div class="card ">
+                            <div class="filter-one">
+                                <div class="img-container filter-two">
+                                    <img src="https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-content content-wrap">
-                            <h3 class="card-title">List Event 3</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati, iusto
-                                aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam maxime
-                                necessitatibus aperiam. Autem?</p>
-                        </div>
-                        <button class="more-info">+info</button>
-                        <button class="add-event">Add event</button>
+                            <div class="card-content ">
+                                <h3 class="card-title">List Event 2</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
 
-                    </div>
-                </li>
-            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <div class="filter-one">
+                                <div class="img-container filter-two">
+                                    <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                                </div>
+                            </div>
+                            <div class="card-content content-wrap">
+                                <h3 class="card-title">List Event 3</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
 
@@ -151,28 +150,28 @@
 
         <section id="added-events-list" class="grid">
             <div class="content-wrap">
-            <ul>
-                <li>
-                    <div class="card">
-                        <div class="filter-one">
-                            <div class=" img-container filter-two">
-                                <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="filter-one">
+                                <div class=" img-container filter-two">
+                                    <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
                             </div>
+                            <div class="card-content ">
+                                <h3 class="card-title">Added Event</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="remove-event">Remove event</button>
                         </div>
-                        <div class="card-content ">
-                            <h3 class="card-title">Added Event</h3>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati, iusto
-                                aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam maxime
-                                necessitatibus aperiam. Autem?</p>
-                        </div>
-                        <button class="more-info">+info</button>
-                        <button class="remove-event">Remove event</button>
-                    </div>
-                </li>
+                    </li>
 
-                <li>
-                    <div class="card">
-                        
+                    <li>
+                        <div class="card">
+
                             <div class="filter-one">
                                 <div class="img-container filter-gradient">
                                     <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
@@ -186,11 +185,11 @@
                             </div>
                             <button class="more-info">+info</button>
                             <button class="remove-event">Remove event</button>
-                        
-                    </div>
-                </li>
-            </ul>
-        </div>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
         <!-- Event Info -->
@@ -207,26 +206,26 @@
                         </div>
                     </div>
                     <div class="margin">
-                 <div class="content-text">
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste natus ea doloremque perspiciatis temporibus
-                        iusto placeat qui libero possimus veritatis quas est fugit ut, incidunt molestiae cupiditate repellat,
-                        hic quibusdam. Voluptatibus omnis ipsam quisquam ut? Quos voluptates non obcaecati temporibus eius
-                        similique reiciendis rem velit, tempora aspernatur vel tenetur eos adipisci ad reprehenderit porro.
-                        Nesciunt numquam saepe ab facilis natus? Reprehenderit accusamus cumque ullam numquam, nisi sapiente
-                        quod molestias nulla qui rerum optio, voluptas quis voluptatum! Est optio nostrum sint non, quibusdam
-                        <br>
-                        quidem a delectus consequuntur temporibus nemo facilis ducimus. Eius distinctio quaerat laudantium,
-                        officia velit illum nisi neque unde odio aperiam exercitationem accusantium dolor assumenda et voluptate
-                        numquam iste cumque beatae reiciendis sequi doloribus! Beatae impedit voluptatem tempore odio? Fugiat
-                        aliquam amet mollitia est quisquam assumenda architecto, ipsa tenetur, quaerat inventore, rem id
-                        ipsam perferendis maxime ullam. Eos nisi error provident quis at, placeat distinctio nulla harum
-                        possimus soluta.</p>
-                </div>
-            </div>
-                <button class="add-event">Add event</button>
-                <button class="buy-event">Buy ticket for event</button>
+                        <div class="content-text">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste natus ea doloremque perspiciatis
+                                temporibus iusto placeat qui libero possimus veritatis quas est fugit ut, incidunt molestiae
+                                cupiditate repellat, hic quibusdam. Voluptatibus omnis ipsam quisquam ut? Quos voluptates
+                                non obcaecati temporibus eius similique reiciendis rem velit, tempora aspernatur vel tenetur
+                                eos adipisci ad reprehenderit porro. Nesciunt numquam saepe ab facilis natus? Reprehenderit
+                                accusamus cumque ullam numquam, nisi sapiente quod molestias nulla qui rerum optio, voluptas
+                                quis voluptatum! Est optio nostrum sint non, quibusdam
+                                <br> quidem a delectus consequuntur temporibus nemo facilis ducimus. Eius distinctio quaerat
+                                laudantium, officia velit illum nisi neque unde odio aperiam exercitationem accusantium dolor
+                                assumenda et voluptate numquam iste cumque beatae reiciendis sequi doloribus! Beatae impedit
+                                voluptatem tempore odio? Fugiat aliquam amet mollitia est quisquam assumenda architecto,
+                                ipsa tenetur, quaerat inventore, rem id ipsam perferendis maxime ullam. Eos nisi error provident
+                                quis at, placeat distinctio nulla harum possimus soluta.</p>
+                        </div>
+                    </div>
+                    <button class="add-event">Add event</button>
+                    <button class="buy-event">Buy ticket for event</button>
 
-            </div>
+                </div>
         </section>
 
 
@@ -244,19 +243,19 @@
                         <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                     </figure>
 
-<div class="content-text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti maxime alias odit obcaecati at cum
-                        nesciunt error commodi animi possimus! Ducimus molestiae qui voluptatem laboriosam dignissimos debitis
-                        eveniet eum asperiores! Eligendi temporibus id explicabo eaque quasi iusto nihil facilis harum, accusantium
-                        amet ducimus unde qui neque cum deserunt natus. Neque esse assumenda incidunt facilis modi accusamus
-                        a magni consequatur ullam. Ratione dolores ducimus voluptatibus tempora, provident deleniti amet
-                        qui nihil excepturi repudiandae magni temporibus veritatis illo laboriosam aperiam illum non sit
-                        porro molestias numquam error aut dicta. Adipisci, ipsam ratione!</p>
+                    <div class="content-text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti maxime alias odit obcaecati at
+                            cum nesciunt error commodi animi possimus! Ducimus molestiae qui voluptatem laboriosam dignissimos
+                            debitis eveniet eum asperiores! Eligendi temporibus id explicabo eaque quasi iusto nihil facilis
+                            harum, accusantium amet ducimus unde qui neque cum deserunt natus. Neque esse assumenda incidunt
+                            facilis modi accusamus a magni consequatur ullam. Ratione dolores ducimus voluptatibus tempora,
+                            provident deleniti amet qui nihil excepturi repudiandae magni temporibus veritatis illo laboriosam
+                            aperiam illum non sit porro molestias numquam error aut dicta. Adipisci, ipsam ratione!</p>
 
                     </div>
 
 
-                    <button class="buy-event">Buy more tickets for event</button>
+                    <button class="buy-event animation-buy">Buy more tickets for event</button>
 
                 </div>
 
@@ -310,7 +309,7 @@
 
 
         <!-- More info -->
-        <section id="avant-footer" class="grid">
+        <section id="event-footer" class="grid">
             <div class="box">
                 <h2 class="content-tittle">Promoter info</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque facilis a eius animi sed aut
