@@ -5,7 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#1b0b53">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1b0b53">
+
+    <!-- icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="icon.png">
+
+    <!-- reuse same icon for Safari -->
+    <link rel="apple-touch-icon" href="ios-icon.png">
+
+    <!-- multiple icons for IE -->
+    <meta name="msapplication-square310x310logo" content="icon_largetile.png">
+
+
+
     <title>Partygoer</title>
 </head>
 
@@ -21,12 +38,12 @@
         </div>
         <form class="content-wrap" action="">
             <select name="eventType-list" id="eventTyp" class="search-option-list">
-                <option value="All" selected="selected">All</option>
+                <option value="All" selected="selected">Event type: All</option>
                 <option value="Concert">Concert</option>
                 <option value="Festival">Festival</option>
             </select>
-            <select name="musicStyle-list" id="musicStyle" class="search-option-list">
-                <option value="All" selected="selected">All</option>
+            <select name="musicStyle-list[]" id="musicStyle" class="search-option-list">
+                <option value="All" selected="selected">Music style: All</option>
                 <option value="Techno">Techno</option>
                 <option value="Rock">Rock</option>
             </select>
@@ -54,8 +71,9 @@
 
         <section id="event-showcase" class="grid">
             <div class="content-wrap">
-                <div class="filter-one">
-                    <div class="img-container filter-two">
+                <div class="bg-filter">
+                    <div class="top-layer-filter"></div>
+                    <div class="img-container">
                         <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                     </div>
                 </div>
@@ -88,8 +106,9 @@
                 <ul>
                     <li>
                         <div class="card">
-                            <div class="filter-one">
-                                <div class="img-container filter-two">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
                                     <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                                 </div>
                             </div>
@@ -107,8 +126,9 @@
                     </li>
                     <li>
                         <div class="card ">
-                            <div class="filter-one">
-                                <div class="img-container filter-two">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
                                     <img src="https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                                 </div>
                             </div>
@@ -125,11 +145,14 @@
                     </li>
                     <li>
                         <div class="card">
-                            <div class="filter-one">
-                                <div class="img-container filter-two">
+                            <div class="bg-filter">
+                                    <div class="top-layer-filter"></div>
+
+                                <div class="img-container">
                                     <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
                                 </div>
-                            </div>
+                           
+                        </div>
                             <div class="card-content content-wrap">
                                 <h3 class="card-title">List Event 3</h3>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
@@ -153,8 +176,9 @@
                 <ul>
                     <li>
                         <div class="card">
-                            <div class="filter-one">
-                                <div class=" img-container filter-two">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container ">
                                     <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                                 </div>
                             </div>
@@ -172,8 +196,9 @@
                     <li>
                         <div class="card">
 
-                            <div class="filter-one">
-                                <div class="img-container filter-gradient">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
                                     <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
                                 </div>
                             </div>
@@ -200,10 +225,11 @@
                 <div class="info-card">
 
                     <h1 class="section-title">Event</h1>
-                    <div class="filter-one">
-                        <div class="img-container filter-two">
+                        <div class="bg-filter">
+                            <div class="top-layer-filter"></div>
+                        <figure class="img-container">
                             <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
-                        </div>
+                        </figure>
                     </div>
                     <div class="margin">
                         <div class="content-text">
@@ -222,9 +248,11 @@
                                 quis at, placeat distinctio nulla harum possimus soluta.</p>
                         </div>
                     </div>
-                    <button class="add-event">Add event</button>
-                    <button class="buy-event">Buy ticket for event</button>
-
+                    <div class="large-btn">
+                            <button class="add-event">Add event</button>
+                            <button class="buy-event animation-buy">Buy ticket for event</button>
+                    </div>
+                
                 </div>
         </section>
 
@@ -237,12 +265,12 @@
 
                     <h1 class="section-title"> Purchased Event</h1>
 
-
-
-                    <figure class="img-container filter-gradient">
+            <div class="bg-filter">
+                <div class="top-layer-filter"></div>
+                    <figure class="img-container">
                         <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
                     </figure>
-
+                </div>
                     <div class="content-text">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti maxime alias odit obcaecati at
                             cum nesciunt error commodi animi possimus! Ducimus molestiae qui voluptatem laboriosam dignissimos
@@ -254,9 +282,9 @@
 
                     </div>
 
-
+            <div class="large-btn">                  
                     <button class="buy-event animation-buy">Buy more tickets for event</button>
-
+            </div> 
                 </div>
 
 
