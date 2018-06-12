@@ -4,7 +4,7 @@
     --main-bg-gradient: linear-gradient(80deg, #d33249,  #19016f);
     --main-gradient: linear-gradient(60deg, #19016f, #d33249);
     --main-gradient-hover:linear-gradient(60deg, #2d0aac, #ee6478);
-    --border: 0.225em solid;
+    --border: 0.265em solid;
     --btn-font-color: white;
     --btn-color: #d33249;
     --btn-border-color:#e76175;
@@ -46,6 +46,7 @@ body {
 }
 
 button{
+    border-radius: 0.5em;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 700;
@@ -108,6 +109,15 @@ p{
     padding-right: 1em;
     letter-spacing: 0.1em;
 }
+
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
 
 /*********|||| COMMON BUTTONS |||||*********/
 
@@ -191,6 +201,7 @@ mix-blend-mode:lighten
 
 
 .search-option-list, .search-btn{
+
     display: block;
     width: 70%;
     margin: 1em auto;
@@ -243,9 +254,13 @@ mix-blend-mode:lighten
 }
 
 .card h3{
-    padding: 0.78em
+    padding: 0.78em;
+    letter-spacing: 0.15em;
 }
 
+.card p{
+    margin-top: -3em;
+}
 
 
 
@@ -410,15 +425,56 @@ mix-blend-mode:lighten
 }
 
 
-/*** COLOR BROWSER PALETTES***/
-/*
+/*** COLOR BROWSER PALETTE FOR CHROME***/
+
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-    .thecrew {
-    color: #E67E229;
+
+    :root { 
+        --main-bg-gradient-Chrome: linear-gradient(80deg, #af3c4b,  #24126b);
+        --main-gradient-Chrome: linear-gradient(60deg, #24126b, #cc4458);
+        --main-gradient-hover-Chrome:linear-gradient(60deg, #311b8a, #d45366);
+        --border-Chrome: 0.225em solid;
+        --btn-font-color-Chrome: white;
+        --btn-color-Chrome: #cc4458;
+        --btn-border-color-Chrome:#e76175;
+        --btn-hover-color-Chrome: #d14f62;
+        --btn-hover-border-color-Chrome: white;
+        --btn-padding-Chrome:1em 2em;
+        --intro-img-height-Chrome: 450px;
+        --color-blue-Chrome: #24126b;
+        --color-salmon-Chrome: #cc4458;
     }
 
-    @-moz-document url-prefix() {
-        .thecrew {
-        color: #E67E229;
-        }
-        }*/
+    body {
+        background:var(--main-bg-gradient-Chrome);
+    }
+
+    .search-option-list, .search-btn{
+        background: var(--main-gradient-Chrome);
+        color: var(--btn-font-color);
+        border: var(--border-Chrome);
+        border-image: var(--main-gradient-Chrome);
+        border-image-slice:1;
+    }
+
+    button{
+        background: var(--btn-color-Chrome)
+    }
+
+    button:hover{
+        background: var(--btn-hover-color-Chrome);
+    }
+ 
+
+    #event-footer .box{
+        background:rgb(170, 87, 121);
+    }
+    
+    #event-footer .box:first-child{
+        background:rgb(100, 30, 59);
+    }
+
+  
+
+    }
+        

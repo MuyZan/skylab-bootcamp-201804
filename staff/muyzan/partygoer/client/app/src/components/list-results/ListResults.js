@@ -13,9 +13,7 @@ class ListResults extends Component {
         }
     }
 
-    componentWillMount() {
-        document.body.style.background = 'white'
-      
+    componentWillMount() {      
         logic.listEvents()
         .then(res => {
             const { data: { data } } = res
