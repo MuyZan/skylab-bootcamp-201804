@@ -5,7 +5,7 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import PartyMap from '../map/Map'
 import leaflet from 'leaflet'
 import './../map/map.css'
-import GeoLocation from './../geolocation/Geolocation'
+import UserGeoLocation from './../geolocation/Geolocation'
 
 
 class Home extends Component {
@@ -14,13 +14,41 @@ class Home extends Component {
         super()
 
         this.state = {
-            search: false
+            search: false,
+            message: '',
+            latitude: '',
+            longitude: '',
+            error:'',
         }
     }
 
     _handlerSearch = () => {
 
            this.setState({ search: true})
+    }
+
+    _geoFindMe = () => {
+
+console.log("hola")
+        if (!navigator.geolocation){
+            this.setState({message: 'Geolocation is not supported by your browser'})
+            return;
+        }
+
+
+       const success = (position) => {
+
+            const latitude  = position.coords.latitude;
+            const longitude = position.coords.longitude;
+         this.setState({latitude, longitude})
+        };
+
+   function error() {
+        this.setState({error: "Unable to retrieve your location"})
+        }
+
+           return navigator.geolocation.getCurrentPosition(success, error);
+
     }
 
     render() {
@@ -35,8 +63,10 @@ class Home extends Component {
 
 
 
-    <GeoLocation />
+<UserGeoLocation/>
 
+
+<button onClick={this._geoFindMe}>Show my location</button>
 
                 {this.state.search === true ?
                 <ListResults _events={this.state.events}/>

@@ -1,27 +1,24 @@
-import React from "react";
-import Geolocation from "react-geolocation";
+import React, { Component } from 'react'
 
-export default () => {
-  return (
-    <Geolocation
-      onSuccess={console.log}
-      render={({
-        fetchingPosition,
-        position: { coords: { latitude, longitude } = {} } = {},
-        error,
-        getCurrentPosition
-      }) =>
-        <div>
-          <button onClick={getCurrentPosition}>Get Position</button>
-          {error &&
-            <div>
-              {error.message}
-            </div>}
-          <pre>
-            latitude: {latitude} 
-            longitude: {longitude}
-          </pre>
-        </div>}
-    />
-  );
-};
+class UserGeoLocation extends Component{
+
+    constructor(){
+        super()
+
+        this.state={
+            latitude:'',
+            longitude:''
+        }
+    }
+
+
+
+    render(){
+        return(
+       <div>HELLO</div>
+        )
+    }
+
+}
+
+export default UserGeoLocation;
