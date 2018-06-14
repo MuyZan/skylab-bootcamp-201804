@@ -1,10 +1,10 @@
 'use strict'
 
-const { Schema, Schema: { ObjectId } } = require('mongoose')
+const { Schema, Schema: { ObjectId }, SchemaTypes: { Decimal128 } } = require('mongoose')
 const Ticket = require('./Ticket')
 const TicketType = require('./TicketType')
 
-module.exports = new Schema({
+const Event = new Schema({
 
     name: {
         type: 'String',
@@ -22,12 +22,12 @@ module.exports = new Schema({
         required: true
     },
 
-    geolocation: {
-        type: [Number],
-        index: '2d',
+    location: {
+        type: { type: String },
+        coordinates: [Decimal128],
         required: true
     },
-    
+
     eventType: [{
         type: ObjectId,
         ref: 'EventType',
@@ -66,3 +66,7 @@ module.exports = new Schema({
     soldTickets: [Ticket]
 
 })
+
+Event.index({ location: '2dsphere'})
+
+module.exports = Event;

@@ -1,17 +1,86 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import './map.css'
+import pin from './../../static/images/icons/placeholder.svg'
+import L from 'leaflet'
+
+
+const userPlaceholder = new L.icon({
+    iconUrl: require('./../../static/images/icons/placeholder.svg'),
+    iconSize:     [34, 85], 
+    iconAnchor:   [22, 94], 
+    popupAnchor:  [-3, -76]
+})
+
+const djPlaceholder = new L.icon({
+    iconUrl: require('./../../static/images/icons/dj.svg'),
+    iconSize:     [34, 85], 
+    iconAnchor:   [22, 94], 
+    popupAnchor:  [-3, -76]
+})
+
+
+const rock = new L.icon({
+    iconUrl: require('./../../static/images/icons/rock.svg'),
+    iconSize:     [48, 85], 
+    iconAnchor:   [22, 94], 
+    popupAnchor:  [-3, -76]
+})
+
 
 export default class PartyMap extends Component {
        
-    
+
+
     state = {
-            lat: 41.398478,
-            lng: 2.199981,
-            zoom: 13,
+            lat: 0,
+            lng: 0,
+            zoom: 15,
+        }  
+
+        componentWillMount() { 
+            
+            if (!navigator.geolocation) {
+                this.setState({ message: 'Geolocation is not supported by your browser' })
+                return;
+            }
+
+            const success = (position) => {
+                Promise.resolve()
+                .then(()=>{
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    this.setState({ lat: latitude, lng: longitude })
+                })
+                .then(()=>{
+                    this.setState({ geoLoc: true })
+    
+                })
+    
+    
+                
+            };
+    
+    
+            function error(error) {
+                let errorMessage = `Unable to retrieve your location. ERROR: (${error.code}) ${error.message}`;
+                alert(errorMessage)
+                this.setState({ error: errorMessage})
+            }
+    
+            navigator.geolocation.getCurrentPosition(success, error);
+           
         }
+
+  
+
+
     
     render() {
+
+     
+
+
         const position = [this.state.lat, this.state.lng]
         return (
             
@@ -19,10 +88,31 @@ export default class PartyMap extends Component {
                 <TileLayer attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
-                <Marker position={position}>
-                    <Popup>
-                        <span>
-                    A pretty CSS3 popup. <br /> Easily customizable.
+
+                        <Marker  position={[41.5060639, 2.38766899999996]} icon={djPlaceholder}>
+                    <Popup >
+                        <span >
+                    DOS POSITION
+                    <button>jaja</button>
+                    </span>
+                    </Popup>
+                </Marker>
+
+
+  <Marker  position={[41.50857999999999, 2.3850199999999404]} icon={rock}>
+                    <Popup >
+                        <span >
+                    DOS POSITION
+                    <button>jaja</button>
+                    </span>
+                    </Popup>
+                </Marker>
+
+                <Marker  position={position} icon={userPlaceholder}>
+                    <Popup >
+                        <span >
+                    USER POSITION
+                    <button>jaja</button>
                     </span>
                     </Popup>
                 </Marker>
@@ -40,3 +130,12 @@ export default class PartyMap extends Component {
 //            <div id="map-container"></div>
 
 
+// http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png
+
+/* // https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png
+
+
+const stamenTonerAttr =
+      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+*/

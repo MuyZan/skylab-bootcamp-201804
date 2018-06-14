@@ -50,9 +50,11 @@ const ticketTypeData3 = {quantity: 100, price: 30, description: 'entrada sin con
 
 const ticketTypeData = [ticketTypeData1, ticketTypeData2, ticketTypeData3]
 
-const eventData1 = {name: 'Day of the Droids', date: eventDay1, promoter: promoter1._id, geolocation: [5, 10], eventType: festival._id, musicStyle: trance._id, image: 'flyer1', description: 'Badalona event', ticketTypes: [ticketTypeData1, ticketTypeData3], purchaseType: 4, capacity: 200}
-const eventData2 = {name: 'Razzmatazz II', date: eventDay2, promoter: promoter2._id, geolocation: [56, 10], eventType: concert._id, musicStyle: rock._id, image: 'flyer2', description: 'party hard, sleep easy', purchaseType: 3, capacity: 50 }
-const eventData3 = {name: 'Rave en Palamos', date: eventDay3, promoter: promoter3._id, geolocation: [45, 8], eventType: culturalEvent._id, musicStyle: techno._id, image: 'flyer3', description: 'que si quiero o que si tengo', ticketTypes:[ticketTypeData2], purchaseType: 1}
+
+// [longitude, latitude] !!!
+const eventData1 = {name: 'Day of the Droids', date: eventDay1, promoter: promoter1._id, location: { type: 'Point', coordinates: [2.1980124000000387, 41.4004274 ]}, eventType: festival._id, musicStyle: trance._id, image: 'flyer1', description: 'ROC BORONAT 70', ticketTypes: [ticketTypeData1, ticketTypeData3], purchaseType: 4, capacity: 200}
+const eventData2 = {name: 'Razzmatazz II', date: eventDay2, promoter: promoter2._id, location: { type: 'Point', coordinates: [2.193671399999971, 41.3946117 ]}, eventType: concert._id, musicStyle: rock._id, image: 'flyer2', description: 'LLULL 70', purchaseType: 3, capacity: 50 }
+const eventData3 = {name: 'Rave en Palamos', date: eventDay3, promoter: promoter3._id, location: { type: 'Point', coordinates: [2.198788199999967, 41.3980822 ]}, eventType: culturalEvent._id, musicStyle: techno._id, image: 'flyer3', description: 'CIUDAD DE GRANADA 40', ticketTypes:[ticketTypeData2], purchaseType: 1}
 
 const eventsData = [eventData1, eventData2, eventData3];
 const events = scriptRunner.createData(eventsData, Event);
