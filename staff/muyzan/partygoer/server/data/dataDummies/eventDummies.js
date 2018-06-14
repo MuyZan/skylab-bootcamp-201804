@@ -18,11 +18,16 @@ const { promoterData1, promoterData2, promoterData3 } = require('./promoterDummi
 const eventTypes = require('./../dataScripts/eventTypeScript')
 const musicStyles = require('./../dataScripts/musicStyleScript')
 
+/*
 scriptRunner.dropCollection(Event)
-scriptRunner.dropCollection(Promoter)
+scriptRunner.dropCollection(Promoter)*/
 
-scriptRunner.saveData(eventTypes)
-scriptRunner.saveData(musicStyles)
+
+
+
+
+/*scriptRunner.saveData(eventTypes)
+scriptRunner.saveData(musicStyles)*/
 
 const [concert, festival, culturalEvent] = eventTypes
 const [rock, techno, trance] = musicStyles
@@ -52,27 +57,29 @@ const ticketTypeData = [ticketTypeData1, ticketTypeData2, ticketTypeData3]
 
 
 // [longitude, latitude] !!!
-const eventData1 = {name: 'Day of the Droids', date: eventDay1, promoter: promoter1._id, location: { type: 'Point', coordinates: [2.1980124000000387, 41.4004274 ]}, eventType: festival._id, musicStyle: trance._id, image: 'flyer1', description: 'ROC BORONAT 70', ticketTypes: [ticketTypeData1, ticketTypeData3], purchaseType: 4, capacity: 200}
-const eventData2 = {name: 'Razzmatazz II', date: eventDay2, promoter: promoter2._id, location: { type: 'Point', coordinates: [2.193671399999971, 41.3946117 ]}, eventType: concert._id, musicStyle: rock._id, image: 'flyer2', description: 'LLULL 70', purchaseType: 3, capacity: 50 }
-const eventData3 = {name: 'Rave en Palamos', date: eventDay3, promoter: promoter3._id, location: { type: 'Point', coordinates: [2.198788199999967, 41.3980822 ]}, eventType: culturalEvent._id, musicStyle: techno._id, image: 'flyer3', description: 'CIUDAD DE GRANADA 40', ticketTypes:[ticketTypeData2], purchaseType: 1}
+const eventData1 = {name: 'Day of the Droids', date: eventDay1, promoter: promoter1._id, location: { type: "Point", coordinates: [2.1980124000000387, 41.4004274 ]}, eventType: festival._id, musicStyle: trance._id, image: 'flyer1', description: 'ROC BORONAT 70', ticketTypes: [ticketTypeData1, ticketTypeData3], purchaseType: 4, capacity: 200}
+const eventData2 = {name: 'Razzmatazz II', date: eventDay2, promoter: promoter2._id, location: { type: "Point", coordinates: [2.193671399999971, 41.3946117 ]}, eventType: concert._id, musicStyle: rock._id, image: 'flyer2', description: 'LLULL 70', purchaseType: 3, capacity: 50 }
+const eventData3 = {name: 'Rave en Palamos', date: eventDay3, promoter: promoter3._id, location: { type: "Point", coordinates: [2.198788199999967, 41.3980822 ]}, eventType: culturalEvent._id, musicStyle: techno._id, image: 'flyer3', description: 'CIUDAD DE GRANADA 40', ticketTypes:[ticketTypeData2], purchaseType: 1}
 
 const eventsData = [eventData1, eventData2, eventData3];
 const events = scriptRunner.createData(eventsData, Event);
 const [event1, event2, event3] = events
+
+
+scriptRunner.saveData(events);
+
+/*
 const event1Id = event1._id
 const event2Id = event2._id
 const event3Id = event3._id
 const eventIds =[event1Id, event2Id, event3Id]
 const event1TicketTypes = event1.ticketTypes
 const event2TicketTypes = event2.ticketTypes
-const event3TicketTypes = event3.ticketTypes
+const event3TicketTypes = event3.ticketTypes*/
 
-scriptRunner.saveData(events);
+
 
 
 
 //module.exports.eventIds = eventIds;
-
-
-
 //module.exports = {event1Id, event2Id, event3Id, event1TicketTypes, event2TicketTypes, event3TicketTypes, eventsData, ticketTypeData, promoters}

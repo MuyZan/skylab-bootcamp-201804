@@ -4,8 +4,8 @@ import logic from "../../logic";
 import "./main.css"
 import "../App.ss"
 
-import Login from "../Login/Login"
-import Home from "../Home/Home"
+import Login from "../login/login"
+import Home from "../home/home"
 
 class Main extends Component {
    

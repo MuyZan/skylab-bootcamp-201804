@@ -4,7 +4,7 @@ const { Schema, Schema: { ObjectId }, SchemaTypes: { Decimal128 } } = require('m
 const Ticket = require('./Ticket')
 const TicketType = require('./TicketType')
 
-const Event = new Schema({
+module.exports = new Schema({
 
     name: {
         type: 'String',
@@ -25,7 +25,6 @@ const Event = new Schema({
     location: {
         type: { type: String },
         coordinates: [Decimal128],
-        required: true
     },
 
     eventType: [{
@@ -67,6 +66,4 @@ const Event = new Schema({
 
 })
 
-Event.index({ location: '2dsphere'})
 
-module.exports = Event;

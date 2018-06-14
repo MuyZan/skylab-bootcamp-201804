@@ -34,12 +34,14 @@ const scriptRunner = {
     },
 
     saveData(dataObjects){
-        mongoose.connect(url)
+        return mongoose.connect(url)
         .then((connection) => {
-            console.log(`connected to ${url} creating ${dataObjects}`)
+           console.log(`connected to ${url} creating ${dataObjects}`)
             const promises = []
             for (let i = 0; i < dataObjects.length; i++) {
                 promises[i] = dataObjects[i].save()
+                .then((res)=>console.log(res))
+                .catch((err)=>console.log(err))
             }
             return Promise.all(promises)
             .then(() => mongoose.connection.close())        
@@ -60,15 +62,18 @@ const scriptRunner = {
     */
 
     createAndSaveData(data, modelName) {
-         mongoose.connect(url)
+         return mongoose.connect(url)
             .then((connection) => {
                 console.log(`connected to ${url}`)
                 const promises = []
                 for (let i = 0; i < data.length; i++) {
                     promises[i] = new modelName(data[i]).save()
+                    .then((res)=>console.log(res))
+                    .catch((err)=>console.log(err))
+                   
                 }
                 return Promise.all(promises)
-                    .then(res => {
+                    .then((res) => {
                        const ids = []
                         res.forEach(element => {
                             ids.push(element._id)

@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
-import ListResults from '../list-results/ListResults'
+import ListResults from '../list-results/listResults'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import PartyMap from '../map/Map'
+import PartyMap from '../map/map'
 import leaflet from 'leaflet'
 import './../map/map.css'
-import UserGeoLocation from './../geolocation/Geolocation'
+import UserGeoLocation from './../geolocation/geolocation'
 import pin from './../../static/images/icons/placeholder.svg'
 
 
