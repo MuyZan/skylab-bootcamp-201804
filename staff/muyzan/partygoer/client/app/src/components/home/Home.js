@@ -24,17 +24,14 @@ class Home extends Component {
     }
 
 
-   componentDidMount(){
-
+   componentWillMount(){
        const sessionData = sessionStorage.getItem("token")
-       sessionData ? this.setState({ logged: true }) : this.setState({ logged: false })
-
-
-       this._ejectRoute("/")
-}
+       sessionData ? this.setState({ logged: true }) : this.setState({ logged: false }, ()=> this._ejectRoute("/"))     
+    }
    
 
      _ejectRoute = route => {
+         
         if(this.state.logged === false){
             this.props.history.push(route);
           }
@@ -42,9 +39,8 @@ class Home extends Component {
    
 
      _logout = () => {
-        this.state.logged = false;
         sessionStorage.clear();
-        this._ejectRoute("/");
+        this.setState({logged: false}, ()=>this._ejectRoute("/"))   
      }
 
 

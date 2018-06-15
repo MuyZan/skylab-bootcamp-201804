@@ -20,6 +20,7 @@ const logic = {
             this.userId = id
             return id
         })
+        .catch((error)=>error)
     },
 
     retrieveUser(userId){

@@ -14,7 +14,8 @@ class Register extends Component {
       email: "",
       password: "",
       name: "",
-      surname: ""
+      surname: "",
+      errorMessage: ""
 
     }
   }
@@ -57,7 +58,7 @@ class Register extends Component {
       .then(() => {
         this.props.history.push("/login")
       })
-
+  
   }
 
 

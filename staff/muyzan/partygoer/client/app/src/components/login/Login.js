@@ -41,6 +41,11 @@ class Login extends Component{
         .then(() => {this.state.password = ''
         this.props.history.push("/home")
         })
+        .catch(data =>{
+            this.setState({errorMessage: data.error})
+            alert(data.error)
+           // console.log(this.state.errorMessage)
+          })
         
       }
 
