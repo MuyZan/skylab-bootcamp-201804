@@ -1,6 +1,5 @@
 'use strict'
-
-const { Schema, Schema: { ObjectId } } = require('mongoose')
+const { Schema, Schema: { ObjectId }, SchemaTypes: { Decimal128 }} = require('mongoose')
 
 module.exports = new Schema({
     username: {

@@ -1,3 +1,5 @@
+'use strict'
+
 import React, { Component } from 'react'
 import logic from '../../logic'
 import './login.css'

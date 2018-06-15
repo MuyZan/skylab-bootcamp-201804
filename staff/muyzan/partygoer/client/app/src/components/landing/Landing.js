@@ -19,6 +19,9 @@ class Landing extends Component{
         }
     }
 
+  
+  
+
     _handlerSignIn = () => {
       this.props.history.push("/home")
     }
@@ -29,7 +32,7 @@ class Landing extends Component{
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Hello, React!</h1>
+          <h1 className="App-title">Heeeello, React!</h1>
         </header>
   
 
@@ -39,9 +42,10 @@ class Landing extends Component{
 
       <h2>Here a info carrusel</h2>
       </div>
-         <h3>Sign up</h3>
+      <Link to={`/register`} activeClassName=""><h3>Sign up</h3></Link>
+         
          <h4>Do you already have an account?</h4> 
-         <Link to={`/login`} activeClassName="active">Sign In</Link>
+         <Link to={`/login`} activeClassName="">Sign In</Link>
 
       </div>
 

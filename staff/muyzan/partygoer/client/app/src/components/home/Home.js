@@ -13,6 +13,7 @@ class Home extends Component {
         super()
 
         this.state = {
+            logged: '',      
             search: false,
             message: '',
             latitude: '',
@@ -21,6 +22,31 @@ class Home extends Component {
             error: '',
         }
     }
+
+
+   componentDidMount(){
+
+       const sessionData = sessionStorage.getItem("token")
+       sessionData ? this.setState({ logged: true }) : this.setState({ logged: false })
+
+
+       this._ejectRoute("/")
+}
+   
+
+     _ejectRoute = route => {
+        if(this.state.logged === false){
+            this.props.history.push(route);
+          }
+     }
+   
+
+     _logout = () => {
+        this.state.logged = false;
+        sessionStorage.clear();
+        this._ejectRoute("/");
+     }
+
 
 
    
@@ -73,8 +99,7 @@ class Home extends Component {
 
         return (
             <div>
-                          <img src={pin} alt="pin" />
-
+                <button onClick={this._logout}>LOGOUT</button>
                 <button onClick={this._handlerSearch}>LIST EVENTS</button>
 
                 <button onClick={this._geoFindMe}>Show my location</button>
