@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../logo.svg'
 import './landing.css'
 import logic from "../../logic"
+import Login from "./../login/login"
 
 class Landing extends Component{
 
@@ -17,31 +19,9 @@ class Landing extends Component{
         }
     }
 
-
-      _handlerWriteUsername = e =>{
-        this.setState({username: e.target.value})
-      }
-    
-      _handlerWritePassword = e =>{
-        this.setState({password: e.target.value})
-      }
-    
-      
-      _handlerLogin = e => {
-        e.preventDefault();
-    
-          let username = this.state.username;
-          let password = this.state.password;
-      
-    
-        logic.login(username, password).then(id => this.state.userId = id)
-        .then(() => {this.state.password = ''
-        this.props.history.push("/home")
-        })
-        
-      }
-        
-    
+    _handlerSignIn = () => {
+      this.props.history.push("/home")
+    }
 
 
   render() {
@@ -51,17 +31,21 @@ class Landing extends Component{
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Hello, React!</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+  
 
-        {/* LOGIN FORM*/ }
-        <h1>Login</h1> 
-        <form onSubmit={this._handlerLogin}>
-        <input type="text" name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername}/>
-        <input type="password" name="password" placeholder="Insert your password " onChange={this._handlerWritePassword}/>
-        <button type="submit">Login</button>
-        </form>
+      <div className="landing-container">
+      {/* CARRUSEL*/ }
+      <div className="carrusel">
+
+      <h2>Here a info carrusel</h2>
+      </div>
+         <h3>Sign up</h3>
+         <h4>Do you already have an account?</h4> 
+         <Link to={`/login`} activeClassName="active">Sign In</Link>
+
+      </div>
+
+
 
 
       </div>

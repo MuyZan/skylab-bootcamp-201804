@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom"
 import logo from './logo.svg';
 import './App.css';
 
-import { Home, Landing } from './components'
+import { Home, Landing, Login } from './components'
 
 import "./components/landing/landing.css"
 import "./components/home/home.css"
@@ -11,7 +11,7 @@ import "./components/home/home.css"
 
 class App extends Component {
 
-  /*
+  
   constructor(){
     super();
 
@@ -20,7 +20,7 @@ class App extends Component {
     };
   }
 
-
+/*
   componentDidMount(){
     const sessionData = sessionStorage.getItem("key")
     sessionData ? this.setState({ logged: true }) : this.setState({ logged: false })
@@ -39,6 +39,7 @@ class App extends Component {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/home" component={Home}/>
+        <Route path="/login" component={Login}/>
       </Switch>
     )
 
