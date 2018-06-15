@@ -23,9 +23,6 @@ scriptRunner.dropCollection(Event)
 scriptRunner.dropCollection(Promoter)*/
 
 
-
-
-
 /*scriptRunner.saveData(eventTypes)
 scriptRunner.saveData(musicStyles)*/
 
@@ -76,10 +73,6 @@ const eventIds =[event1Id, event2Id, event3Id]
 const event1TicketTypes = event1.ticketTypes
 const event2TicketTypes = event2.ticketTypes
 const event3TicketTypes = event3.ticketTypes*/
-
-
-
-
 
 //module.exports.eventIds = eventIds;
 //module.exports = {event1Id, event2Id, event3Id, event1TicketTypes, event2TicketTypes, event3TicketTypes, eventsData, ticketTypeData, promoters}

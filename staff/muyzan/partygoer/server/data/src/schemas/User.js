@@ -38,8 +38,8 @@ module.exports = new Schema({
     }, 
 
     geolocation: {
-        type: [Number],
-        index: '2d',
+        type: { type: String },
+        coordinates: [Decimal128],
     },
 
     interested: [{

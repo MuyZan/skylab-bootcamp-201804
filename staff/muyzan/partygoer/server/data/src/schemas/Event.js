@@ -1,8 +1,8 @@
 'use strict'
 
 const { Schema, Schema: { ObjectId }, SchemaTypes: { Decimal128 } } = require('mongoose')
-const Ticket = require('./Ticket')
-const TicketType = require('./TicketType')
+const Ticket = require('./ticket')
+const TicketType = require('./ticketType')
 
 module.exports = new Schema({
 

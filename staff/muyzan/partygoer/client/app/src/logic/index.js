@@ -46,7 +46,12 @@ const logic = {
     listEvents(){
         return partygoerApi.listEvents()
         .then(events => events)
-    }
+    },
+
+
+
+    shareEvent() { },
+
 
 }
 

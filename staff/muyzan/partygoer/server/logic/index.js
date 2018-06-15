@@ -213,26 +213,52 @@ const logic = {
             .then(() => true)
     },
 
-/*---------------------*/
 
-listEvents() { 
-    return Promise.resolve()
-    .then(()=>{
-        return Event.find()
-        .then(events => {
-            return events
+
+    /*---------------------------------------*/
+
+
+    /****************
+     * LIST EVENTS
+     * 
+     * 
+     * 
+     * @return {Promise<Events>}
+     */
+
+
+
+    listEvents() {
+        return Promise.resolve()
+            .then(() => {
+                return Event.find()
+                    .then(events => {
+                        return events
+                    })
+            })
+    },
+
+    /****************
+     * SEARCH NEARBY EVENTS
+     * 
+     * 
+     * 
+     * @return {Promise<Events>}
+     */
+
+     searchNearbyEvents(geolocation){
+        return Promise.resolve()
+        .then(()=>{
+            const [lat, lng] = geolocation;
+            return Event.find({location: {$near: {$maxDistance:1000, $geometry: {type: 'Point', coordinates: [lng, lat]}}}})
         })
-    })
-},
+        .then(nearbyEvents => {
+            return nearbyEvents;
+        })
+     },
 
 
-addEvent(userId, eventId) {
-    return Promise.resolve()
-    .then(()=>{
-        return User.findByIdAndUpdate(userId, { $push: { interested:  eventId  } }, {new: true} )
-        .then(() => true)
-    })
-},
+
 
 
 
@@ -284,53 +310,16 @@ addEvent(userId, eventId) {
 
     deleteEvent() { },
 
-    /*EVENTS*/
 
-    searchEvents(geolocalitation) {
 
-        //PRIMERO FILTRAR LAS CERCANAS
-        //LUEGO LAS POR LAS QUE ESTÉN OCURRIENDO EN EL TIEMPO
-
+    filterEventsByType(eventTypeId) {
         return Promise.resolve()
-            .then(() => {
-
-            })
-
-
-
-    }, /*geolocalitation */
-
-
-
-    filterEventsByType(typeEvent, date) {
-
-        return Event.find(typeId)
-        /* let type = { type: typeEvent}
-        type.date = date
-        
-        return Event.find(type).then(events => events)
-        
-        o
-        
-        filterEventsByType({eventType, date = today, userlocation}){
-            return Promise.resolve().then(() =>{
-                return Event.find({eventType})
-                .populate('date')
-                .then(res => 
-                    array X
-                    si la fecha está contenida entre X y X, 
-                    puhear a un array
-                    
-                })
-                retornar array
-            })
-        }
-        
-        
-        
-        
-        
-        */
+        .then(()=>{
+            return Event.find({eventType: {type: eventTypeId}})
+        })
+        .then(events =>{
+            return events
+        })
     },
 
     filterEventsByStyle(styleId) {
@@ -353,15 +342,38 @@ addEvent(userId, eventId) {
      * 
     */
 
+   addEvent(userId, eventId) {
+    return Promise.resolve()
+        .then(() => {
+            return User.findByIdAndUpdate(userId, { $push: { interested: eventId } }, { new: true })
+                .then(() => true)
+        })
+},
 
-    deleteAddedEvent() { },
+    /** 
+     * DELETE EVENT ON 'INTERESTED' USER LIST
+     * 
+     * @param {String} userId
+     * @param {String} eventId
+     * 
+     * @return {Promise<boolean>}
+     * 
+    */
 
-    retrieveEvent() { },
+    deleteAddedEvent(userId, eventId) { },
 
-    shareEvent() { },
+    retrieveEvent(eventId) { },
+
 
     listAddedEvents(userId) {
-        return
+        return Promise.resolve()
+        .then(() => {
+            return User.findById(userId).select({_id:0, interested:1})
+        })
+        .then(events => {
+            if (!events) throw Error(`no events on user found with id ${userId}`)
+            return events
+        })
     },
 
     listPurchasedEvents() { },

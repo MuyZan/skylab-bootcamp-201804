@@ -1,11 +1,11 @@
 'use strict'
 
-const User = require('./User')
-const Promoter = require('./Promoter')
-const Event = require('./Event')
-const Order = require('./Order')
-const EventType = require('./EventType')
-const MusicStyle = require('./MusicStyle')
+const User = require('./user')
+const Promoter = require('./promoter')
+const Event = require('./event')
+const Order = require('./order')
+const EventType = require('./eventType')
+const MusicStyle = require('./musicStyle')
 
 module.exports = {
     User,

@@ -33,7 +33,7 @@ export default class PartyMap extends Component {
     state = {
         lat: 0,
         lng: 0,
-        zoom: 15,
+        zoom: 16,
         data: [[41.3980822, 2.198788199999967], [41.4004274, 2.1980124000000387], [41.3946117, 2.193671399999971]]
 
     }
@@ -73,6 +73,11 @@ export default class PartyMap extends Component {
 
     }
 
+
+
+
+
+
     componentWillUnmount() {
 
     }
@@ -81,24 +86,25 @@ export default class PartyMap extends Component {
 
 
     render() {
-
         const array = this.state.data
 
 
         const position = [this.state.lat, this.state.lng]
         return (
 
+
             <Map id="map-container" center={position} zoom={this.state.zoom}>
-                <TileLayer attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
-                {array.map((coor) => 
 
-                    <Marker position={coor} icon={djPlaceholder}>
+                {array.map((coor) =>
+
+                    <Marker key={new Date()} position={coor} icon={djPlaceholder}>
                         <Popup >
                             <span >
                                 USER POSITION
-                    <button>jaja</button>
+<button>jaja</button>
                             </span>
                         </Popup>
                     </Marker>
@@ -107,12 +113,20 @@ export default class PartyMap extends Component {
                 }
 
 
+                <Marker position={[41.411614, 2.157429699999966]} icon={rock}>
+                    <Popup >
+                        <span >
+                            DOS POSITION
+<button>jaja</button>
+                        </span>
+                    </Popup>
+                </Marker>
 
                 <Marker position={position} icon={userPlaceholder}>
                     <Popup >
                         <span >
                             USER POSITION
-                    <button>jaja</button>
+<button>jaja</button>
                         </span>
                     </Popup>
                 </Marker>
@@ -133,7 +147,7 @@ export default class PartyMap extends Component {
 
 //            <div id="map-container"></div>
 
-
+//url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 //'http://{s}.tile.osm.org/{z}/{x}/{y}.png'
 
 // http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png
@@ -142,7 +156,18 @@ export default class PartyMap extends Component {
 
 
 const stamenTonerAttr =
-      'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+   'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+
+   https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+*/
+
+
+
+/*
+
+                <TileLayer attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+
 
 */
 
@@ -150,23 +175,19 @@ const stamenTonerAttr =
 
 /*
 
-<Marker position={[41.5060639, 2.38766899999996]} icon={djPlaceholder}>
-                    <Popup >
-                        <span >
-                            DOS POSITION
-                    <button>jaja</button>
-                        </span>
-                    </Popup>
-                </Marker>
 
 
-                <Marker position={[41.50857999999999, 2.3850199999999404]} icon={rock}>
-                    <Popup >
-                        <span >
-                            DOS POSITION
-                    <button>jaja</button>
-                        </span>
-                    </Popup>
-                </Marker>
+
+
+*/
+
+
+/*
+
+ 
+
+
+
+
 
 */

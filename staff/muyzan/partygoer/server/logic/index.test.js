@@ -28,7 +28,7 @@ describe('logic --- [Partygoer]', () =>{
         dummyEventId = '5b199763418e164519db6d13'
         dummyEventTypeId = '5b195563418e164519db6d13'
         dummyMusicStyleId = '77195563418e164519db6d13'
-        eventData = {name: 'Day of the Droids', date: eventDay, promoter: dummyPromoterId, geolocation: [5, 10], eventType: dummyEventTypeId, musicStyle: dummyMusicStyleId, image: 'flyer1', description: 'Badalona event', ticketTypes: [ticketTypeData], purchaseType: 4, capacity: 200}
+        eventData = {name: 'Day of the Droids', date: eventDay, promoter: dummyPromoterId, location: { type: "Point", coordinates: [2.1980124000000387, 41.4004274 ]}, eventType: dummyEventTypeId, musicStyle: dummyMusicStyleId, image: 'flyer1', description: 'Badalona event', ticketTypes: [ticketTypeData], purchaseType: 4, capacity: 200}
 
         return Promise.all([User.remove(). Event.deleteMany()])
 
@@ -42,7 +42,7 @@ describe('logic --- [Partygoer]', () =>{
             })
         })
 
-        it('should fail on already register user', ()=>{
+        it('should fail on already existing username', ()=>{
             User.create(userData)
             .then(() =>{
                 const { username, email, password, name, surname} = userData
@@ -53,6 +53,30 @@ describe('logic --- [Partygoer]', () =>{
                 expect({message}).to.equal(`user with ${userData.username} already exists`)
             })
         })    
+
+        it('should fail on already existing email', ()=>{
+            User.create(userData)
+            .then(() =>{
+                const { username, email, password, name, surname} = userData
+
+                return logic.registerUser(username, email, password, name, surname)
+            })
+            .catch(({ message }) => {
+                expect({message}).to.equal(`user with ${userData.email} already exists`)
+            })
+        })  
+
+        it('should fail on no username', ()=>{
+            logic.registerUser()
+            .catch(({message}) => expect(message).to.equal('username is not a string'))
+        })
+
+        it('should fail on empty username', ()=>{
+            logic.registerUser('')
+            .catch(({message}) => expect(message).to.equal('username is not a string'))
+        })
+
+
     })
 
     describe('should add a event to user selected ones', () => {
