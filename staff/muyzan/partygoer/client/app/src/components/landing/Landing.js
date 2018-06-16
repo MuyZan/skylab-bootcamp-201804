@@ -5,49 +5,42 @@ import './landing.css'
 import logic from "../../logic"
 import Login from "./../login/login"
 
-class Landing extends Component{
+class Landing extends Component {
 
-    constructor(){
-        super()
+  constructor() {
+    super()
 
-        this.state = {
-            username: "",
-            password: "",
-            userId: "",
-      
-       
-        }
+    this.state = {
+      username: "",
+      password: "",
+      userId: "",
+
+
     }
+  }
 
-  
-  
 
-    _handlerSignIn = () => {
-      this.props.history.push("/home")
-    }
+
+
+  _handlerSignIn = () => {
+    this.props.history.push("/home")
+  }
 
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Heeeello, React!</h1>
-        </header>
-  
+      <div> 
 
-      <div className="landing-container">
-      {/* CARRUSEL*/ }
-      <div className="carrusel">
+      <section id="landing-carrousel">HERE A CARROUSEL</section>
 
-      <h2>Here a info carrusel</h2>
-      </div>
-      <Link to={`/register`} activeClassName=""><h3>Sign up</h3></Link>
-         
-         <h4>Do you already have an account?</h4> 
-         <Link to={`/login`} activeClassName="">Sign In</Link>
+<section id="landing-buttons">
+  <Link to={`/register`} style={{ textDecoration: 'none' }}> <button> Sign up</button></Link>
 
-      </div>
+  <h6>Do you already have an account?</h6>
+  <Link to={`/login`} style={{ textDecoration: 'none' }}><button>Sign In</button></Link>
+</section>
+
+      
 
 
 
@@ -58,3 +51,13 @@ class Landing extends Component{
 }
 
 export default Landing
+
+
+/*
+
+
+
+
+
+
+*/

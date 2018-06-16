@@ -5,17 +5,31 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import partygoerApi from 'api'
+import logic from './logic'
 
 partygoerApi.token = function (token) {
-    if(token) {
+
+    if (token) {
         sessionStorage.setItem('token', token)
-    return
-}
-return sessionStorage.getItem('token')
+        return
+    }
+    return sessionStorage.getItem('token')
 }
 
+logic.setUserId = function (userId) {
+    if (userId === null)
+      sessionStorage.removeItem('userId')
+    else if (userId !== undefined) {
+      sessionStorage.setItem('userId', userId)
+  
+      return
+    }
+  
+    return sessionStorage.getItem('userId')
+  }
+
 ReactDOM.render(
-<HashRouter>
-<App />
-</HashRouter>, document.getElementById('root'));
+    <HashRouter>
+        <App />
+    </HashRouter>, document.getElementById('root'));
 registerServiceWorker();

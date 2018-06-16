@@ -5,9 +5,38 @@ const partygoerApi = require('api')
 partygoerApi.url = 'http://localhost:3000/api'
 
 const logic = {
-    userId: 'NO-ID',
-    eventId: '',
+    _userId: null,
+    _username: null,
 
+
+    setUserId(userId){
+        if(userId){
+            this._userId = userId
+            return
+        }
+        return this._userId
+    },
+
+    setUsername(username){
+        if(username){
+            this._username = username;
+
+            return
+        }
+        return this._username
+    },
+
+    get loggedIn(){
+        return !!this.setUserId()
+    },
+
+
+
+    logout(){
+        this.setUserId(null)
+        this.setUsername(null)
+        sessionStorage.clear()
+    },
 
     registerUser(username, email, password, name, surname){
         return partygoerApi.registerUser(username, email, password, name, surname)
@@ -16,15 +45,15 @@ const logic = {
 
     login(username, password){
         return partygoerApi.authenticateUser(username, password)
-        .then(id => {
-            this.userId = id
-            return id
+        .then(id => {      
+            this.setUserId(id)
+            this.setUsername(username)
+            return true
         })
-        .catch((error)=>error)
     },
 
-    retrieveUser(userId){
-        return partygoerApi.retrieveUser(userId)
+    retrieveUser(){
+        return partygoerApi.retrieveUser(this.setUserId())
         .then(userData => userData )
     },
 
@@ -52,6 +81,8 @@ const logic = {
 
 
     shareEvent() { },
+
+
 
 
 }

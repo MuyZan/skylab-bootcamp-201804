@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom"
+import { Route, Switch, withRouter } from "react-router-dom"
 import logo from './logo.svg';
 import './App.css';
+import logic from './logic'
 
 import { Home, Landing, Login, Register } from './components'
 
@@ -10,21 +11,58 @@ import "./components/home/home.css"
 
 
 class App extends Component {
+  constructor(){
+    super()
+
+    this.state = {
+      authenticated: logic.loggedIn
+    }
+  }
+   
+  
+  onLogin = () => {
+    this.setState({ authenticated: true })
+
+    this.props.history.push('/home')  }
+
+  onLogout = () => {
+    this.setState({ authenticated: false })
+  }
+
+  noAuth = () => {
+    this.props.history.push('/')
+
+  }
 
 
 
   render() {
+
+
     return (
       <Switch>
+
         <Route exact path="/" component={Landing} />
-        <Route path="/login" component={Login}/>
-        <Route path="/register" component={Register}/>
-        <Route path="/home" component={Home}/>
-        
+        <Route exact path="/login" render={(()=> <Login onLogin={this.onLogin}/> )}/>
+        <Route exact path="/register" component={Register}/>
+        <Route exact path="/home" render={(()=> <Home onLogout={this.onLogout} authenticated={this.state.authenticated} isNotAuth={this.noAuth}/> )}/>
+
       </Switch>
     )
 
   }
 }
 
-export default App;
+export default withRouter(App);
+
+
+
+/*
+        <Route exact path="/login" component={Login}/>
+        <Route exact path="/login" render={(()=> <Home/> )}/>
+        <Route path="/home" component={Home}/>  
+
+this.state.authenticated ? <Home/> : "MANU AYÚDAME A CAMBIAR DE RUTA"  
+
+
+*/

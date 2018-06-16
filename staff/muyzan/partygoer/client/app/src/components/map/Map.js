@@ -98,19 +98,7 @@ export default class PartyMap extends Component {
                     url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
 
-                {array.map((coor) =>
-
-                    <Marker key={new Date()} position={coor} icon={djPlaceholder}>
-                        <Popup >
-                            <span >
-                                USER POSITION
-<button>jaja</button>
-                            </span>
-                        </Popup>
-                    </Marker>
-
-                )
-                }
+              
 
 
                 <Marker position={[41.411614, 2.157429699999966]} icon={rock}>
@@ -175,6 +163,21 @@ const stamenTonerAttr =
 
 /*
 
+
+
+  {array.map((coor) =>
+
+                    <Marker key={new Date()} position={coor} icon={djPlaceholder}>
+                        <Popup >
+                            <span >
+                                USER POSITION
+<button>jaja</button>
+                            </span>
+                        </Popup>
+                    </Marker>
+
+                )
+                }
 
 
 

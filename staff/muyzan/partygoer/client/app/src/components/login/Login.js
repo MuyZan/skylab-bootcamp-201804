@@ -3,6 +3,9 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
 import './login.css'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import {Animated} from "react-animated-css";
 
 class Login extends Component{
 
@@ -12,9 +15,8 @@ class Login extends Component{
         this.state = {
             username: "",
             password: "",
-            userId: "",
-      
-       
+            errorMessage:"", 
+            visibleComponent:true 
         }
     }
 
@@ -33,34 +35,43 @@ class Login extends Component{
       _handlerLogin = e => {
         e.preventDefault();
     
-          let username = this.state.username;
-          let password = this.state.password;
-      
-    
-        logic.login(username, password).then(id => this.state.userId = id)
-        .then(() => {this.state.password = ''
-        this.props.history.push("/home")
+        const { username, password} = this.state
+
+        this.setState({username:"", password:""})
+ 
+        logic.login(username, password)
+        .then(res => {
+            this.setState({visibleComponent:false})
+           
+           this.props.onLogin()
+
         })
         .catch(data =>{
-            this.setState({errorMessage: data.error})
-            alert(data.error)
-           // console.log(this.state.errorMessage)
+            this.setState({errorMessage: data.message})
+            toast.error(`Ups! Something happens: ${this.state.errorMessage}`)
           })
         
       }
-
 
     render(){
         return(
             <div>
 
-        <h1>Sign in</h1> 
-        <form onSubmit={this._handlerLogin}>
-        <input type="text" name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername}/>
-        <input type="password" name="password" placeholder="Insert your password " onChange={this._handlerWritePassword}/>
-        <button type="submit">Login</button>
-        </form>
+<Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={this.state.visibleComponent}>
+   
 
+<h1>Sign in</h1> 
+        <form onSubmit={this._handlerLogin}>
+        <input type="text" value={this.state.username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername}/>
+        <input type="password" value={this.state.password } name="password" placeholder="Insert your password " onChange={this._handlerWritePassword}/>
+        <button type="submit">Login</button>
+        </form> 
+      
+
+</Animated>
+
+
+            <ToastContainer autoClose={3000}/>
 
 
             </div>

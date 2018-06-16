@@ -4,7 +4,8 @@ import ListResults from '../list-results/listResults'
 import PartyMap from '../map/map'
 import './../map/map.css'
 import UserGeoLocation from './../geolocation/geolocation'
-
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 class Home extends Component {
@@ -24,28 +25,21 @@ class Home extends Component {
     }
 
 
-   componentWillMount(){
-       const sessionData = sessionStorage.getItem("token")
-       sessionData ? this.setState({ logged: true }) : this.setState({ logged: false }, ()=> this._ejectRoute("/"))     
+   componentDidMount(){
+
+       const auth = this.props.authenticated
+       console.log(auth)
+       auth ? toast.success(`Welcome ${logic._username} :D!`) : this.props.isNotAuth();
+
     }
    
 
-     _ejectRoute = route => {
-         
-        if(this.state.logged === false){
-            this.props.history.push(route);
-          }
-     }
-   
 
-     _logout = () => {
-        sessionStorage.clear();
-        this.setState({logged: false}, ()=>this._ejectRoute("/"))   
-     }
-
-
-
-   
+   _logout =() => {
+       this.props.onLogout()
+       logic.logout()
+       this.props.isNotAuth()
+   }
 
     _handlerSearch = () => {
 
@@ -95,6 +89,8 @@ class Home extends Component {
 
         return (
             <div>
+                            <ToastContainer autoClose={3000}/>
+
                 <button onClick={this._logout}>LOGOUT</button>
                 <button onClick={this._handlerSearch}>LIST EVENTS</button>
 

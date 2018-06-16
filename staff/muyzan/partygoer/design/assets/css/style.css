@@ -35,7 +35,7 @@ html{ background-color:white;}
   */
 
 
-body {
+html, body {
     background-color:white;
     background: var(--main-bg-gradient);
     color: #fffffc;
