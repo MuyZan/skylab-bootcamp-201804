@@ -28,6 +28,19 @@ logic.setUserId = function (userId) {
     return sessionStorage.getItem('userId')
   }
 
+
+  logic.setUsername = function (username) {
+    if (username === null)
+      sessionStorage.removeItem('username')
+    else if (username !== undefined) {
+      sessionStorage.setItem('username', username)
+  
+      return
+    }
+  
+    return sessionStorage.getItem('username')
+  } 
+
 ReactDOM.render(
     <HashRouter>
         <App />

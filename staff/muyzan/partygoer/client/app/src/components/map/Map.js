@@ -1,31 +1,21 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import './map.css'
-import pin from './../../static/images/icons/placeholder.svg'
 import L from 'leaflet'
+import logic from '../../logic'
 
 
 const userPlaceholder = new L.icon({
-    iconUrl: require('./../../static/images/icons/placeholder.svg'),
-    iconSize: [34, 85],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
-})
-
-const djPlaceholder = new L.icon({
-    iconUrl: require('./../../static/images/icons/dj.svg'),
+    iconUrl: require('./../../static/images/icons/animatedPlaceholder.svg'),
     iconSize: [34, 85],
     iconAnchor: [22, 94],
     popupAnchor: [-3, -76]
 })
 
 
-const rock = new L.icon({
-    iconUrl: require('./../../static/images/icons/rock.svg'),
-    iconSize: [48, 85],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76]
-})
+
+
+
 
 
 export default class PartyMap extends Component {
@@ -34,7 +24,9 @@ export default class PartyMap extends Component {
         lat: 0,
         lng: 0,
         zoom: 16,
-        data: [[41.3980822, 2.198788199999967], [41.4004274, 2.1980124000000387], [41.3946117, 2.193671399999971]]
+        data: [[41.3980822, 2.198788199999967], [41.4004274, 2.1980124000000387], [41.3946117, 2.193671399999971]],
+        events: [],
+        eventTypeId: ["5b226fb3caba1427c946e118", "5b226fb3caba1427c946e116", "5b226fb3caba1427c946e117"]
 
     }
 
@@ -71,6 +63,16 @@ export default class PartyMap extends Component {
 
         navigator.geolocation.getCurrentPosition(success, error);
 
+
+
+        logic.listEvents()
+            .then(res => {
+                const { data: { data } } = res
+                console.log(data)
+                this.setState({ events: data })
+                console.log(this.state.events[0].location.coordinates["0"].$numberDecimal)
+
+            })
     }
 
 
@@ -82,33 +84,54 @@ export default class PartyMap extends Component {
 
     }
 
+    setIcon(eventId) {
+        switch (eventId) {
+            case this.state.eventTypeId[0]:
+                const djPlaceholder = new L.icon({
+                    iconUrl: require('./../../static/images/icons/dj.svg'),
+                    iconSize: [34, 85],
+                    iconAnchor: [22, 94],
+                    popupAnchor: [-3, -76]
+                })
 
+                return djPlaceholder
+                break;
+            case this.state.eventTypeId[1]:
+                const rock = new L.icon({
+                    iconUrl: require('./../../static/images/icons/rock.svg'),
+                    iconSize: [48, 85],
+                    iconAnchor: [22, 94],
+                    popupAnchor: [-3, -76]
+                })
+                return rock
+                break;
+            case this.state.eventTypeId[2]:
+                const raca = new L.icon({
+                    iconUrl: require('./../../static/images/icons/rock.svg'),
+                    iconSize: [48, 85],
+                    iconAnchor: [22, 94],
+                    popupAnchor: [-3, -76]
+                })
+                return raca
+                break;
+
+        }
+    }
 
 
     render() {
-        const array = this.state.data
+        // const array = this.state.data //--->dummie
+
 
 
         const position = [this.state.lat, this.state.lng]
         return (
-
 
             <Map id="map-container" center={position} zoom={this.state.zoom}>
                 <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                     url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
 
-              
-
-
-                <Marker position={[41.411614, 2.157429699999966]} icon={rock}>
-                    <Popup >
-                        <span >
-                            DOS POSITION
-<button>jaja</button>
-                        </span>
-                    </Popup>
-                </Marker>
 
                 <Marker position={position} icon={userPlaceholder}>
                     <Popup >
@@ -118,6 +141,29 @@ export default class PartyMap extends Component {
                         </span>
                     </Popup>
                 </Marker>
+
+
+
+
+
+                {this.state.events.map((event) =>
+
+                    <Marker key={event._id} position={[event.location.coordinates["1"].$numberDecimal, event.location.coordinates["0"].$numberDecimal]} icon={this.setIcon(event.eventType["0"])}>
+                        <Popup >
+                            <span >
+                                {event.name}
+                                <button>jaja</button>
+                            </span>
+                        </Popup>
+                    </Marker>
+
+                )
+                }
+
+
+
+
+
 
 
             </Map>
@@ -157,21 +203,15 @@ const stamenTonerAttr =
                 <TileLayer attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
 
 
-*/
 
 
+        {this.state.events.map((event) =>
 
-/*
-
-
-
-  {array.map((coor) =>
-
-                    <Marker key={new Date()} position={coor} icon={djPlaceholder}>
+                    <Marker key={event._id} position={[event.location.coordinates["1"].$numberDecimal,event.location.coordinates["0"].$numberDecimal ]} icon={djPlaceholder}>
                         <Popup >
                             <span >
                                 USER POSITION
-<button>jaja</button>
+                                <button>jaja</button>
                             </span>
                         </Popup>
                     </Marker>
@@ -182,15 +222,14 @@ const stamenTonerAttr =
 
 
 
-*/
-
-
-/*
-
- 
-
-
-
-
 
 */
+
+
+
+
+
+
+
+
+
