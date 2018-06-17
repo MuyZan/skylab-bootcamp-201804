@@ -22,10 +22,10 @@ export default class PartyMap extends Component {
         lng: 0,
         zoom: 16,
         events: [],
-        eventTypeId: ["5b226fb3caba1427c946e118", "5b226fb3caba1427c946e116", "5b226fb3caba1427c946e117"]
+        eventTypes: null
     }
 
-    componentWillMount() {
+    componentDidMount() {
 
         /*Check if geolocation exists*/
 
@@ -35,38 +35,36 @@ export default class PartyMap extends Component {
             return;
         }
 
-        /*Succes callback for Geolocation API*/
-
-        const success = (position) => {
-            Promise.resolve()
-                .then(() => {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    this.setState({ lat: latitude, lng: longitude })
-                })
-                .catch((error) => toast.error(`Ups! Something happens: ${error}`))
-        };
-
-        /*Error callbackt Geolocation API*/
-
-        const error = (error) => {
-            let errorMessage = `Unable to retrieve your location. ERROR: (${error.code}) ${error.message}`;
-            toast.error(`Ups! Something happens: ${errorMessage}`)
-        }
-
         /*Geolocation API*/
 
-        navigator.geolocation.getCurrentPosition(success, error);
+        const userPosition = function () {
+            return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
+        }
 
-        /*Capture all nearby events*/
+        userPosition()
+            .then((position) => {
+                const latitude = position.coords.latitude;
+                const longitude = position.coords.longitude;
+                this.setState({ lat: latitude, lng: longitude })
+            })
+            .then(() => {
 
-        logic.listEvents()
-            .then(res => {
-                const { data: { data } } = res
-                this.setState({ events: data })
+                logic.listNearbyEvents(this.state.lng, this.state.lat)
+                    .then(events => {
+                        this.setState({ events })
+                    })
+                    .catch(err => toast.error(`Ups! Something happens: ${err}`))
+            })
+            .catch((err) => {
+                toast.error(`Ups! Something happens: ${err}`)
+            })
+
+        logic.listEventTypes()
+            .then(eventTypes => {
+                this.setState({ eventTypes })
+
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
-
     }
 
 
@@ -76,13 +74,14 @@ export default class PartyMap extends Component {
 
     /*Switch icon according to the type of party */
 
+
     setIcon(eventId) {
-        switch (eventId) {
-            case this.state.eventTypeId[0]:
+        switch (this.state.eventTypes[eventId]) {
+            case "Festival":
                 return djPlaceholder
-            case this.state.eventTypeId[1]:
+            case "Concert":
                 return rock
-            case this.state.eventTypeId[2]:
+            case "Musical atmosphere":
                 return raca
             default:
                 return generic
@@ -111,10 +110,10 @@ export default class PartyMap extends Component {
                         </Popup>
                     </Marker>
 
-
                     {this.state.events.map((event) =>
 
-                        <Marker key={event._id} position={[event.location.coordinates["1"].$numberDecimal, event.location.coordinates["0"].$numberDecimal]} icon={this.setIcon(event.eventType["0"])}>
+
+                        <Marker key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}>
                             <Popup >
                                 <span >
                                     {event.name}
@@ -122,12 +121,16 @@ export default class PartyMap extends Component {
                                 </span>
                             </Popup>
                         </Marker>
-                        
+
+
+
+
+
+
                     )
                     }
 
                 </Map>
-                <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
             </div>
         )
     }
@@ -139,6 +142,8 @@ export default class PartyMap extends Component {
 /*
 
 ----Leaflet map base style:
+                <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
+
 
 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 

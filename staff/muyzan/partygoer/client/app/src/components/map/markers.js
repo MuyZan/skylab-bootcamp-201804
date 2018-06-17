@@ -2,6 +2,7 @@
 
 import L from 'leaflet'
 
+/**TODO: REFACTOR */
 
 const markers = {
 

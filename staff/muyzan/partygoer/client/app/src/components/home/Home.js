@@ -64,7 +64,6 @@ class Home extends Component {
 
                 <button onClick={this._logout}>LOGOUT</button>
                 <button onClick={this._handlerSearch}>LIST EVENTS</button>
-                <button onClick={logic.listEventTypes}>eventtypes</button>
 
                  
 
@@ -76,7 +75,7 @@ class Home extends Component {
           
 
                 {this.state.search === true ?
-                    <ListResults _events={this.state.events} />
+                    <ListResults />
                     :
                     ""
                 }

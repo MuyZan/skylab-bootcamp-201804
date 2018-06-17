@@ -83,18 +83,17 @@ const logic = {
         return partygoerApi.listEventTypes()
         .then((eventTypes) => {
             let eventTypesObj = {}
-
-            console.log(eventTypes)
-
             eventTypes.forEach(eventType => {
                 eventTypesObj[eventType._id] = eventType.type        
             });
-            console.log(eventTypesObj)
             return eventTypesObj
         })
-
     },
 
+    listNearbyEvents(lng, lat){
+        return partygoerApi.listNearbyEvents(lng, lat)
+        .then(events => events)
+    },
 
     shareEvent() { },
 

@@ -163,19 +163,23 @@ const partygoerApi = {
             .then(() => {
 
                 return axios.get(`${this.url}/events`, { headers: { authorization: `Bearer ${this.token()}` } })
-                if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
+                .then(({ status, data })=>{
+                    if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
 
-                return data.data
+                    return data.data
+                })
+                .catch(err => {
+                    if (err.code === 'ECONNREFUSED') throw Error('could not reach server')
+    
+                    if (err.response) {
+                        const { response: { data: { error: message } } } = err
+    
+                        throw Error(message)
+                    } else throw err
+                })
+                
             })
-            .catch(err => {
-                if (err.code === 'ECONNREFUSED') throw Error('could not reach server')
-
-                if (err.response) {
-                    const { response: { data: { error: message } } } = err
-
-                    throw Error(message)
-                } else throw err
-            })
+            
     },
 
 
@@ -201,6 +205,32 @@ const partygoerApi = {
             })
         })
     },
+
+    cacaca(){},
+
+    listNearbyEvents(lng, lat) {
+        return Promise.resolve()
+            .then(() => {
+                return axios.post(`${this.url}/nearby-events`, {lng, lat}, { headers: { authorization: `Bearer ${this.token()}` } })
+                .then(({ status, data })=>{
+                    if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
+
+                    return data.data
+                })
+                .catch(err => {
+                    if (err.code === 'ECONNREFUSED') throw Error('could not reach server')
+    
+                    if (err.response) {
+                        const { response: { data: { error: message } } } = err
+    
+                        throw Error(message)
+                    } else throw err
+                })
+                
+            })
+            
+    },
+
 
     
 

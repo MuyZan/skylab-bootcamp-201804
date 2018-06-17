@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 
@@ -13,13 +15,14 @@ class ListResults extends Component {
         }
     }
 
-    componentWillMount() {      
+    componentWillMount() {  
+        logic.lis
+        
         logic.listEvents()
-        .then(res => {
-            const { data: { data } } = res
-            console.log(data)
-            this.setState({ events: data })
+        .then(events => {
+            this.setState({ events })
         })
+        .catch(err => toast.error(`Ups! Something happens: ${err}`))
     }
 
 
