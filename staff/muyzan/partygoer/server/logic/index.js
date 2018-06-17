@@ -136,26 +136,26 @@ const logic = {
             .then(() => {
 
                 if (typeof userId !== 'string') throw Error('userId is not a string')
-                if (!(userId = userId.trim()).length) throw Error('userId is not a string')
+                if (!(userId = userId.trim()).length) throw Error('userId name is empty or blank')
 
                 if (typeof name !== 'string') throw Error('name is not a string')
-                if (!(name = name.trim()).length) throw Error('user name is empty or blank')
+                if (!(name = name.trim()).length) throw Error('name is empty or blank')
 
                 if (typeof surname !== 'string') throw Error('surname is not a string')
-                if (!(surname = surname.trim()).length) throw Error('user surname is empty or blank')
+                if (!(surname = surname.trim()).length) throw Error('surname is empty or blank')
 
                 if (typeof email !== 'string') throw Error('email is not a string')
-                if (!(email = email.trim()).length) throw Error('user email is empty or blank')
+                if (!(email = email.trim()).length) throw Error('email is empty or blank')
 
                 if (typeof password !== 'string') throw Error('password is not a string')
-                if (!(password = password.trim()).length) throw Error('user password is empty or blank')
+                if (!(password = password.trim()).length) throw Error('password is empty or blank')
 
                 if (typeof newPassword !== 'string') throw Error('newPassword is not a string')
-                if (!(newPassword = newPassword.trim()).length) throw Error('user newPassword is empty or blank')
+                if (!(newPassword = newPassword.trim()).length) throw Error('newPassword is empty or blank')
 
                 if (typeof photo !== 'undefined') {
                     if (typeof photo !== 'string') throw Error('photo is not a string')
-                    if (!(photo = photo.trim()).length) throw Error('user photo is empty or blank')
+                    if (!(photo = photo.trim()).length) throw Error('photo is empty or blank')
                 }
 
                 return User.findOne({ username, password })
@@ -224,53 +224,73 @@ const logic = {
     /****************
      * LIST EVENTS
      * 
+     * List all events on database.
      * 
      * 
-     * @return {Promise<Events>}
+     * @return {Promise<events>}
      */
-
-
 
     listEvents() {
         return Promise.resolve()
             .then(() => {
                 return Event.find()
-                    .then(events => {
-                        return events
-                    })
             })
+            .then(events =>  events)
     },
 
     /****************
      * LIST NEARBY EVENTS
      * 
+     * List nearby events to user position
      * 
+     * @param {Number} lng - must be a decimal/float Number
+     * @param {Number} lat - must be a decimal/float Number
      * 
-     * @return {Promise<Events>}
+     * @return {Promise<nearbyEvents>}
      */
 
-     listNearbyEvents(lng, lat){
+    listNearbyEvents(lng, lat) {
         return Promise.resolve()
-        .then(()=>{
-            return Event.find({location: {$near: {$maxDistance:maxDistance, $geometry: {type: 'Point', coordinates: [lng, lat]}}}})
-        })
-        .then(nearbyEvents => {
-            return nearbyEvents;
-        })
-     },
+            .then(() => {
+
+                if(typeof lng !== 'number') throw Error('lng is not a number')
+                if(typeof lat !== 'number') throw Error('lat is not a number')
+
+                return Event.find({ location: { $near: { $maxDistance: maxDistance, $geometry: { type: 'Point', coordinates: [lng, lat] } } } })
+            })
+            .then(nearbyEvents => {
+
+                if(!nearbyEvents) throw Error(`no events found nearby for the given position [longitude: ${lng}, latitude: ${lat}`)
+                
+                return nearbyEvents 
+            })
+    },
+
+    /****************
+     * RETRIEVE EVENT
+     * 
+     * 
+     * @param {String} eventId 
+     * 
+     * @return {Promise<event>}
+     */
 
 
+    retrieveEvent(eventId) {
+        return Promise.resolve()
+            .then(() => {
+                if (typeof eventId !== 'string') throw Error('eventId is not a string')
+                if (!(eventId = eventId.trim()).length) throw Error('eventId is empty or blank')
 
+                return Event.findById(eventId)
+            })
+            .then((event) => {
 
-     retrieveEvent(eventId) { 
-         return Promise.resolve()
-         .then(()=>{
-             return Event.findById(eventId)
-         })
-         .then((event)=>{
-            return event
-         })
-     },
+                if (!event) throw Error(`no user found with id ${eventId}`)
+
+                return event
+            })
+    },
 
 
 
@@ -337,12 +357,12 @@ const logic = {
 
     filterEventsByType(eventTypeId) {
         return Promise.resolve()
-        .then(()=>{
-            return Event.find({eventType: {type: eventTypeId}})
-        })
-        .then(events =>{
-            return events
-        })
+            .then(() => {
+                return Event.find({ eventType: { type: eventTypeId } })
+            })
+            .then(events => {
+                return events
+            })
     },
 
     filterEventsByStyle(styleId) {
@@ -365,13 +385,13 @@ const logic = {
      * 
     */
 
-   addEvent(userId, eventId) {
-    return Promise.resolve()
-        .then(() => {
-            return User.findByIdAndUpdate(userId, { $push: { interested: eventId } }, { new: true })
-                .then(() => true)
-        })
-},
+    addEvent(userId, eventId) {
+        return Promise.resolve()
+            .then(() => {
+                return User.findByIdAndUpdate(userId, { $push: { interested: eventId } }, { new: true })
+                    .then(() => true)
+            })
+    },
 
     /** 
      * DELETE EVENT ON 'INTERESTED' USER LIST
@@ -385,18 +405,18 @@ const logic = {
 
     deleteAddedEvent(userId, eventId) { },
 
- 
+
 
 
     listAddedEvents(userId) {
         return Promise.resolve()
-        .then(() => {
-            return User.findById(userId).select({_id:0, interested:1})
-        })
-        .then(events => {
-            if (!events) throw Error(`no events on user found with id ${userId}`)
-            return events
-        })
+            .then(() => {
+                return User.findById(userId).select({ _id: 0, interested: 1 })
+            })
+            .then(events => {
+                if (!events) throw Error(`no events on user found with id ${userId}`)
+                return events
+            })
     },
 
     listPurchasedEvents() { },

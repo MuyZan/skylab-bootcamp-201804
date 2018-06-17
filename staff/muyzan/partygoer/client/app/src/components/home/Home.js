@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import logic from '../../logic'
 import ListResults from '../list-results/listResults'
 import EventCard from '../eventCard/eventCard'
+import Nav from '../nav/nav'
 import PartyMap from '../map/map'
 import './../map/map.css'
 import './home.css'
@@ -62,8 +63,10 @@ class Home extends Component {
                
                 <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
 
-                <button onClick={this._logout}>LOGOUT</button>
-                <button onClick={this._handlerSearch}>LIST EVENTS</button>
+                <nav>
+                    <Nav logout={this._logout} listAll={this._handlerSearch}/>
+                </nav>
+                
 
                  
 

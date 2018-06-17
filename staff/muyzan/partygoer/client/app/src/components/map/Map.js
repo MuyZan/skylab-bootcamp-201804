@@ -107,11 +107,11 @@ console.log(eventId)
 
                 {this.state.events.map((event) =>
                     <Marker onClick={()=>this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}>
-                        <Popup >
+                       {/*<Popup >
                             <span >
                                 {event.name}                              
                             </span>
-                        </Popup>
+                       </Popup>*/ } 
                     </Marker>
                 )}
             </Map>
