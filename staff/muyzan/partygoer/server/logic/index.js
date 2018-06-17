@@ -262,6 +262,16 @@ const logic = {
 
 
 
+     retrieveEvent(eventId) { 
+         return Promise.resolve()
+         .then(()=>{
+             return Event.findById(eventId)
+         })
+         .then((event)=>{
+            return event
+         })
+     },
+
 
 
 
@@ -375,7 +385,7 @@ const logic = {
 
     deleteAddedEvent(userId, eventId) { },
 
-    retrieveEvent(eventId) { },
+ 
 
 
     listAddedEvents(userId) {

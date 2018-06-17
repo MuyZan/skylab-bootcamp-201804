@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
 import ListResults from '../list-results/listResults'
+import EventCard from '../eventCard/eventCard'
 import PartyMap from '../map/map'
 import './../map/map.css'
 import './home.css'
-import UserGeoLocation from './../geolocation/geolocation'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -15,14 +15,8 @@ class Home extends Component {
         super()
 
         this.state = {
-            username: '',
-            logged: '',
             search: false,
-            message: '',
-            latitude: '',
-            longitude: '',
-            geoLoc: false,
-            error: '',
+            event: undefined
         }
     }
 
@@ -49,8 +43,14 @@ class Home extends Component {
     }
 
     
+    _showEvent = (event) => {
+        logic.retrieveEvent(event)
+        .then(event => this.setState({ event }))
+    }
 
-
+    _closeCard = () => {
+        this.setState({event: undefined})
+    }
     
 
     render() {
@@ -67,18 +67,21 @@ class Home extends Component {
 
                  
 
-                <PartyMap />
-
-                <UserGeoLocation />
+                <PartyMap onShowEvent={this._showEvent}/>
 
 
-          
 
                 {this.state.search === true ?
                     <ListResults />
                     :
                     ""
                 }
+
+                {this.state.event !== undefined ?
+                <EventCard event={this.state.event} closeCard={this._closeCard}/>
+                :
+                ""
+                 }
             </div>
 
         )

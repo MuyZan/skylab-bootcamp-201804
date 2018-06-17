@@ -30,9 +30,6 @@ const logic = {
         return !!this.setUserId()
     },
 
-
-
-
     logout(){
         this.setUserId(null)
         this.setUsername(null)
@@ -93,6 +90,12 @@ const logic = {
     listNearbyEvents(lng, lat){
         return partygoerApi.listNearbyEvents(lng, lat)
         .then(events => events)
+    },
+
+    retrieveEvent(eventId){
+        return partygoerApi.retrieveEvent(eventId)
+        .then(event => event)
+
     },
 
     shareEvent() { },

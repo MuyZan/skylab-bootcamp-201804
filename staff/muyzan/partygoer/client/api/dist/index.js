@@ -214,15 +214,36 @@ var partygoerApi = {
             });
         });
     },
-    cacaca: function cacaca() {},
-    listNearbyEvents: function listNearbyEvents(lng, lat) {
+    retrieveEvent: function retrieveEvent(eventId) {
         var _this9 = this;
 
         return Promise.resolve().then(function () {
-
-            return axios.post(_this9.url + '/nearby-events', { lng: lng, lat: lat }, { headers: { authorization: 'Bearer ' + _this9.token() } }).then(function (_ref9) {
+            return axios.get(_this9.url + '/event/' + eventId, { headers: { authorization: 'Bearer ' + _this9.token() } }).then(function (_ref9) {
                 var status = _ref9.status,
                     data = _ref9.data;
+
+                if (status !== 200 || data.status !== 'OK') throw Error('unexpected response status ' + status + ' (' + data.status + ')');
+
+                return data.data;
+            }).catch(function (err) {
+                if (err.code === 'ECONNREFUSED') throw Error('could not reach server');
+
+                if (err.response) {
+                    var message = err.response.data.error;
+
+
+                    throw Error(message);
+                } else throw err;
+            });
+        });
+    },
+    listNearbyEvents: function listNearbyEvents(lng, lat) {
+        var _this10 = this;
+
+        return Promise.resolve().then(function () {
+            return axios.post(_this10.url + '/nearby-events', { lng: lng, lat: lat }, { headers: { authorization: 'Bearer ' + _this10.token() } }).then(function (_ref10) {
+                var status = _ref10.status,
+                    data = _ref10.data;
 
                 if (status !== 200 || data.status !== 'OK') throw Error('unexpected response status ' + status + ' (' + data.status + ')');
 

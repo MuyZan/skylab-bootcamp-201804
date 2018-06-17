@@ -55,6 +55,23 @@ eventRouter.get('/events', jwtValidator, (req, res) => {
         })
  })
 
+ eventRouter.get('/event/:eventId', jwtValidator, (req, res) => {
+
+    const { params: { eventId } } = req
+
+    return logic.retrieveEvent(eventId)
+        .then(event => {
+            res.status(200)
+            res.json({ status: 'OK', data: event })
+        })
+        .catch(({ message }) => {
+            res.status(400)
+            res.json({ status: 'KO', error: message })
+        })
+ })
+
+
+
 module.exports = eventRouter;
 
 
