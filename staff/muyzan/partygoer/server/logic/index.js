@@ -1,5 +1,11 @@
 'use strict'
 
+require('dotenv').config()
+
+const {env: { MAX_DISTANCE_NEARBY_SEARCH } } = process;
+
+const maxDistance = MAX_DISTANCE_NEARBY_SEARCH
+
 const moment = require('moment')
 const now = new Date(moment().format('L'))
 
@@ -250,7 +256,7 @@ const logic = {
         return Promise.resolve()
         .then(()=>{
             const [lat, lng] = geolocation;
-            return Event.find({location: {$near: {$maxDistance:1000, $geometry: {type: 'Point', coordinates: [lng, lat]}}}})
+            return Event.find({location: {$near: {$maxDistance:maxDistance, $geometry: {type: 'Point', coordinates: [lng, lat]}}}})
         })
         .then(nearbyEvents => {
             return nearbyEvents;
@@ -300,6 +306,17 @@ const logic = {
      * ----------------
      */
 
+
+
+    listEventTypes() {
+        return Promise.resolve()
+            .then(() => {
+                return EventType.find()
+                    .then(eventTypes => {
+                        return eventTypes
+                    })
+            })
+    },
 
 
     /*EVENT*/

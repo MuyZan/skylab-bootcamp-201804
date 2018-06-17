@@ -79,6 +79,21 @@ const logic = {
         .then(events => events)
     },
 
+    listEventTypes(){
+        return partygoerApi.listEventTypes()
+        .then((eventTypes) => {
+            let eventTypesObj = {}
+
+            console.log(eventTypes)
+
+            eventTypes.forEach(eventType => {
+                eventTypesObj[eventType._id] = eventType.type        
+            });
+            console.log(eventTypesObj)
+            return eventTypesObj
+        })
+
+    },
 
 
     shareEvent() { },

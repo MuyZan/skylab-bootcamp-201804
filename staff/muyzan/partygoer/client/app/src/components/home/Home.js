@@ -3,6 +3,7 @@ import logic from '../../logic'
 import ListResults from '../list-results/listResults'
 import PartyMap from '../map/map'
 import './../map/map.css'
+import './home.css'
 import UserGeoLocation from './../geolocation/geolocation'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -49,6 +50,9 @@ class Home extends Component {
 
     
 
+
+    
+
     render() {
 
 
@@ -60,6 +64,8 @@ class Home extends Component {
 
                 <button onClick={this._logout}>LOGOUT</button>
                 <button onClick={this._handlerSearch}>LIST EVENTS</button>
+                <button onClick={logic.listEventTypes}>eventtypes</button>
+
                  
 
                 <PartyMap />

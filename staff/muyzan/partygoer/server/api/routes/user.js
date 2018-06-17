@@ -124,10 +124,39 @@ userRouter.put('/users/:userId/event/:eventId', [jwtValidator, jsonBodyParser], 
         res.json({status: 'KO', error: message})
     })
 })
+/*
+ LIST EVENTS 
+*/
 
-/**
- * LIST EVENTS 
- */
+/*
+userRouter.get('/events', jwtValidator, (req, res) => {
+
+   return logic.listEvents()
+       .then(events => {
+           res.status(200)
+           res.json({ status: 'OK', data: events })
+       })
+       .catch(({ message }) => {
+           res.status(400)
+           res.json({ status: 'KO', error: message })
+       })
+})
+*/
+
+
+
+userRouter.get('/event-types', jwtValidator, (req, res) => {
+
+    return logic.listEventTypes()
+        .then(eventTypes => {
+            res.status(200)
+            res.json({ status: 'OK', data: eventTypes })
+        })
+        .catch(({ message }) => {
+            res.status(400)
+            res.json({ status: 'KO', error: message })
+        })
+ })
 
 
 userRouter.get('/events', jwtValidator, (req, res) => {
@@ -141,10 +170,7 @@ userRouter.get('/events', jwtValidator, (req, res) => {
             res.status(400)
             res.json({ status: 'KO', error: message })
         })
-})
-
-
-
+ })
 
 
 module.exports = userRouter;

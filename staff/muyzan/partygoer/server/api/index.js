@@ -17,7 +17,7 @@ mongoose.connect(url)
         const port = PORT || process.argv[2] || 3000
         const app = express()
         app.use(cors())
-        app.use('/api', userRouter) //add the rest later
+        app.use('/api', [userRouter, eventRouter]) //add the rest later
 
         app.listen(port, () => console.log(`Hey-Hou! Server running on port ${port}`))
 

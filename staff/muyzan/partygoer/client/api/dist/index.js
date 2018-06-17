@@ -186,7 +186,30 @@ var partygoerApi = {
             } else throw err;
         });
     },
-    lalala: function lalala() {}
+    listEventTypes: function listEventTypes() {
+        var _this8 = this;
+
+        return Promise.resolve().then(function () {
+
+            return axios.get(_this8.url + '/event-types', { headers: { authorization: 'Bearer ' + _this8.token() } }).then(function (_ref7) {
+                var status = _ref7.status,
+                    data = _ref7.data;
+
+                if (status !== 200 || data.status !== 'OK') throw Error('unexpected response status ' + status + ' (' + data.status + ')');
+
+                return data.data;
+            }).catch(function (err) {
+                if (err.code === 'ECONNREFUSED') throw Error('could not reach server');
+
+                if (err.response) {
+                    var message = err.response.data.error;
+
+
+                    throw Error(message);
+                } else throw err;
+            });
+        });
+    }
 };
 
 module.exports = partygoerApi;
