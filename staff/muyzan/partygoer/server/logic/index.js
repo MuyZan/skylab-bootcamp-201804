@@ -1,7 +1,15 @@
 'use strict'
 
+require('dotenv').config()
+
+
+const { env: { MAX_DISTANCE_NEARBY_SEARCH } } = process;
+
+const maxDistance = parseInt(MAX_DISTANCE_NEARBY_SEARCH)
+
+
 /** TODO: unhardcode */
-const maxDistance = 10000
+//1const maxDistance = 10000
 
 const moment = require('moment')
 const now = new Date(moment().format('L'))
