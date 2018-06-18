@@ -1,5 +1,3 @@
-'use strict'
-
 import L from 'leaflet'
 
 const userIcon = require('./../../static/images/icons/animatedPlaceholder.svg')

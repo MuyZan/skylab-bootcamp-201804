@@ -1,5 +1,3 @@
-'use strict'
-
 const partygoerApi = require('api')
 
 partygoerApi.url = 'http://localhost:3000/api'

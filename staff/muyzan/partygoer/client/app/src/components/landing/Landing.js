@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import logo from '../../logo.svg'
 import './landing.css'
-import logic from "../../logic"
-import Login from "./../login/login"
 
 class Landing extends Component {
 

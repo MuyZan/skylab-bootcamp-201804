@@ -34,7 +34,7 @@ background: transparent;
 .filter:hover{
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	background: rgba(255, 255, 255, 0.117);
-border-radius: 0.6em;
+	border-radius: 0.6em;
 }
 
 .filter:active{
@@ -47,7 +47,17 @@ width: 48%;
 margin: 2px;
 align-content: center;
 align-self: center;
+-moz-box-shadow:    inset 0 0 10px #080147;
+   -webkit-box-shadow: inset 0 0 10px #080147;
+   box-shadow:         inset 0 0 10px #080147;
+   	border-radius: 0.6em;
 
+}
+
+.nonSelected{
+	border: 2px white;
+	border-radius: 0.6em;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 .filter-icon{

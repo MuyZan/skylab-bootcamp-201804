@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 
@@ -16,7 +16,6 @@ class ListResults extends Component {
     }
 
     componentWillMount() {  
-        logic.lis
         
         logic.listEvents()
         .then(events => {

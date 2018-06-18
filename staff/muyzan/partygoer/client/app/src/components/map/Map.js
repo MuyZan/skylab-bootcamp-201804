@@ -1,8 +1,6 @@
-'use strict'
-
 import React, { Component } from 'react'
-import { Map, TileLayer, Marker, Popup, DivOverlay } from 'react-leaflet'
-import { ToastContainer, toast } from 'react-toastify'
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import './map.css'
 import logic from '../../logic'
@@ -12,17 +10,20 @@ import placeholder from './../../static/images/icons/rock.svg'
 
 const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
 
+let _events=[]
+
 export default class PartyMap extends Component {
 
     state = {
         lat: 0,
         lng: 0,
         zoom: 16,
-        events: [],
-        eventTypes: null
+        eventsDraw: [],
+        eventTypes: null,
+        eventsDisplay: null
     }
 
-    componentDidMount() {
+    componentWillMount() {
 
         /*Checks if geolocation exists*/
 
@@ -47,7 +48,8 @@ export default class PartyMap extends Component {
             .then(() => {
                 logic.listNearbyEvents(this.state.lng, this.state.lat)
                     .then(events => {
-                        this.setState({ events })
+                        this.setState({ eventsDraw: events })
+                        _events = events
                     })
                     .catch(err => toast.error(`Ups! Something happens: ${err}`))
             })
@@ -58,6 +60,15 @@ export default class PartyMap extends Component {
         logic.listEventTypes()
             .then(eventTypes => {
                 this.setState({ eventTypes })
+
+                let eventsDisplay = {}
+
+                Object.keys(eventTypes).map((key) => {
+                    return eventsDisplay[key] = true
+                })
+
+                this.setState({eventsDisplay})
+            
 
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
@@ -96,24 +107,42 @@ export default class PartyMap extends Component {
         }
     }
 
-    _showEvent = (eventId) => {
-        console.log(eventId)
-    }
-
     filterEvents(eventId){
 
+        if(this.state.eventsDisplay[eventId] === true){
 
+            const filterEvents = _events.filter(event => event.eventType.includes(eventId))
+            this.setState({eventsDraw:filterEvents}) 
+            
+            Object.keys(this.state.eventsDisplay).map((event) => {
+                const { eventsDisplay } = this.state
+                eventsDisplay[event] = true  
+                return this.setState({eventsDisplay})
+            })
+
+            const { eventsDisplay } = this.state
+            eventsDisplay[eventId] = false  
+            this.setState({eventsDisplay}) 
+
+        }else{
+
+            this.setState({eventsDraw:_events}) 
+            const { eventsDisplay } = this.state
+            eventsDisplay[eventId] = true  
+            this.setState({eventsDisplay})
+        }     
     }
 
 
     render() {
 
+        const { lng, lat, zoom, eventsDraw, eventTypes, eventsDisplay } = this.state
         /*User position*/
-        const position = [this.state.lat, this.state.lng]
+        const position = [lat, lng]
 
         return (
             <div id="section-map">
-                <Map id="map-container" center={position} zoom={this.state.zoom}>
+                <Map id="map-container" center={position} zoom={zoom}>
                     <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
@@ -126,16 +155,17 @@ export default class PartyMap extends Component {
                         </Popup>
                     </Marker>
 
-                    {this.state.events.map((event) =>
-                        <Marker onClick={() => this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}/>
+                    {eventsDraw.map((event) =>
+                        <Marker key={event._id} onClick={() => this.props.onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}/>
                     )}
                 </Map>
+
                 <section id="section-filter">
-                    {this.state.eventTypes !== null ?
-                        Object.keys(this.state.eventTypes).map((key) =>
-                            <div onClick={this.filterEvents(key)} className="filter">
-                                <img className="filter-icon" src={this.setFilterIcon(key)} placeholder={this.state.eventTypes[key]} />
-                                <span className="filter-text ">{this.state.eventTypes[key]}</span>
+                    {eventTypes !== null && eventsDisplay !==null ?
+                        Object.keys(eventTypes).map((key) =>
+                            <div key={key} onClick={() => this.filterEvents(key)} className={this.state.eventsDisplay[key] === true ? "filter nonSelected": "filter"}>
+                                <img alt={eventTypes[key]} className="filter-icon" src={this.setFilterIcon(key)} placeholder={eventTypes[key]} />
+                                <span className="filter-text ">{eventTypes[key]}</span>
                             </div>
                         )
                         :
