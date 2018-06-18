@@ -1,4 +1,83 @@
-#eventCard img{
-    width: 100%;
-    height: auto;
+
+
+#event-card{
+    border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+    position: absolute;
+    z-index: 10;
+
+   top:-9.5em;
 }
+
+#event-card img{
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}
+
+#event-card .top-layer-filter, #event-card .bg-filter {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card{
+   
+    margin: auto;
+    width: 95%;
+    border-bottom: 0.425em solid;
+    border-image: linear-gradient(50deg, #b9047d, #d33249);
+    border-image-slice: 1;
+    padding-bottom:2em;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    background: var(--main-bg-gradient);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
+
+#event-card .img-container{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    min-height: 13rem;
+    max-height: 13rem;
+}
+
+.card h3{
+    padding: 0.78em;
+
+    letter-spacing: 0.15em;
+}
+
+.card-title{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    /*background:var(--color-salmon);*/
+    background: rgba(0, 0, 0, 0.616);
+    font-size: 1.2em;
+    z-index: 2;
+    position: relative;
+    top:-8em;
+}
+
+.closeCard{
+    border-radius: 0px;
+    text-align: right;
+    background:black;
+    padding:0.5em;
+    border: none;
+    color: var(--salmon);
+    font-size: 0.7em;
+    position: relative;
+    z-index: 5;
+    top: 2.16em;
+    right:-42vw;
+
+}
+
+
+.card-content{
+    margin-top: -2.2em;
+}
+
+
+

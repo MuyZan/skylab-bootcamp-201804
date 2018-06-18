@@ -8,6 +8,7 @@ import './../map/map.css'
 import './home.css'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { Animated } from 'react-animated-css'
 
 
 class Home extends Component {
@@ -81,7 +82,10 @@ class Home extends Component {
                 }
 
                 {this.state.event !== undefined ?
+                <Animated animationIn="bounceInUp" animationOut="bounceInUp" isVisible={true}>
                 <EventCard event={this.state.event} closeCard={this._closeCard}/>
+                </Animated>
+
                 :
                 ""
                  }

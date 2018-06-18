@@ -5,7 +5,7 @@ class Nav extends Component{
 
     render(){
         return(
-            <div id="nav">
+            <div id="navContainer">
             <button onClick={this.props.logout}>LOGOUT</button>
             <button onClick={this.props.listAll}>LIST EVENTS</button>
             </div>

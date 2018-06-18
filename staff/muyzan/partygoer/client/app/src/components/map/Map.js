@@ -8,6 +8,8 @@ import './map.css'
 import logic from '../../logic'
 import markers from './markers'
 
+import placeholder from './../../static/images/icons/rock.svg'
+
 const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
 
 export default class PartyMap extends Component {
@@ -81,9 +83,22 @@ export default class PartyMap extends Component {
         }
     }
 
+    setFilterIcon(eventId) {
+        switch (this.state.eventTypes[eventId]) {
+            case "Festival":
+                return placeholder
+            case "Concert":
+                return placeholder
+            case "Musical atmosphere":
+                return placeholder
+            default:
+                return placeholder
+        }
+    }
+
     _showEvent = (eventId) => {
-console.log(eventId)    
-} 
+        console.log(eventId)
+    }
 
 
     render() {
@@ -92,29 +107,46 @@ console.log(eventId)
         const position = [this.state.lat, this.state.lng]
 
         return (
-            <Map id="map-container" center={position} zoom={this.state.zoom}>
-                <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                    url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
+            <div id="section-map">
+                <Map id="map-container" center={position} zoom={this.state.zoom}>
+                    <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                        url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
 
-                <Marker position={position} icon={userPlaceholder}>
-                    <Popup >
-                        <span >
-                            {logic.setUsername()}: Let's party!
+                    <Marker position={position} icon={userPlaceholder}>
+                        <Popup >
+                            <span >
+                                {logic.setUsername()}: Let's party!
                             </span>
-                    </Popup>
-                </Marker>
+                        </Popup>
+                    </Marker>
 
-                {this.state.events.map((event) =>
-                    <Marker onClick={()=>this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}>
-                       {/*<Popup >
+                    {this.state.events.map((event) =>
+                        <Marker onClick={() => this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}>
+                            {/*<Popup >
                             <span >
                                 {event.name}                              
                             </span>
-                       </Popup>*/ } 
-                    </Marker>
-                )}
-            </Map>
+                       </Popup>*/ }
+                        </Marker>
+                    )}
+                </Map>
+                <section id="section-filter">
+                    {this.state.eventTypes !== null ?
+                        Object.keys(this.state.eventTypes).map((key) =>
+                            <div className="filter">
+                                <img className="filter-icon" src={this.setFilterIcon(key)} placeholder={this.state.eventTypes[key]} />
+                                <span className="filter-text ">{this.state.eventTypes[key]}</span>
+                            </div>
+                        )
+                        :
+                        ""
+                    }
+
+                    <button>All</button>
+
+                </section>
+            </div>
         )
     }
 }
