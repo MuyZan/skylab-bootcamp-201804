@@ -100,6 +100,11 @@ export default class PartyMap extends Component {
         console.log(eventId)
     }
 
+    filterEvents(eventId){
+
+
+    }
+
 
     render() {
 
@@ -122,19 +127,13 @@ export default class PartyMap extends Component {
                     </Marker>
 
                     {this.state.events.map((event) =>
-                        <Marker onClick={() => this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}>
-                            {/*<Popup >
-                            <span >
-                                {event.name}                              
-                            </span>
-                       </Popup>*/ }
-                        </Marker>
+                        <Marker onClick={() => this.props.onShowEvent(event._id)} key={event._id} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}/>
                     )}
                 </Map>
                 <section id="section-filter">
                     {this.state.eventTypes !== null ?
                         Object.keys(this.state.eventTypes).map((key) =>
-                            <div className="filter">
+                            <div onClick={this.filterEvents(key)} className="filter">
                                 <img className="filter-icon" src={this.setFilterIcon(key)} placeholder={this.state.eventTypes[key]} />
                                 <span className="filter-text ">{this.state.eventTypes[key]}</span>
                             </div>

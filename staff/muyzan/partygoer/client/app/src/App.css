@@ -24,7 +24,7 @@
     box-sizing: border-box;
 }
 
-body {
+ body {
     background-color:white;
     background: var(--main-bg-gradient);
     color: #fffffc;

@@ -57,12 +57,3 @@ export default withRouter(App);
 
 
 
-/*
-        <Route exact path="/login" component={Login}/>
-        <Route exact path="/login" render={(()=> <Home/> )}/>
-        <Route path="/home" component={Home}/>  
-
-this.state.authenticated ? <Home/> : "MANU AYÚDAME A CAMBIAR DE RUTA"  
-
-
-*/
