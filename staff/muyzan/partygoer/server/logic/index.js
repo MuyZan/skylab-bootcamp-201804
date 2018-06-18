@@ -1,19 +1,6 @@
 'use strict'
 
-require('dotenv').config()
-
-
-const { env: { MAX_DISTANCE_NEARBY_SEARCH } } = process;
-
-const maxDistance = parseInt(MAX_DISTANCE_NEARBY_SEARCH)
-
-
-/** TODO: unhardcode */
-//1const maxDistance = 10000
-
 const moment = require('moment')
-const now = new Date(moment().format('L'))
-
 const { models: {
     User,
     Event,
@@ -23,7 +10,10 @@ const { models: {
     MusicStyle }
 } = require('data')
 
+const now = new Date(moment().format('L'))
+
 const logic = {
+    maxDistance: 1000,
 
     /**
      * ---------------
@@ -264,7 +254,7 @@ const logic = {
                 if(typeof lng !== 'number') throw Error('lng is not a number')
                 if(typeof lat !== 'number') throw Error('lat is not a number')
 
-                return Event.find({ location: { $near: { $maxDistance: maxDistance, $geometry: { type: 'Point', coordinates: [lng, lat] } } } })
+                return Event.find({ location: { $near: { $maxDistance: this.maxDistance, $geometry: { type: 'Point', coordinates: [lng, lat] } } } })
             })
             .then(nearbyEvents => {
 

@@ -3,7 +3,7 @@
 const axios = require('axios')
 
 const partygoerApi = {
-    url: 'http://localhost:3000/api',
+    url: 'NO-URL',
 
     token(token){
         if(token){
