@@ -96,6 +96,10 @@ const logic = {
 
     },
 
+    userPosition(){
+        return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
+    },
+
     shareEvent() { },
 
 

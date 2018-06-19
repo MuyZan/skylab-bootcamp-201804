@@ -30,33 +30,31 @@ export default class PartyMap extends Component {
 
         if (!navigator.geolocation) {
             const error = 'Geolocation is not supported by your browser'
-            toast.error(`Ups! Something happens: ${error}`)
+            toast.error(`Ups! ${error}, sorry!`)
             return;
         }
 
         /*Geolocation API*/
 
-        const userPosition = function () {
-            return new Promise((resolve, reject) => navigator.geolocation.getCurrentPosition(resolve, reject))
-        }
-
-        userPosition()
+        logic.userPosition()
             .then((position) => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
+                const { coords: { latitude, longitude } } = position
                 this.setState({ lat: latitude, lng: longitude })
             })
             .then(() => {
-                logic.listNearbyEvents(this.state.lng, this.state.lat)
+                const { lng, lat } = this.state
+                logic.listNearbyEvents(lng, lat)
                     .then(events => {
                         this.setState({ eventsDraw: events })
-                        _events = events
+                        _events = events //save a copy for manipulation
                     })
                     .catch(err => toast.error(`Ups! Something happens: ${err}`))
             })
             .catch((err) => {
                 toast.error(`Ups! Something happens: ${err}`)
             })
+
+        /* Import Event Types and set the display boolean for the filter buttons */
 
         logic.listEventTypes()
             .then(eventTypes => {
@@ -70,7 +68,6 @@ export default class PartyMap extends Component {
 
                 this.setState({ eventTypesDisplay })
 
-
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
     }
@@ -83,7 +80,10 @@ export default class PartyMap extends Component {
     /*Switch icon according to the type of party */
 
     setIcon = (eventId) => {
-        switch (this.state.eventTypes[eventId]) {
+
+        const { eventTypes } = this.state
+
+        switch (eventTypes[eventId]) {
             case "Festival":
                 return djPlaceholder
             case "Concert":
@@ -96,7 +96,10 @@ export default class PartyMap extends Component {
     }
 
     setFilterIcon = (eventId) => {
-        switch (this.state.eventTypes[eventId]) {
+
+        const { eventTypes } = this.state
+
+        switch (eventTypes[eventId]) {
             case "Festival":
                 return placeholder
             case "Concert":
@@ -110,9 +113,11 @@ export default class PartyMap extends Component {
 
     setAll = () => {
 
+        //ALL Types of Event Button
+
         const { eventTypesDisplay, allButton } = this.state
 
-        const setAllDisplayTrue = () =>{
+        const setAllDisplayTrue = () => {
             Object.keys(eventTypesDisplay).map((event) => {
                 eventTypesDisplay[event] = true
                 return eventTypesDisplay;
@@ -120,9 +125,9 @@ export default class PartyMap extends Component {
             return this.setState({ eventTypesDisplay })
         }
 
-        if(allButton === false) {
+        if (allButton === false) {
             setAllDisplayTrue()
-            this.setState({allButton: true})
+            this.setState({ allButton: true })
             this.setState({ eventsDraw: _events })
         }
     }
@@ -133,9 +138,9 @@ export default class PartyMap extends Component {
 
         //FILTER BUTTONS: toggle the eventTypesDisplay [true-false] and button style
 
-        if(eventTypesDisplay[eventTypeId] === true){
+        if (eventTypesDisplay[eventTypeId] === true) {
             eventTypesDisplay[eventTypeId] = false;
-            this.setState({allButton: false})
+            this.setState({ allButton: false })
             this.setState({ eventTypesDisplay })
         } else {
             eventTypesDisplay[eventTypeId] = true;
@@ -146,24 +151,24 @@ export default class PartyMap extends Component {
 
         const isAllDisplayTrue = (objs) => {
             let isTrue = true
-            Object.keys(objs).map((obj)=>{
-                 if(!objs[obj]) isTrue = false;   
-                 return isTrue   
+            Object.keys(objs).map((obj) => {
+                if (!objs[obj]) isTrue = false;
+                return isTrue
             })
-           return isTrue;
+            return isTrue;
         }
 
         let showAllTypes = isAllDisplayTrue(eventTypesDisplay)
- 
-        if(showAllTypes){
-            this.setState({allButton: true})
+
+        if (showAllTypes) {
+            this.setState({ allButton: true })
             this.setState({ eventsDraw: _events })
         } else {
 
             let allTypesFilteredEvents = []
 
-            Object.keys(eventTypesDisplay).map((eventType) =>{
-                if(eventTypesDisplay[eventType] === false){
+            Object.keys(eventTypesDisplay).map((eventType) => {
+                if (eventTypesDisplay[eventType] === false) {
                     let filteredEvents = _events.filter(event => event.eventType.includes(eventType))
                     allTypesFilteredEvents = allTypesFilteredEvents.concat(filteredEvents)
                 }
@@ -172,7 +177,7 @@ export default class PartyMap extends Component {
 
             this.setState({ eventsDraw: allTypesFilteredEvents })
 
-        }   
+        }
     }
 
 
@@ -180,7 +185,7 @@ export default class PartyMap extends Component {
 
         const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton } = this.state
         const { onShowEvent } = this.props
-        /*User position*/
+        /*User position on a map*/
         const position = [lat, lng]
 
         return (
@@ -188,7 +193,6 @@ export default class PartyMap extends Component {
                 <Map id="map-container" center={position} zoom={zoom}>
                     <TileLayer attribution='<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
-
 
                     <Marker position={position} icon={userPlaceholder}>
                         <Popup >
@@ -214,9 +218,9 @@ export default class PartyMap extends Component {
                         :
                         ""
                     }
-                    <div onClick={() => this.setAll()} className={allButton === true ? "filter":"filter nonSelected"}>
+                    <div onClick={() => this.setAll()} className={allButton === true ? "filter" : "filter nonSelected"}>
                         <img alt="" className="filter-icon" src="" placeholder="" />
-                        <span className="filter-text ">ALL</span>
+                        <span className="filter-text ">All Event Types</span>
                     </div>
 
                 </section>
