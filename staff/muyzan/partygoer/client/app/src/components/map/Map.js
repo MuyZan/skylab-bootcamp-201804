@@ -10,7 +10,7 @@ import placeholder from './../../static/images/icons/rock.svg'
 
 const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
 
-let _events=[]
+let _events = []
 
 export default class PartyMap extends Component {
 
@@ -20,7 +20,7 @@ export default class PartyMap extends Component {
         zoom: 16,
         eventsDraw: [],
         eventTypes: null,
-        eventsDisplay: null
+        eventTypesDisplay: null
     }
 
     componentWillMount() {
@@ -61,14 +61,14 @@ export default class PartyMap extends Component {
             .then(eventTypes => {
                 this.setState({ eventTypes })
 
-                let eventsDisplay = {}
+                let eventTypesDisplay = {}
 
                 Object.keys(eventTypes).map((key) => {
-                    return eventsDisplay[key] = true
+                    return eventTypesDisplay[key] = true
                 })
 
-                this.setState({eventsDisplay})
-            
+                this.setState({ eventTypesDisplay })
+
 
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
@@ -81,7 +81,7 @@ export default class PartyMap extends Component {
 
     /*Switch icon according to the type of party */
 
-    setIcon(eventId) {
+    setIcon = (eventId) => {
         switch (this.state.eventTypes[eventId]) {
             case "Festival":
                 return djPlaceholder
@@ -94,7 +94,7 @@ export default class PartyMap extends Component {
         }
     }
 
-    setFilterIcon(eventId) {
+    setFilterIcon = (eventId) => {
         switch (this.state.eventTypes[eventId]) {
             case "Festival":
                 return placeholder
@@ -107,43 +107,122 @@ export default class PartyMap extends Component {
         }
     }
 
-    filterEvents(eventId){
+    filterEvents = (eventTypeId) => {
 
-        if(this.state.eventsDisplay[eventId] === true){
+        const { eventTypesDisplay } = this.state
 
-            const filterEvents = _events.filter(event => event.eventType.includes(eventId))
-            this.setState({eventsDraw:filterEvents}) 
+        //toggle the eventTypesDisplay [true-false] and button style
+
+        if(eventTypesDisplay[eventTypeId] === true){
+            eventTypesDisplay[eventTypeId] = false;
+            this.setState({ eventTypesDisplay })
+        } else {
+            eventTypesDisplay[eventTypeId] = true;
+            this.setState({ eventTypesDisplay })
+        }
+
+        
+        //check if all eventTypesDisplay are true;
+
+        function isAllDisplayTrue(objs){
+
+            /*let tmp = Object.keys(objs).filter((obj) =>{
+                return !objs[obj]
+            })
+            return tmp.length == 0 
+            */
             
-            Object.keys(this.state.eventsDisplay).map((event) => {
-                const { eventsDisplay } = this.state
-                eventsDisplay[event] = true  
-                return this.setState({eventsDisplay})
+            let isTrue = true
+            Object.keys(objs).map(function(obj){
+                 if(!objs[obj]) isTrue = false;   
+                 return isTrue   
+            })
+           return isTrue;
+        }
+
+        let showAllTypes = isAllDisplayTrue(eventTypesDisplay)
+ 
+
+        if(showAllTypes){
+            this.setState({ eventsDraw: _events })
+        } else {
+
+            let allTypesFilteredEvents = []
+
+            Object.keys(eventTypesDisplay).map((eventType) =>{
+                if(eventTypesDisplay[eventType] === false){
+                    let filteredEvents = _events.filter(event => event.eventType.includes(eventType))
+                    allTypesFilteredEvents = allTypesFilteredEvents.concat(filteredEvents)
+                }
+                return allTypesFilteredEvents
             })
 
-            const { eventsDisplay } = this.state
-            eventsDisplay[eventId] = false  
-            this.setState({eventsDisplay}) 
+            this.setState({ eventsDraw: allTypesFilteredEvents })
 
-        }else{
+        }
 
-            this.setState({eventsDraw:_events}) 
-            const { eventsDisplay } = this.state
-            eventsDisplay[eventId] = true  
-            this.setState({eventsDisplay})
-        }     
+
+
+        /*
+
+        const { eventTypesDisplay } = this.state
+
+        const setAllDisplayTrue = () =>{
+            Object.keys(eventTypesDisplay).map((event) => {
+                eventTypesDisplay[event] = true
+                return this.setState({ eventTypesDisplay })
+            })
+        }
+
+
+        if (eventTypesDisplay[eventTypeId] === true) {
+
+            const filteredEvents = _events.filter(event => event.eventType.includes(eventTypeId))
+
+            filteredEvents.forEach(event => _allTypesFilteredEvents.push(event))
+
+            this.setState({ eventsDraw: _allTypesFilteredEvents })
+            //setAllDisplayTrue()
+            eventTypesDisplay[eventTypeId] = false
+            this.setState({ eventTypesDisplay })
+
+        } else if (eventTypesDisplay[eventTypeId] === false) {
+
+            for (var i=0; i < _allTypesFilteredEvents.length; i++){
+       
+                //TODO: fix for events with more than one eventtype
+                if (_allTypesFilteredEvents[i].eventType['0'] === eventTypeId){
+                    console.log("ep")
+                     _allTypesFilteredEvents.splice(i,1)
+                }
+            }
+
+
+            console.log(_allTypesFilteredEvents)
+        
+            this.setState({ eventsDraw: _allTypesFilteredEvents })
+            eventTypesDisplay[eventTypeId] = true
+            this.setState({ eventTypesDisplay })
+        } else {
+            this.setState({ eventsDraw: _events })
+            setAllDisplayTrue()
+        }
+
+*/
     }
 
 
     render() {
 
-        const { lng, lat, zoom, eventsDraw, eventTypes, eventsDisplay } = this.state
+        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay } = this.state
+        const { onShowEvent } = this.props
         /*User position*/
         const position = [lat, lng]
 
         return (
             <div id="section-map">
                 <Map id="map-container" center={position} zoom={zoom}>
-                    <TileLayer attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                    <TileLayer attribution='<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
                         url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
 
 
@@ -156,23 +235,25 @@ export default class PartyMap extends Component {
                     </Marker>
 
                     {eventsDraw.map((event) =>
-                        <Marker key={event._id} onClick={() => this.props.onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])}/>
+                        <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
                     )}
                 </Map>
 
                 <section id="section-filter">
-                    {eventTypes !== null && eventsDisplay !==null ?
-                        Object.keys(eventTypes).map((key) =>
-                            <div key={key} onClick={() => this.filterEvents(key)} className={this.state.eventsDisplay[key] === true ? "filter nonSelected": "filter"}>
-                                <img alt={eventTypes[key]} className="filter-icon" src={this.setFilterIcon(key)} placeholder={eventTypes[key]} />
-                                <span className="filter-text ">{eventTypes[key]}</span>
+                    {eventTypes !== null && eventTypesDisplay !== null ?
+                        Object.keys(eventTypes).map((eventTypeId) =>
+                            <div key={eventTypeId} onClick={() => this.filterEvents(eventTypeId)} className={eventTypesDisplay[eventTypeId] === true ? "filter nonSelected" : "filter"}>
+                                <img alt={eventTypes[eventTypeId]} className="filter-icon" src={this.setFilterIcon(eventTypeId)} placeholder={eventTypes[eventTypeId]} />
+                                <span className="filter-text ">{eventTypes[eventTypeId]}</span>
                             </div>
                         )
                         :
                         ""
                     }
-
-                    <button>All</button>
+                    <div onClick={() => this.filterEvents("ALL")} className="filter nonSelected">
+                        <img alt="" className="filter-icon" src="" placeholder="" />
+                        <span className="filter-text ">ALL</span>
+                    </div>
 
                 </section>
             </div>
