@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 import { toast } from 'react-toastify'
+import logic from '../../logic'
 import 'react-toastify/dist/ReactToastify.css'
 import './map.css'
-import logic from '../../logic'
 import markers from './markers'
-
 import placeholder from './../../static/images/icons/rock.svg'
 
 const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
@@ -134,7 +133,7 @@ export default class PartyMap extends Component {
 
     filterEvents = (eventTypeId) => {
 
-        const { eventTypesDisplay, allButton } = this.state
+        const { eventTypesDisplay } = this.state
 
         //FILTER BUTTONS: toggle the eventTypesDisplay [true-false] and button style
 
@@ -228,33 +227,3 @@ export default class PartyMap extends Component {
         )
     }
 }
-
-
-
-
-/*
-
-----Leaflet map base style:
-                <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
-
-
-url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
-alternative link: http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-
-attribution:  <TileLayer attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-
-----Other Stamen/Carto styles:
-
-http://stamen-tiles-{s}.a.ssl.fastly.net/toner-background/{z}/{x}/{y}.png
-
-https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
-
-
-*/
-
-
-
-
-
-

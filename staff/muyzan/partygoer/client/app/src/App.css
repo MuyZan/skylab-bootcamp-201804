@@ -24,16 +24,37 @@
     box-sizing: border-box;
 }
 
- body {
+html, body {
     background-color:white;
     background: var(--main-bg-gradient);
-    color: #fffffc;
     font-family: 'Roboto', sans-serif;   
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center;
     height: 100%;
-    width: 100%;
+}
+
+h1, h2, h3, p {
+    padding: 1em 0 1em;
+}
+
+ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
+p{
+    padding-left: 1em;
+    padding-right: 1em;
+    letter-spacing: 0.1em;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 button{
@@ -57,17 +78,27 @@ button:active{
 }
 
 
+/*********|||| COMMON BUTTONS |||||*********/
+
+.more-info, .add-event, .remove-event, .buy-event{
+    display: inline-block;
+    margin: 1em 0 1em;
+    width: 47%;
+    color: var(--btn-font-color);
+    padding: var(--btn-padding);
+    text-decoration: none;
+    border: var(--border); 
+    border-color:var(--btn-border-color);
+}
+
+
+/*IMAGE AND IMAGE CONTAINERS*/
+
 img {
     display: block;
     width: 100%;
     height: auto;
-    -webkit-filter: grayscale(100%) contrast(1);
-    -moz-filter: grayscale(100%) contrast(1);
-    -o-filter: grayscale(100%), contrast(1);
-    filter: grayscale(100%) contrast(1);
-    mix-blend-mode: multiply;
 }
-
 
 .img-container{
     min-height: 15rem;
@@ -96,33 +127,59 @@ position block z-index top) coloring the darkness spots*/
     background-color: rgb(241, 239, 211);
     z-index:1;
     position: relative;
-    isolation:isolate;
+}
+
+.top-layer-filter, .filter-gradient {
+    width: 100%;
+    height: 100%;
 }
 
 .top-layer-filter{
-width: 100%;
-height: 100%;
-/*background: rgb(63, 0, 53);*/
 background: var(--main-gradient);
 position:absolute;
 z-index: 3;
 mix-blend-mode:lighten
 }
 
-
 .filter-gradient{
     background: var(--main-gradient);
-    width: 100%;
+  
+}
+
+
+/* Page structure*/
+
+.container{
+    position: absolute;
     height: 100%;
 }
 
-.more-info, .add-event, .remove-event, .buy-event{
-    display: inline-block;
-    margin: 1em 0 1em;
-    width: 47%;
-    color: var(--btn-font-color);
-    padding: var(--btn-padding);
-    text-decoration: none;
-    border: var(--border); 
-    border-color:var(--btn-border-color);
+.navBar{
+    background: black;
+    position: relative;
+    height: 7%;
+    width: auto;
+
 }
+
+.main{
+    position: relative;
+    height: 90%;
+    width: auto;
+
+    overflow:scroll;
+}
+
+.footer{
+    font-size: 2vh;
+    color:white;
+    background-color: var(--color-salmon);
+    position: relative;
+    height: 3%;
+    width: auto;
+    z-index: 0;
+}
+
+
+
+

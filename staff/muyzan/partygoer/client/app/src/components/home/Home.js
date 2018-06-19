@@ -60,22 +60,19 @@ class Home extends Component {
 
 
         return (
-            <div>
+            <div className="container">
                
-                <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
 
-                <nav>
+                <nav className="navBar">
+                    <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
                     <Nav logout={this._logout} listAll={this._handlerSearch}/>
                 </nav>
                 
 
-                 
+                <main className="main">
+                    <PartyMap onShowEvent={this._showEvent}/>
 
-                <PartyMap onShowEvent={this._showEvent}/>
-
-
-
-                {this.state.search === true ?
+                     {this.state.search === true ?
                     <ListResults />
                     :
                     ""
@@ -89,6 +86,14 @@ class Home extends Component {
                 :
                 ""
                  }
+
+                </main>
+                 
+<footer className="footer">Coded with ♥ and 💧💧 by Zan</footer>
+                
+
+
+                
             </div>
 
         )

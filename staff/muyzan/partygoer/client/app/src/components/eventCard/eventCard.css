@@ -2,11 +2,11 @@
 
 #event-card{
     border-top-left-radius: 10px;
-border-top-right-radius: 10px;
+    border-top-right-radius: 10px;
     position: absolute;
     z-index: 10;
-
-   top:-8.5em;
+    top:-23.5em;
+    color:white;
 }
 
 #event-card img{
@@ -20,9 +20,9 @@ border-top-right-radius: 10px;
 }
 
 .card{
-   
     margin: auto;
     width: 95%;
+    height:auto;
     border-bottom: 0.425em solid;
     border-image: linear-gradient(50deg, #b9047d, #d33249);
     border-image-slice: 1;
@@ -33,6 +33,11 @@ border-top-right-radius: 10px;
     border-top-right-radius: 10px;
 
 }
+
+#event-card button{
+    margin-bottom: 1px;
+}
+
 
 #event-card .img-container{
     border-top-left-radius: 10px;
@@ -69,9 +74,8 @@ border-top-right-radius: 10px;
     font-size: 0.7em;
     position: relative;
     z-index: 5;
-    top: 2.16em;
+    top: 2.26em;
     right:-42vw;
-
 }
 
 
