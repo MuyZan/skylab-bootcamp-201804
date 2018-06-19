@@ -20,7 +20,8 @@ export default class PartyMap extends Component {
         zoom: 16,
         eventsDraw: [],
         eventTypes: null,
-        eventTypesDisplay: null
+        eventTypesDisplay: null,
+        allButton: true
     }
 
     componentWillMount() {
@@ -107,33 +108,45 @@ export default class PartyMap extends Component {
         }
     }
 
+    setAll = () => {
+
+        const { eventTypesDisplay, allButton } = this.state
+
+        const setAllDisplayTrue = () =>{
+            Object.keys(eventTypesDisplay).map((event) => {
+                eventTypesDisplay[event] = true
+                return eventTypesDisplay;
+            })
+            return this.setState({ eventTypesDisplay })
+        }
+
+        if(allButton === false) {
+            setAllDisplayTrue()
+            this.setState({allButton: true})
+            this.setState({ eventsDraw: _events })
+        }
+    }
+
     filterEvents = (eventTypeId) => {
 
-        const { eventTypesDisplay } = this.state
+        const { eventTypesDisplay, allButton } = this.state
 
-        //toggle the eventTypesDisplay [true-false] and button style
+        //FILTER BUTTONS: toggle the eventTypesDisplay [true-false] and button style
 
         if(eventTypesDisplay[eventTypeId] === true){
             eventTypesDisplay[eventTypeId] = false;
+            this.setState({allButton: false})
             this.setState({ eventTypesDisplay })
         } else {
             eventTypesDisplay[eventTypeId] = true;
             this.setState({ eventTypesDisplay })
         }
 
-        
         //check if all eventTypesDisplay are true;
 
-        function isAllDisplayTrue(objs){
-
-            /*let tmp = Object.keys(objs).filter((obj) =>{
-                return !objs[obj]
-            })
-            return tmp.length == 0 
-            */
-            
+        const isAllDisplayTrue = (objs) => {
             let isTrue = true
-            Object.keys(objs).map(function(obj){
+            Object.keys(objs).map((obj)=>{
                  if(!objs[obj]) isTrue = false;   
                  return isTrue   
             })
@@ -142,8 +155,8 @@ export default class PartyMap extends Component {
 
         let showAllTypes = isAllDisplayTrue(eventTypesDisplay)
  
-
         if(showAllTypes){
+            this.setState({allButton: true})
             this.setState({ eventsDraw: _events })
         } else {
 
@@ -159,62 +172,13 @@ export default class PartyMap extends Component {
 
             this.setState({ eventsDraw: allTypesFilteredEvents })
 
-        }
-
-
-
-        /*
-
-        const { eventTypesDisplay } = this.state
-
-        const setAllDisplayTrue = () =>{
-            Object.keys(eventTypesDisplay).map((event) => {
-                eventTypesDisplay[event] = true
-                return this.setState({ eventTypesDisplay })
-            })
-        }
-
-
-        if (eventTypesDisplay[eventTypeId] === true) {
-
-            const filteredEvents = _events.filter(event => event.eventType.includes(eventTypeId))
-
-            filteredEvents.forEach(event => _allTypesFilteredEvents.push(event))
-
-            this.setState({ eventsDraw: _allTypesFilteredEvents })
-            //setAllDisplayTrue()
-            eventTypesDisplay[eventTypeId] = false
-            this.setState({ eventTypesDisplay })
-
-        } else if (eventTypesDisplay[eventTypeId] === false) {
-
-            for (var i=0; i < _allTypesFilteredEvents.length; i++){
-       
-                //TODO: fix for events with more than one eventtype
-                if (_allTypesFilteredEvents[i].eventType['0'] === eventTypeId){
-                    console.log("ep")
-                     _allTypesFilteredEvents.splice(i,1)
-                }
-            }
-
-
-            console.log(_allTypesFilteredEvents)
-        
-            this.setState({ eventsDraw: _allTypesFilteredEvents })
-            eventTypesDisplay[eventTypeId] = true
-            this.setState({ eventTypesDisplay })
-        } else {
-            this.setState({ eventsDraw: _events })
-            setAllDisplayTrue()
-        }
-
-*/
+        }   
     }
 
 
     render() {
 
-        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay } = this.state
+        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton } = this.state
         const { onShowEvent } = this.props
         /*User position*/
         const position = [lat, lng]
@@ -250,7 +214,7 @@ export default class PartyMap extends Component {
                         :
                         ""
                     }
-                    <div onClick={() => this.filterEvents("ALL")} className="filter nonSelected">
+                    <div onClick={() => this.setAll()} className={allButton === true ? "filter":"filter nonSelected"}>
                         <img alt="" className="filter-icon" src="" placeholder="" />
                         <span className="filter-text ">ALL</span>
                     </div>
