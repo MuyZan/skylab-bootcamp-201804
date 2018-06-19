@@ -10,7 +10,6 @@
     margin: 1em 0 1em;
     width: 40%;
     color: var(--btn-font-color);
-    padding: var(--btn-padding);
     text-decoration: none;
     border: var(--border); 
     border-color:var(--btn-border-color);

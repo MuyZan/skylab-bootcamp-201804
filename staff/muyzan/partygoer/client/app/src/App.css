@@ -165,8 +165,6 @@ mix-blend-mode:lighten
 .main{
     position: relative;
     height: 90%;
-    width: auto;
-
     overflow:scroll;
 }
 

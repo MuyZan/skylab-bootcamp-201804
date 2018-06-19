@@ -20,7 +20,8 @@ export default class PartyMap extends Component {
         eventsDraw: [],
         eventTypes: null,
         eventTypesDisplay: null,
-        allButton: true
+        allButton: true,
+        readyToRender: false
     }
 
     componentWillMount() {
@@ -44,6 +45,7 @@ export default class PartyMap extends Component {
                 const { lng, lat } = this.state
                 logic.listNearbyEvents(lng, lat)
                     .then(events => {
+                        
                         this.setState({ eventsDraw: events })
                         _events = events //save a copy for manipulation
                     })
@@ -182,16 +184,25 @@ export default class PartyMap extends Component {
 
     render() {
 
-        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton } = this.state
+        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton, readyToRender} = this.state
         const { onShowEvent } = this.props
         /*User position on a map*/
         const position = [lat, lng]
 
+        const stamenTiles = "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png";
+        const attribution = '<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' ;
+
+        //setTimeout added for allow load the css before the tiles of map (prevents gray tiles)
+        setTimeout(() => {
+            this.setState({ readyToRender: true });
+          }, 70);
+
         return (
             <div id="section-map">
+
+            {readyToRender && (
                 <Map id="map-container" center={position} zoom={zoom}>
-                    <TileLayer attribution='<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-                        url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png" />
+                    <TileLayer attribution={attribution} url={stamenTiles} />
 
                     <Marker position={position} icon={userPlaceholder}>
                         <Popup >
@@ -200,11 +211,10 @@ export default class PartyMap extends Component {
                             </span>
                         </Popup>
                     </Marker>
-
                     {eventsDraw.map((event) =>
                         <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
                     )}
-                </Map>
+                </Map>)}
 
                 <section id="section-filter">
                     {eventTypes !== null && eventTypesDisplay !== null ?
