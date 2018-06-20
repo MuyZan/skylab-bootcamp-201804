@@ -29,7 +29,6 @@ eventRouter.post('/nearby-events', jsonBodyParser, jwtValidator, (req, res) => {
 
 
 eventRouter.get('/event-types', jwtValidator, (req, res) => {
-
     return logic.listEventTypes()
         .then(eventTypes => {
             res.status(200)
@@ -43,7 +42,6 @@ eventRouter.get('/event-types', jwtValidator, (req, res) => {
 
 
 eventRouter.get('/events', jwtValidator, (req, res) => {
-
     return logic.listEvents()
         .then(events => {
             res.status(200)
@@ -56,9 +54,7 @@ eventRouter.get('/events', jwtValidator, (req, res) => {
  })
 
  eventRouter.get('/event/:eventId', jwtValidator, (req, res) => {
-
     const { params: { eventId } } = req
-
     return logic.retrieveEvent(eventId)
         .then(event => {
             res.status(200)
@@ -69,8 +65,6 @@ eventRouter.get('/events', jwtValidator, (req, res) => {
             res.json({ status: 'KO', error: message })
         })
  })
-
-
 
 module.exports = eventRouter;
 

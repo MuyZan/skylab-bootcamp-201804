@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './landing.css'
 
-class Landing extends Component {
+export default class Landing extends Component {
 
   constructor() {
     super()
@@ -11,50 +11,28 @@ class Landing extends Component {
       username: "",
       password: "",
       userId: "",
-
-
     }
   }
 
-
-
-
-  _handlerSignIn = () => {
-    this.props.history.push("/home")
-  }
-
-
+  _handlerSignIn = () => this.props.history.push("/home")
+  
   render() {
     return (
-      <div> 
+      <div>
 
-      <section id="landing-carrousel">HERE A CARROUSEL</section>
+        <section id="landing-carrousel">HERE A CARROUSEL</section>
 
-<section id="landing-buttons">
-  <Link to={`/register`} style={{ textDecoration: 'none' }}> <button> Sign up</button></Link>
+        <section id="landing-buttons">
 
-  <h6>Do you already have an account?</h6>
-  <Link to={`/login`} style={{ textDecoration: 'none' }}><button>Sign In</button></Link>
-</section>
+          <Link to={`/register`} style={{ textDecoration: 'none' }}><button>Sign up</button></Link>
 
-      
+          <h6>Do you already have an account?</h6>
 
-
-
+          <Link to={`/login`} style={{ textDecoration: 'none' }}><button>Sign In</button></Link>
+          
+        </section>
 
       </div>
     );
   }
 }
-
-export default Landing
-
-
-/*
-
-
-
-
-
-
-*/

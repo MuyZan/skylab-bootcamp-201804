@@ -2,21 +2,15 @@ import React, { Component } from 'react'
 import logic from '../../../logic'
 import markers from './../markers'
 import { toast } from 'react-toastify'
-
 import placeholder from './../../../static/images/icons/rock.svg'
 
-
 const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
-
-
-
 export default class Filterbox extends Component {
 
     state = {
         allButton: true,
         eventTypesDisplay: null
     }
-
 
     componentWillMount() {
 

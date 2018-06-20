@@ -1,87 +1,71 @@
-
-
-#event-card{
+#event-card, 
+#event-card img, 
+#event-card .top-layer-filter, 
+#event-card .bg-filter, 
+#event-card .img-container, 
+.card, 
+.card-title {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+#event-card {
     position: absolute;
     z-index: 10;
-    top:-23.5em;
-    color:white;
+    top: -23.5em;
+    color: white;
 }
 
-#event-card img{
-border-top-left-radius: 10px;
-border-top-right-radius: 10px;
-}
-
-#event-card .top-layer-filter, #event-card .bg-filter {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.card{
+.card {
     margin: auto;
     width: 95%;
-    height:auto;
+    height: auto;
     border-bottom: 0.425em solid;
     border-image: linear-gradient(50deg, #b9047d, #d33249);
     border-image-slice: 1;
-    padding-bottom:2em;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    padding-bottom: 2em;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background: var(--main-bg-gradient);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
 }
 
-#event-card button{
+#event-card button {
     margin-bottom: 1px;
 }
 
-
-#event-card .img-container{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-
+#event-card .img-container {
     min-height: 13rem;
     max-height: 13rem;
 }
 
-.card h3{
+.card h3 {
     padding: 0.78em;
-
     letter-spacing: 0.15em;
 }
 
-.card-title{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    /*background:var(--color-salmon);*/
+.card-title, .closeCard {
+    position: relative;
+}
+
+.card-title {
     background: rgba(0, 0, 0, 0.616);
     font-size: 1.2em;
     z-index: 2;
-    position: relative;
-    top:-8em;
+    top: -8em;
 }
 
-.closeCard{
-    border-radius: 0px;
-    text-align: right;
-    background:black;
-    padding:0.5em;
+.closeCard {
     border: none;
+    border-radius: 0px;
+    background: black;
     color: var(--salmon);
+    padding: 0.5em;
+    text-align: right;
     font-size: 0.7em;
-    position: relative;
     z-index: 5;
     top: 2.26em;
-    right:-42vw;
+    right: -42vw;
 }
 
-
-.card-content{
+.card-content {
     margin-top: -2.2em;
 }
-
-
-

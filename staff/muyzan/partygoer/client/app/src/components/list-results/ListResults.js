@@ -1,69 +1,32 @@
 import React, { Component } from 'react'
-import logic from '../../logic'
 import { toast } from 'react-toastify'
+import logic from '../../logic'
 import 'react-toastify/dist/ReactToastify.css'
 
-
-
-class ListResults extends Component {
+export default class ListResults extends Component {
 
     constructor() {
         super()
-
         this.state = {
             events: []
         }
     }
 
-    componentWillMount() {  
+    componentDidMount() {  
         
         logic.listEvents()
-        .then(events => {
-            this.setState({ events })
-        })
+        .then(events =>  this.setState({ events }))
         .catch(err => toast.error(`Ups! Something happens: ${err}`))
     }
 
-
     render() {
+        const { events } = this.state
         return (
-
             <div>
                 <h2>Events</h2>
-                <ul>{this.state.events.map(event => {
-                    return(<li key={event._id}>{event.name}<br/>{event.description}<br/><button>Add Event</button></li>)
-                })}
+                <ul>{events.map(event => <li key={event._id}>{event.name}<br/>{event.description}<br/><button>Add Event</button></li>)}
                 </ul>
             </div>
         )
     }
 }
-
-export default ListResults;
-
-
-/*
-
-
-componentDidMount() {
-        document.body.style.background = 'white'
-      
-        logic.listCategories()
-            .then(categories => this.setState({ categories }))
-    }
-    render() {
-        return (
-            <main>
-                <Navbar />
-                <h2>These are my categories</h2>
-                <ul>{this.state.categories.map(category => {
-                    return(<li key={category._id}>{category.name}</li>)
-                })}
-                </ul>
-            </main>
-        )
-    }
-}
-
-
-*/

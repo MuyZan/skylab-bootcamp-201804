@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
 import './register.css'
-
-class Register extends Component {
+export default class Register extends Component {
 
   constructor() {
     super()
@@ -18,47 +17,24 @@ class Register extends Component {
     }
   }
 
-  _handlerWriteUsername = e => {
-    this.setState({ username: e.target.value })
-  }
-
-  _handlerWriteEmail = e => {
-    this.setState({ email: e.target.value })
-  }
-
-  _handlerWritePassword = e => {
-    this.setState({ password: e.target.value })
-  }
-
-
-
-  _handlerWriteName = e => {
-    this.setState({ name: e.target.value })
-  }
-
-  _handlerWriteSurname = e => {
-    this.setState({ surname: e.target.value })
-  }
-
-
+  _handlerWriteUsername = e => this.setState({ username: e.target.value })
+  
+  _handlerWriteEmail = e => this.setState({ email: e.target.value })
+  
+  _handlerWritePassword = e => this.setState({ password: e.target.value })
+  
+  _handlerWriteName = e => this.setState({ name: e.target.value })
+  
+  _handlerWriteSurname = e => this.setState({ surname: e.target.value })
+  
   _handlerRegister = e => {
+
     e.preventDefault();
-
-    let username = this.state.username;
-    let email = this.state.email;
-    let password = this.state.password;
-    let name = this.state.name;
-    let surname = this.state.surname;
-
-
+    const { username, email, password, name, surname } = this.state
 
     logic.registerUser(username, email, password, name, surname)
-      .then(() => {
-        this.props.history.push("/login")
-      })
-  
+      .then(() => this.props.history.push("/login"))
   }
-
 
   render() {
     return (
@@ -84,12 +60,7 @@ class Register extends Component {
 
           <button type="submit">Register!</button>
         </form>
-
-
-
       </div>
     )
   }
 }
-
-export default Register

@@ -24,7 +24,7 @@ export default class PartyMap extends Component {
         readyToRender: false
     }
 
-    componentWillMount() {
+    componentDidMount() {
 
         /*Checks if geolocation exists*/
 
@@ -45,7 +45,6 @@ export default class PartyMap extends Component {
                 const { lng, lat } = this.state
                 logic.listNearbyEvents(lng, lat)
                     .then(events => {
-                        
                         this.setState({ eventsDraw: events })
                         _events = events //save a copy for manipulation
                     })
@@ -71,11 +70,6 @@ export default class PartyMap extends Component {
 
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
-    }
-
-
-    componentWillUnmount() {
-
     }
 
     /*Switch icon according to the type of party */
@@ -177,44 +171,41 @@ export default class PartyMap extends Component {
             })
 
             this.setState({ eventsDraw: allTypesFilteredEvents })
-
         }
     }
 
 
     render() {
 
-        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton, readyToRender} = this.state
+        const { lng, lat, zoom, eventsDraw, eventTypes, eventTypesDisplay, allButton, readyToRender } = this.state
         const { onShowEvent } = this.props
         /*User position on a map*/
         const position = [lat, lng]
 
         const stamenTiles = "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png";
-        const attribution = '<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>' ;
+        const attribution = '<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
-        //setTimeout added for allow load the css before the tiles of map (prevents gray tiles)
-        setTimeout(() => {
-            this.setState({ readyToRender: true });
-          }, 70);
+        //setTimeout added for allow to load the css before the tiles of map (prevents gray tiles)
+        setTimeout(() => this.setState({ readyToRender: true }), 170);
 
         return (
             <div id="section-map">
 
-            {readyToRender && (
-                <Map id="map-container" center={position} zoom={zoom}>
-                    <TileLayer attribution={attribution} url={stamenTiles} />
+                {readyToRender && (
+                    <Map id="map-container" center={position} zoom={zoom}>
+                        <TileLayer attribution={attribution} url={stamenTiles} />
 
-                    <Marker position={position} icon={userPlaceholder}>
-                        <Popup >
-                            <span >
-                                {logic.setUsername()}: Let's party!
+                        <Marker position={position} icon={userPlaceholder}>
+                            <Popup >
+                                <span >
+                                    {logic.setUsername()}: Let's party!
                             </span>
-                        </Popup>
-                    </Marker>
-                    {eventsDraw.map((event) =>
-                        <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
-                    )}
-                </Map>)}
+                            </Popup>
+                        </Marker>
+                        {eventsDraw.map((event) =>
+                            <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
+                        )}
+                    </Map>)}
 
                 <section id="section-filter">
                     {eventTypes !== null && eventTypesDisplay !== null ?

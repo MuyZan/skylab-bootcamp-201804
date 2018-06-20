@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from "react-router-dom"
-import './App.css';
-import logic from './logic'
-
 import { Home, Landing, Login, Register } from './components'
-
+import logic from './logic'
+import './App.css';
 import "./components/landing/landing.css"
 import "./components/home/home.css"
-
-
 class App extends Component {
   constructor(){
     super()
@@ -18,26 +14,16 @@ class App extends Component {
     }
   }
    
-  
   onLogin = () => {
     this.setState({ authenticated: true })
-
-    this.props.history.push('/home')  }
-
-  onLogout = () => {
-    this.setState({ authenticated: false })
+    this.props.history.push('/home')  
   }
 
-  noAuth = () => {
-    this.props.history.push('/')
+  onLogout = () => this.setState({ authenticated: false })
 
-  }
-
-
-
+  noAuth = () => this.props.history.push('/')
+  
   render() {
-
-
     return (
       <Switch>
 
@@ -48,11 +34,7 @@ class App extends Component {
 
       </Switch>
     )
-
   }
 }
 
 export default withRouter(App);
-
-
-

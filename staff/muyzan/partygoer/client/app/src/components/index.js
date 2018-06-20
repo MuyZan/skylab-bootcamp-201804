@@ -3,7 +3,6 @@ import Landing from './landing/landing'
 import Login from './login/login'
 import Register from './register/register'
 
-
 export {
     Home,
     Landing,

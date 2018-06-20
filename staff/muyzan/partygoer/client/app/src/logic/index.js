@@ -6,7 +6,6 @@ const logic = {
     _userId: null,
     _username: null,
 
-
     setUserId(userId){
         if(userId){
             this._userId = userId
@@ -18,7 +17,6 @@ const logic = {
     setUsername(username){
         if(username){
             this._username = username;
-
             return
         }
         return this._username
@@ -52,7 +50,6 @@ const logic = {
         return partygoerApi.retrieveUser(this.setUserId())
         .then(userData => userData )
     },
-
 
     updateProfile(userId, username, name, surname, email, password, newPassword, photo){
         return partygoerApi.updateProfile(userId, username, name, surname, email, password, newPassword, photo)
@@ -93,7 +90,6 @@ const logic = {
     retrieveEvent(eventId){
         return partygoerApi.retrieveEvent(eventId)
         .then(event => event)
-
     },
 
     userPosition(){
@@ -101,11 +97,6 @@ const logic = {
     },
 
     shareEvent() { },
-
-
-
-
 }
-
 
 module.exports = logic

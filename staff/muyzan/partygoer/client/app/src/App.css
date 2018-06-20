@@ -1,16 +1,16 @@
 /*********|||| VARIABLES |||||*********/
 
-:root { 
-    --main-bg-gradient: linear-gradient(80deg, #d33249,  #19016f);
+:root {
+    --main-bg-gradient: linear-gradient(80deg, #d33249, #19016f);
     --main-gradient: linear-gradient(60deg, #19016f, #d33249);
-    --main-gradient-hover:linear-gradient(60deg, #2d0aac, #ee6478);
+    --main-gradient-hover: linear-gradient(60deg, #2d0aac, #ee6478);
     --border: 0.265em solid;
     --btn-font-color: white;
     --btn-color: #d33249;
-    --btn-border-color:#e76175;
+    --btn-border-color: #e76175;
     --btn-hover-color: #e74860;
     --btn-hover-border-color: white;
-    --btn-padding:1em 2em;
+    --btn-padding: 1em 2em;
     --intro-img-height: 450px;
     --color-blue: #19016f;
     --color-salmon: #d33249;
@@ -18,79 +18,75 @@
 
 /*********|||| CORE STYLES|||||*********/
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html, body {
-    background-color:white;
+    background-color: white;
     background: var(--main-bg-gradient);
-    font-family: 'Roboto', sans-serif;   
+    font-family: 'Roboto', sans-serif;
     font-size: 1.1em;
     line-height: 1.5;
     text-align: center;
     height: 100%;
+    width: 100%
 }
 
 h1, h2, h3, p {
     padding: 1em 0 1em;
 }
 
-ul{
-    list-style:none;
-    margin:0;
-    padding:0;
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-p{
+p {
     padding-left: 1em;
     padding-right: 1em;
     letter-spacing: 0.1em;
 }
 
-input:focus,
-select:focus,
-textarea:focus,
-button:focus {
+input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
 }
 
-button{
+button {
     border-radius: 0.5em;
     cursor: pointer;
     text-transform: uppercase;
     font-weight: 700;
     font-size: 0.7em;
     letter-spacing: 1px;
-    background: var(--btn-color)   
+    background: var(--btn-color)
 }
 
-button:hover{
+button:hover {
     border-color: var(--btn-hover-border-color);
     background: var(--btn-hover-color);
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-button:active{
-   transform: translateY(0.3em)
+button:active {
+    transform: translateY(0.3em)
 }
-
 
 /*********|||| COMMON BUTTONS |||||*********/
 
-.more-info, .add-event, .remove-event, .buy-event{
+.more-info, .add-event, .remove-event, .buy-event {
     display: inline-block;
     margin: 1em 0 1em;
     width: 47%;
     color: var(--btn-font-color);
     padding: var(--btn-padding);
     text-decoration: none;
-    border: var(--border); 
-    border-color:var(--btn-border-color);
+    border: var(--border);
+    border-color: var(--btn-border-color);
 }
-
 
 /*IMAGE AND IMAGE CONTAINERS*/
 
@@ -100,13 +96,13 @@ img {
     height: auto;
 }
 
-.img-container{
+.img-container {
     min-height: 15rem;
     max-height: 20rem;
     display: flex;
 }
 
-.img-container img{
+.img-container img {
     object-fit: cover;
     max-width: 100%;
     -webkit-filter: grayscale(50%) contrast(1);
@@ -122,10 +118,9 @@ img {
 over div bg-filter(lights) and a div top-layer-filter (an absolute
 position block z-index top) coloring the darkness spots*/
 
-
-.bg-filter{
+.bg-filter {
     background-color: rgb(241, 239, 211);
-    z-index:1;
+    z-index: 1;
     position: relative;
 }
 
@@ -134,50 +129,44 @@ position block z-index top) coloring the darkness spots*/
     height: 100%;
 }
 
-.top-layer-filter{
-background: var(--main-gradient);
-position:absolute;
-z-index: 3;
-mix-blend-mode:lighten
-}
-
-.filter-gradient{
+.top-layer-filter {
     background: var(--main-gradient);
-  
+    position: absolute;
+    z-index: 3;
+    mix-blend-mode: lighten
 }
 
+.filter-gradient {
+    background: var(--main-gradient);
+}
 
 /* Page structure*/
 
-.container{
+.container {
     position: absolute;
     height: 100%;
+    width: 100%
 }
 
-.navBar{
+.navBar {
     background: black;
     position: relative;
     height: 7%;
     width: auto;
-
 }
 
-.main{
+.main {
     position: relative;
     height: 90%;
-    overflow:scroll;
+    overflow: scroll;
 }
 
-.footer{
+.footer {
     font-size: 2vh;
-    color:white;
+    color: white;
     background-color: var(--color-salmon);
     position: relative;
     height: 3%;
     width: auto;
     z-index: 0;
 }
-
-
-
-

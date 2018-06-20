@@ -1,10 +1,9 @@
-#landing-carrousel{
+#landing-carrousel {
   min-height: var(--intro-img-height);
-  text-shadow: 
-  0px 1px rgb(148, 129, 178);
+  text-shadow: 0px 1px rgb(148, 129, 178);
 }
 
-#landing-buttons button{
+#landing-buttons button {
   display: block;
   width: 70%;
   margin: 1em auto;
@@ -12,17 +11,17 @@
   color: var(--btn-font-color);
   border: var(--border);
   border-image: var(--main-gradient);
-  border-image-slice:1;
+  border-image-slice: 1;
   padding: var(--btn-padding);
   text-decoration: none;
 }
 
-#landing-buttons button {
-  background:var(--main-gradient-hover);
-  border: var(--border); 
+#landing-buttons button:hover {
+  background: var(--main-gradient-hover);
+  border: var(--border);
   border-color: var(--btn-hover-border-color)
 }
 
-link{
+link {
   text-decoration: none;
 }
