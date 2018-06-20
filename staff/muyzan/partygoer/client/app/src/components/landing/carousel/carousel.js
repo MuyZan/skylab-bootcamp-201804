@@ -17,22 +17,24 @@ export default class Carousel extends Component {
         slidesToShow: 1,
         slidesToScroll: 1,
         adaptiveHeight: false,
+        autoplay: true,
+        autoplaySpeed: 3500,
     
     };
     return (
       <Slider {...settings}>
         <div>
           <img src={one}/>
-          <h3>Do you wanna party?</h3>
+          <h3><strong>Hey!</strong><br/> Do you wanna <strong>party?</strong></h3>
         </div>
         <div>
         <img src={two}/>
           <h3>
-partygoer finds the nearbiest parties for you</h3>
+<strong>partygoer</strong> finds the nearbiest parties for you</h3>
         </div>
         <div>
         <img src={three}/>
-          <h3>Just sign up for free and get ready for fun.</h3>
+          <h3>Just sign up for <strong>free</strong> and get ready for <strong>fun.</strong></h3>
         </div>
       </Slider>
     );

@@ -187,13 +187,15 @@ position block z-index top) coloring the darkness spots*/
     overflow: scroll;
 }
 
-.main-landing, .main-register{
+.main-landing, .main-register, .main-login{
     color:white;
     letter-spacing: 0.1em;
     position: relative;
     height: 82%;
     overflow: scroll;
 }
+
+
 
 .footer {
     font-size: 2vh;

@@ -40,7 +40,7 @@ export default class Landing extends Component {
         </div>
 
 
-        <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by Zan</footer>
+        <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by <strong>Zan</strong></footer>
 
       </div>
     );

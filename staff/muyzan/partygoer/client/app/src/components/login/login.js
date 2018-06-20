@@ -45,6 +45,7 @@ export default class Login extends Component {
             <div className="container">
              <header className="header"><span className="title">partygoer</span><img className="logo" src={logoMan} /></header>
 
+            <div className="main-login">
                 <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
 
                     <h1>Sign in</h1>
@@ -57,7 +58,7 @@ export default class Login extends Component {
                 </Animated>
 
                 <ToastContainer autoClose={3000} transition={Slide} toastClassName='red-toast-container' />
-            
+            </div>
                 <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by Zan</footer>
 
             </div>

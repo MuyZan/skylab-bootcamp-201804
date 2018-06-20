@@ -10,33 +10,35 @@ align-self: center;
 font-size: 2em
 }
 
-
-
-
 #landing h6{
-  padding-top: 1.5em;
-  font-family: 'Nunito', sans-serif;
+padding-top: 1em;
+font-family: 'Nunito', sans-serif;
 font-weight: 300;
 }
 
 #landing-carrousel {
-  min-height: 13em;
+  min-height: 50%;
+  max-height: 50%;
 }
 
 #landing-carrousel img{
-  width: 7em;
+  height: 8em;
   margin: auto;
 }
 
 .slick-slider{
-  margin-top: 2em;
+  margin-top: 1em;
   padding-left: 1em;
   padding-right: 1em;
   width: auto;
 }
 
 .slick-slider h3{
- margin-top: 0.5em;
+ margin-top: 0.1em;
+ font-size: 1em;
+ padding-right: 0.3em;
+ padding-left: 0.3em;
+font-weight: 300;
 }
 
 .slick-slider ul{
@@ -45,14 +47,18 @@ font-weight: 300;
 
 .slick-list{
 padding-bottom:0px;
+height:12%;
 }
 
 .slick-dots{
 color:white;
 width: 100%;
+bottom:-0.5em;
 }
 #landing-buttons{
-  margin-top:2.8em;
+  margin-top:1.9em;
+  overflow: scroll;
+  max-height: 50%;
 }
 
 #landing-buttons button {
