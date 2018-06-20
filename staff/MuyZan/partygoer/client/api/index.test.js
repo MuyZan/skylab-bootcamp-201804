@@ -26,10 +26,7 @@ partygoerApi.url = API_URL
 
 
 describe('api client --- [Partygoer]', () => {
-    let userData1, userData2, userData3, promoter1, promoter2, promoter3
-    const dummyUserId = '123456781234567812345678'
-    const dummyPromoterId = '123456781234567812345678'
-    const dummyEventId = '123456781234567812345678'
+
 
     before(() => mongoose.connect(DB_URL))
 
@@ -72,7 +69,25 @@ describe('api client --- [Partygoer]', () => {
             })
         })   
 
+        it('should fail on no username', () =>
+            partygoerApi.registerUser()
+                .catch(({ message }) => expect(message).to.equal('username is not a string'))
+        )
 
+        it('should fail on empty username', () =>
+        partygoerApi.registerUser('')
+                .catch(({ message }) => expect(message).to.equal('username is empty or blank'))
+        )
+
+        it('should fail on blank username', () =>
+        partygoerApi.registerUser('     ')
+            .catch(({ message }) => expect(message).to.equal('username is empty or blank'))
+        )
+
+        it('should fail on no user email', () =>
+            partygoerApi.registerUser(jackData.name)
+                .catch(({ message }) => expect(message).to.equal('user surname is not a string'))
+        )
 
 
 

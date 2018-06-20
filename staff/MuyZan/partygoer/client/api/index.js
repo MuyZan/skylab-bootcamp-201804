@@ -13,7 +13,6 @@ const partygoerApi = {
         return this._token
     },
 
-
     /**
      * 
      */
@@ -41,7 +40,6 @@ const partygoerApi = {
     authenticateUser(username, password) {
         return Promise.resolve()
             .then(() => {
-
                 return axios.post(`${this.url}/auth`, { username, password })
                     .then(({ status, data }) => {
                         if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
@@ -68,7 +66,6 @@ const partygoerApi = {
     retrieveUser(userId) {
         return Promise.resolve()
             .then(() => {
-
                 return axios.get(`${this.url}/users/${userId}`, { headers: { authorization: `Bearer ${this.token()}` } })
                     .then(({ status, data }) => {
                         if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
@@ -87,14 +84,9 @@ const partygoerApi = {
             })
     },
 
-
-
-
-
     updateUser(userId, username, name, surname, email, password, newPassword, photo) {
         return Promise.resolve()
             .then(() => {
-
                 return axios.patch(`${this.url}/users/${userId}`, { username, name, surname, email, password, newPassword, photo }, { headers: { authorization: `Bearer ${this.token()}` } })
                     .then(({ status, data }) => {
                         if (status !== 200 || data.status !== 'OK') throw Error(`unexpected response status ${status} (${data.status})`)
@@ -249,12 +241,8 @@ const partygoerApi = {
                     } else throw err
                 })
                 
-            })
-            
+            })      
     },
-
-
-    
 
 }
 
