@@ -6,3 +6,65 @@
 .red-toast-container{
     background: rgb(170, 33, 33)
 }
+
+
+
+.main-login input, .main-login label{
+    display:inline-block;
+    width: 80%;
+}
+    
+.main-login form{
+    padding-top:4em;
+    width: 85%;
+    display: inline-block;
+
+}
+
+.main-login button{
+    display: inline-block;
+    width: 80%;
+}
+
+.main-login h3{
+    background: rgba(0, 0, 0, 0.432);
+    padding: 0.6em;
+}
+
+.main-login label{
+    font-size: 0.7em;
+    text-align: left;
+    font-weight: 300;
+}
+
+
+.main-login input{
+    padding-left:1em;
+    font-size: 0.7em;
+    height: 3.2em;
+    display: block;
+    margin: 1em auto;
+    background: rgb(71, 5, 71);
+    color: var(--btn-font-color);
+    border:none;
+    border-radius: 0.3em;
+    background: rgb(217, 218, 221)
+
+}
+
+
+.main-login input, select, textarea{
+    color: var(--color-salmon);
+    font-weight: bold;
+
+}
+.main-login button {
+    display: block;
+    margin: 3em auto;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  
+  .main-login button:hover {
+    border: none;
+  }

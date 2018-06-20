@@ -48,10 +48,14 @@ export default class Login extends Component {
             <div className="main-login">
                 <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
 
-                    <h1>Sign in</h1>
+                    <h3>Sign in</h3>
                     <form onSubmit={this._handlerLogin}>
-                        <input required type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} />
-                        <input required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword} />
+                    <label htmlFor="username"> Username:</label>
+
+                        <input id="username" required type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} />
+                        <label htmlFor="password"> Password:</label>
+
+                        <input id="password" required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword} />
                         <button type="submit">Login</button>
                     </form>
 

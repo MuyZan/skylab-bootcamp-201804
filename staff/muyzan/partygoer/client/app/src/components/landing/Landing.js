@@ -34,7 +34,7 @@ export default class Landing extends Component {
 
             <h6>Do you already have an account?</h6>
 
-            <Link to={`/login`} style={{ textDecoration: 'none' }}><button>Sign In</button></Link>
+            <Link to={`/login`} style={{ textDecoration: 'none' }}><button className="line-btn">Sign In</button></Link>
 
           </section>
         </div>
