@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import logic from '../../logic'
 import './register.css'
+
+const logoMan = require('./../../static/images/logo/logo.svg')
+
 export default class Register extends Component {
 
   constructor() {
@@ -38,9 +41,11 @@ export default class Register extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+        <header className="header"><span className="title">partygoer</span><img className="logo" src={logoMan} /></header>
 
-        <h1>Register</h1>
+      <div className="main-register">
+        <h3 className="">Register for free</h3>
         <form onSubmit={this._handlerRegister}>
 
           <label htmlFor="inputUsername"> Username:</label>
@@ -60,6 +65,10 @@ export default class Register extends Component {
 
           <button type="submit">Register!</button>
         </form>
+
+      </div>
+      <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by Zan</footer>
+
       </div>
     )
   }

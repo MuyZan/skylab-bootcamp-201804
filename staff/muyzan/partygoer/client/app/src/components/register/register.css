@@ -1,0 +1,66 @@
+
+.main-register input, .main-register label{
+    display:inline-block;
+    width: 80%;
+}
+    
+.main-register form{
+    padding-top:1em;
+    width: 85%;
+    display: inline-block;
+
+}
+
+.main-register button{
+    display: inline-block;
+    width: 80%;
+}
+
+.main-register h3{
+    background: rgba(0, 0, 0, 0.61);
+    padding: 0.6em;
+    
+}
+
+.main-register label{
+    font-size: 0.7em;
+    text-align: left;
+    font-weight: 300;
+}
+
+
+.main-register input{
+    padding-left:1em;
+    font-size: 0.7em;
+    height: 3.2em;
+    display: block;
+    margin: 1em auto;
+    background: rgb(71, 5, 71);
+    color: var(--btn-font-color);
+    border:none;
+    border-radius: 0.3em;
+    background: rgb(217, 218, 221)
+
+}
+
+
+.main-register input, select, textarea{
+    color: var(--color-salmon);
+    font-weight: bold;
+
+}
+.main-register button {
+    display: block;
+    width: 80%;
+    margin: 3em auto;
+    background: var(--main-gradient);
+    color: var(--btn-font-color);
+    border: none;
+    padding: var(--btn-padding);
+    text-decoration: none;
+  }
+  
+  .main-register button:hover {
+    background: var(--main-gradient-hover);
+    border: none;
+  }

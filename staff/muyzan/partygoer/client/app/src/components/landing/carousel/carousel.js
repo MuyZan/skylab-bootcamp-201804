@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Slider from "react-slick";
 
-const one = require('/Users/Zan/Desktop/SKYLAB/skylab-collab/skylab-bootcamp-201804/staff/muyzan/partygoer/client/app/src/static/images/carousel/011-happy.svg')
+const one = require('./../../../static/images/carousel/011-happy.svg')
+const two = require('./../../../static/images/carousel/061-route.svg')
 
+const three = require('./../../../static/images/carousel/039-fun.svg')
 
 
 
@@ -14,7 +16,7 @@ export default class Carousel extends Component {
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        adaptiveHeight: true,
+        adaptiveHeight: false,
     
     };
     return (
@@ -24,13 +26,13 @@ export default class Carousel extends Component {
           <h3>Do you wanna party?</h3>
         </div>
         <div>
-        <img src=""/>
+        <img src={two}/>
           <h3>
 partygoer finds the nearbiest parties for you</h3>
         </div>
         <div>
-        <img src=""/>
-          <h3>SLIDE</h3>
+        <img src={three}/>
+          <h3>Just sign up for free and get ready for fun.</h3>
         </div>
       </Slider>
     );

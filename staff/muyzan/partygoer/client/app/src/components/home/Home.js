@@ -10,6 +10,8 @@ import './../map/map.css'
 import './home.css'
 import 'react-toastify/dist/ReactToastify.css'
 
+
+
 export default class Home extends Component {
 
     constructor() {

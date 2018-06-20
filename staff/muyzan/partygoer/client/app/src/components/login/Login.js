@@ -5,6 +5,8 @@ import logic from '../../logic'
 import './login.css'
 import 'react-toastify/dist/ReactToastify.css'
 
+const logoMan = require('./../../static/images/logo/logo.svg')
+
 export default class Login extends Component {
 
     constructor() {
@@ -40,7 +42,9 @@ export default class Login extends Component {
     render() {
         const { username, password } = this.state
         return (
-            <div className="login-form">
+            <div className="container">
+             <header className="header"><span className="title">partygoer</span><img className="logo" src={logoMan} /></header>
+
                 <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
 
                     <h1>Sign in</h1>
@@ -53,6 +57,9 @@ export default class Login extends Component {
                 </Animated>
 
                 <ToastContainer autoClose={3000} transition={Slide} toastClassName='red-toast-container' />
+            
+                <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by Zan</footer>
+
             </div>
         )
     }

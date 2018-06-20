@@ -43,9 +43,16 @@ font-weight: 300;
   left:0
  }
 
+.slick-list{
+padding-bottom:0px;
+}
+
 .slick-dots{
 color:white;
 width: 100%;
+}
+#landing-buttons{
+  margin-top:2.8em;
 }
 
 #landing-buttons button {
