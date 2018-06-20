@@ -35,8 +35,11 @@ html, body {
     width: 100%
 }
 
+
+
 h1, h2, h3, p {
     padding: 1em 0 1em;
+    font-family: 'Nunito', sans-serif;
 }
 
 ul {
@@ -49,6 +52,8 @@ p {
     padding-left: 1em;
     padding-right: 1em;
     letter-spacing: 0.1em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
 }
 
 input:focus, select:focus, textarea:focus, button:focus {
@@ -62,7 +67,11 @@ button {
     font-weight: 700;
     font-size: 0.7em;
     letter-spacing: 1px;
-    background: var(--btn-color)
+    background: var(--btn-color);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+
 }
 
 button:hover {
@@ -73,6 +82,17 @@ button:hover {
 
 button:active {
     transform: translateY(0.3em)
+}
+
+.logo{
+    width: 2.6em;
+    color: white;
+}
+
+.title{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: white;
 }
 
 /*********|||| COMMON BUTTONS |||||*********/
@@ -155,11 +175,28 @@ position block z-index top) coloring the darkness spots*/
     width: auto;
 }
 
+.header{
+    position: relative;
+    height: 15%;
+    width: auto;
+}
+
 .main {
     position: relative;
     height: 90%;
     overflow: scroll;
 }
+
+.main-landing{
+    color:white;
+    letter-spacing: 0.1em;
+    position: relative;
+    height: 82%;
+    overflow: scroll;
+}
+
+
+    
 
 .footer {
     font-size: 2vh;

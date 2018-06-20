@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
 import Slider from "react-slick";
 
+const one = require('/Users/Zan/Desktop/SKYLAB/skylab-collab/skylab-bootcamp-201804/staff/muyzan/partygoer/client/app/src/static/images/carousel/011-happy.svg')
+
+
+
+
 export default class Carousel extends Component {
   render() {
     var settings = {
@@ -15,12 +20,16 @@ export default class Carousel extends Component {
     return (
       <Slider {...settings}>
         <div>
-          <h3>HERE</h3>
+          <img src={one}/>
+          <h3>Do you wanna party?</h3>
         </div>
         <div>
-          <h3>A</h3>
+        <img src=""/>
+          <h3>
+partygoer finds the nearbiest parties for you</h3>
         </div>
         <div>
+        <img src=""/>
           <h3>SLIDE</h3>
         </div>
       </Slider>
