@@ -40,13 +40,13 @@ export default class Login extends Component {
     render() {
         const { username, password } = this.state
         return (
-            <div>
+            <div className="login-form">
                 <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
 
                     <h1>Sign in</h1>
                     <form onSubmit={this._handlerLogin}>
-                        <input type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} />
-                        <input type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword} />
+                        <input required type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} />
+                        <input required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword} />
                         <button type="submit">Login</button>
                     </form>
 

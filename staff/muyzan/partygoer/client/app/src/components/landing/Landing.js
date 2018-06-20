@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Carousel from './carousel/carousel'
 import './landing.css'
 
 export default class Landing extends Component {
@@ -20,7 +21,7 @@ export default class Landing extends Component {
     return (
       <div>
 
-        <section id="landing-carrousel">HERE A CARROUSEL</section>
+        <section id="landing-carrousel"><Carousel/></section>
 
         <section id="landing-buttons">
 
