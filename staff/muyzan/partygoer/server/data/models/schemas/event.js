@@ -2,7 +2,7 @@
 
 const { Schema, Schema: { ObjectId }, SchemaTypes: { Decimal128 } } = require('mongoose')
 const Ticket = require('./ticket')
-const TicketType = require('./ticketType')
+const TicketType = require('./ticket-type')
 
 module.exports = new Schema({
 

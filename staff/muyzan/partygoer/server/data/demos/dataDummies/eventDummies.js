@@ -11,7 +11,7 @@ const addSixHours = new Date(moment().add(6, 'h').format('L'))
 const addNineHours = new Date(moment().add(9, 'h').format('L'))
 const subSixHours = new Date(moment().subtract(6, 'h').format('L'))
 
-const { mongoose, models: { Event, Promoter } } = require('../.')
+const { mongoose, models: { Event, Promoter } } = require('../../.')
 const scriptRunner = require('./../dataScripts/scriptRunner')
 
 const { promoterData1, promoterData2, promoterData3 } = require('./promoterDummies.js')

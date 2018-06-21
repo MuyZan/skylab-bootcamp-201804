@@ -1,7 +1,7 @@
 'use strict'
 
 const { Schema, Schema: { ObjectId } } = require('mongoose')
-const PaymentMethod = require('./paymentMethod')
+const PaymentMethod = require('./payment-method')
 
 module.exports = new Schema({
 

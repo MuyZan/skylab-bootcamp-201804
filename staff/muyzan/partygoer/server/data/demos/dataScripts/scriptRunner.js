@@ -1,7 +1,7 @@
 'use strict'
 
 require('dotenv').config()
-const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType } } = require('./../.')
+const { mongoose, models: { User, Event, Order, Promoter, MusicStyle, EventType } } = require('./../../.')
 const { env: { DB_URL } } = process;
 const url = DB_URL;
 

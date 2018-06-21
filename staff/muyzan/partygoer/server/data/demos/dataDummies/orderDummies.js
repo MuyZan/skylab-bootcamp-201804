@@ -7,7 +7,7 @@ const moment = require('moment')
 const { env: { DB_URL } } = process;
 const url = DB_URL;
 
-const { mongoose, models: { Order, User } } = require('../.');
+const { mongoose, models: { Order, User } } = require('../../.');
 const scriptRunner = require('./../dataScripts/scriptRunner')
 
 scriptRunner.dropCollection(User)

@@ -8,7 +8,7 @@
  * 
  */
 
-const { mongoose, models: { MusicStyle } } = require('../.')
+const { mongoose, models: { MusicStyle } } = require('../../.')
 
 const rock = new MusicStyle({type:'Rock'})
 const hiphop = new MusicStyle({type:'Hip Hop'})

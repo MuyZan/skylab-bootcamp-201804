@@ -8,7 +8,7 @@
  * 
  */
 
-const { mongoose, models: { EventType } } = require('../.')
+const { mongoose, models: { EventType } } = require('../../.')
 
 const concert = new EventType({ type: 'Concert' })
 const musicalAtmosphere = new EventType({ type: 'Musical atmosphere' })
