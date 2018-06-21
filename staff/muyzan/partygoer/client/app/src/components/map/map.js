@@ -5,9 +5,18 @@ import logic from '../../logic'
 import 'react-toastify/dist/ReactToastify.css'
 import './map.css'
 import markers from './markers'
-import placeholder from './../../static/images/icons/rock.svg'
+import filterIcons from './filter-icons'
+import placeholder from './../../static/images/icons/generic.svg'
 
-const { userPlaceholder,festival, atmosphere, cultural, electronic, concert, blockparty, raca, karaoke, generic } = markers
+const { userPlaceholder,festival, atmosphere, cultural, electronic, concert, blockparty, karaoke, generic } = markers
+const {atmosphere_filter,
+    blockparty_filter,
+    electronic_filter,
+    cultural_filter,
+    festival_filter,
+    concert_filter,
+    karaoke_filter,
+    generic_filter} = filterIcons
 
 let _events = []
 
@@ -104,13 +113,21 @@ export default class PartyMap extends Component {
 
         switch (eventTypes[eventId]) {
             case "Festival":
-                return placeholder
+                return festival_filter
             case "Concert":
-                return placeholder
+                return concert_filter
             case "Musical atmosphere":
-                return placeholder
+                return atmosphere_filter
+            case "Karaoke":
+                return karaoke_filter
+            case "Block party":
+                return blockparty_filter
+            case "Electronic Live":
+                return electronic_filter
+            case "Cultural event":
+                return cultural_filter 
             default:
-                return placeholder
+                return generic_filter
         }
     }
 
