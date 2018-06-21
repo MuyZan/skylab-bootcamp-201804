@@ -60,6 +60,8 @@ input:focus, select:focus, textarea:focus, button:focus {
     outline: none;
 }
 
+
+
 button {
     border-radius: 0.5em;
     border:none;
@@ -213,3 +215,23 @@ position block z-index top) coloring the darkness spots*/
     width: auto;
     z-index: 0;
 }
+
+
+.Toastify button:hover{
+background: none;
+}
+
+
+.Toastify button{
+    width: 2%;
+    display: block;
+    margin-right: 2em;
+    }
+
+
+.Toastify{
+    font-size: 0.8em;
+    font-weight: 400
+}
+
+ 

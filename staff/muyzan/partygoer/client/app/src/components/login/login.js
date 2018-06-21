@@ -50,22 +50,48 @@ export default class Login extends Component {
 
                     <h3>Sign in</h3>
                     <form onSubmit={this._handlerLogin}>
-                    <label htmlFor="username"> Username:</label>
 
-                        <input id="username" required type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} />
-                        <label htmlFor="password"> Password:</label>
+  <label className="field">
+  <input className="field-input" type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} autocomplete="off" required/>
 
-                        <input id="password" required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword} />
+              <span className="field-label-wrap">
+                <span className="field-label">Username</span>
+              </span>
+            </label>
+
+            <label className="field">
+            <input className="field-input" required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword}  autocomplete="off" required/>
+
+              <span className="field-label-wrap">
+                <span className="field-label">Password</span>
+              </span>
+            </label>
+
+
+                   
                         <button type="submit">Login</button>
                     </form>
 
                 </Animated>
 
-                <ToastContainer autoClose={3000} transition={Slide} toastClassName='red-toast-container' />
             </div>
+            <ToastContainer autoClose={3000} transition={Slide} toastClassName='red-toast-container' />
+
                 <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by Zan</footer>
 
             </div>
         )
     }
 }
+
+
+
+/*
+ <label htmlFor="username"> Username:</label>
+
+                        <input id="username" required type="text" value={username} name="username" placeholder="Insert your username" onChange={this._handlerWriteUsername} autocomplete="off" required/>
+                        <label htmlFor="password"> Password:</label>
+
+                        <input id="password" required type="password" value={password} name="password" placeholder="Insert your password " onChange={this._handlerWritePassword}  autocomplete="off" required/>
+
+*/

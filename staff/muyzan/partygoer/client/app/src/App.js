@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from "react-router-dom"
 import { Home, Landing, Login, Register } from './components'
+
 import logic from './logic'
 import './App.css';
 import "./components/landing/landing.css"
 import "./components/home/home.css"
+import 'react-toastify/dist/ReactToastify.css'
+
 class App extends Component {
   constructor(){
     super()

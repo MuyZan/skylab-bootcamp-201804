@@ -7,7 +7,7 @@ import './map.css'
 import markers from './markers'
 import placeholder from './../../static/images/icons/rock.svg'
 
-const { userPlaceholder, djPlaceholder, rock, raca, generic } = markers
+const { userPlaceholder,festival, atmosphere, cultural, electronic, concert, blockparty, raca, karaoke, generic } = markers
 
 let _events = []
 
@@ -79,12 +79,20 @@ export default class PartyMap extends Component {
         const { eventTypes } = this.state
 
         switch (eventTypes[eventId]) {
-            case "Festival":
-                return djPlaceholder
-            case "Concert":
-                return rock
             case "Musical atmosphere":
-                return raca
+                return atmosphere
+            case "Festival":
+                return festival
+            case "Concert":
+                return concert
+            case "Karaoke":
+                return karaoke 
+            case "Block party":
+                return blockparty
+            case "Electronic Live":
+                return electronic
+            case "Cultural event":
+                return cultural                    
             default:
                 return generic
         }
@@ -194,6 +202,10 @@ export default class PartyMap extends Component {
                 {readyToRender && (
                     <Map id="map-container" center={position} zoom={zoom}>
                         <TileLayer attribution={attribution} url={stamenTiles} />
+ 
+                        {eventsDraw.map((event) =>
+                            <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
+                        )}
 
                         <Marker position={position} icon={userPlaceholder}>
                             <Popup >
@@ -202,9 +214,6 @@ export default class PartyMap extends Component {
                             </span>
                             </Popup>
                         </Marker>
-                        {eventsDraw.map((event) =>
-                            <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
-                        )}
                     </Map>)}
 
                 <section id="section-filter">
