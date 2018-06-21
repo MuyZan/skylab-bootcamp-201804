@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import './nav.css'
+import logic from './../../logic/'
 
 const dancer = require('./../../static/images/navIcons/013-dancer.svg')
 const logout = require('./../../static/images/navIcons/logout.svg')
@@ -15,15 +16,16 @@ class Nav extends Component {
     }
 
     render() {
+        const username = logic.setUsername()
         return (
 
             <nav className="navBar">
                 <div id="navContainer">
                     <div className="navigation">
                     <img className="user" src={user} />
-                    <img src={star} />
                     <img className="logout" src={logout} placeholder="logout" onClick={this.props.logout}/>
-                    <span onClick={this.props.listAll}>LIST EVENTS</span>
+                    <img className="star" src={star} />
+                    {/*<span onClick={this.props.listAll}>LIST EVENTS</span>*/}
                     </div>
                     <div onClick={this._onClick} className="nav-logo">
                         <div className="title">partygoer</div>
@@ -31,10 +33,8 @@ class Nav extends Component {
                     </div>
                 </div>
             </nav>
-
         )
     }
-
 }
 
 export default withRouter(Nav)

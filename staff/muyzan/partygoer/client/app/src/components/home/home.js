@@ -61,7 +61,7 @@ export default class Home extends Component {
 
                     <PartyMap onShowEvent={this._showEvent} />
 
-                    {search && <ListResults />}
+                    {/*search && <ListResults /> NOT NOW*/}
 
                     {event !== undefined && (
                         <Animated animationIn="bounceInUp" animationOut="bounceInUp" isVisible={true}>

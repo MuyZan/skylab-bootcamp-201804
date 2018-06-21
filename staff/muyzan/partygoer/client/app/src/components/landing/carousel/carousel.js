@@ -27,7 +27,7 @@ export default class Carousel extends Component {
         <div>
           <img src={two} />
           <h3>
-            <strong>partygoer</strong> finds the nearbiest parties for you</h3>
+            <strong>partygoer</strong> finds the nearbiest events for you</h3>
         </div>
         <div>
           <img src={three} />

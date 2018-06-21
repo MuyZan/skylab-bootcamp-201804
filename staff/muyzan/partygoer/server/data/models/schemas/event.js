@@ -22,6 +22,16 @@ module.exports = new Schema({
         required: true
     },
 
+    address: {
+        type: 'String',
+        required: true
+    },
+
+    place: {
+        type: 'String',
+        required: true
+    },
+
     location: {
         type: { type: String },
         coordinates: [Decimal128],
@@ -63,7 +73,6 @@ module.exports = new Schema({
     },
 
     soldTickets: [Ticket]
-
 })
 
 
