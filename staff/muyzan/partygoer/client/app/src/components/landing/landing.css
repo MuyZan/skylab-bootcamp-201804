@@ -1,20 +1,9 @@
-.header{
-justify-content: center;  
-width: 100%;
-display: flex;
-}
-
-.header .title{
-letter-spacing: 0.1em;
-align-self: center;
-font-size: 2em
-}
-
 #landing h6{
 padding-top: 1.5em;
-font-family: 'Nunito', sans-serif;
 font-weight: 300;
 }
+
+/* Carrousel */
 
 #landing-carrousel {
   min-height: 50%;
@@ -38,7 +27,7 @@ font-weight: 300;
  font-size: 1em;
  padding-right: 0.3em;
  padding-left: 0.3em;
-font-weight: 300;
+ font-weight: 300;
 }
 
 .slick-slider ul{
@@ -54,22 +43,10 @@ height:12%;
 width: 100%;
 bottom:-0.5em;
 }
-#landing-buttons{
-  margin-top:1.9em;
-  overflow: scroll;
-  max-height: 50%;
-}
-
-
-
-link {
-  text-decoration: none;
-}
 
 #landing-carrousel button{
   box-shadow: none;
 }
-
 
 #landing-carrousel button:hover{
   border-radius: 100%;
@@ -77,21 +54,31 @@ link {
 }
 
 #landing-buttons .line-btn{
-margin-top:1.5em;
+ margin-top:1.5em;
  background: transparent;
  box-shadow: none;
  border: solid 1px white;
  width: 30%;
  font-size: 0.6em;
+}
 
+/* buttons */
+
+#landing-buttons{
+  margin-top:1.9em;
+  overflow: scroll;
+  max-height: 50%;
+}
+
+link {
+  text-decoration: none;
 }
 
 #landing-buttons .line-btn:hover{
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   background: var(--btn-hover-color);
   border: none;
  }
 
-#landing-buttons button{
+#landing-buttons button, #landing-buttons .line-btn:hover{
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }

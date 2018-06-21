@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import Header from './../header/header'
 import Carousel from './carousel/carousel'
-import './landing.css'
+import Footer from './../footer/footer'
 
-const logoMan = require('./../../static/images/logo/logo.svg')
+import './landing.css'
 
 export default class Landing extends Component {
 
@@ -23,7 +24,7 @@ export default class Landing extends Component {
     return (
       <div id="landing" className="container">
 
-        <header className="header"><span className="title">partygoer</span><img className="logo" src={logoMan} /></header>
+        <Header />
 
         <div className="main-landing">
           <section id="landing-carrousel"><Carousel /></section>
@@ -39,8 +40,7 @@ export default class Landing extends Component {
           </section>
         </div>
 
-
-        <footer className="footer">Coded with ♥ and <span role="img" aria-labelledby="droplet">💧💧</span> by <strong>Zan</strong></footer>
+        <Footer />
 
       </div>
     );

@@ -6,17 +6,25 @@ import 'react-toastify/dist/ReactToastify.css'
 import './map.css'
 import markers from './markers'
 import filterIcons from './filter-icons'
-import placeholder from './../../static/images/icons/generic.svg'
 
-const { userPlaceholder,festival, atmosphere, cultural, electronic, concert, blockparty, karaoke, generic } = markers
-const {atmosphere_filter,
+const { userPlaceholder, 
+    festival, 
+    atmosphere, 
+    cultural, 
+    electronic, 
+    concert, 
+    blockparty, 
+    karaoke, 
+    generic } = markers
+
+    const { atmosphere_filter,
     blockparty_filter,
     electronic_filter,
     cultural_filter,
     festival_filter,
     concert_filter,
     karaoke_filter,
-    generic_filter} = filterIcons
+    generic_filter } = filterIcons
 
 let _events = []
 
@@ -95,13 +103,13 @@ export default class PartyMap extends Component {
             case "Concert":
                 return concert
             case "Karaoke":
-                return karaoke 
+                return karaoke
             case "Block party":
                 return blockparty
             case "Electronic Live":
                 return electronic
             case "Cultural event":
-                return cultural                    
+                return cultural
             default:
                 return generic
         }
@@ -125,11 +133,13 @@ export default class PartyMap extends Component {
             case "Electronic Live":
                 return electronic_filter
             case "Cultural event":
-                return cultural_filter 
+                return cultural_filter
             default:
                 return generic_filter
         }
     }
+
+    /******** FILTER BUTTONS *******/
 
     setAll = () => {
 
@@ -219,7 +229,7 @@ export default class PartyMap extends Component {
                 {readyToRender && (
                     <Map id="map-container" center={position} zoom={zoom}>
                         <TileLayer attribution={attribution} url={stamenTiles} />
- 
+
                         {eventsDraw.map((event) =>
                             <Marker key={event._id} onClick={() => onShowEvent(event._id)} position={[parseFloat(event.location.coordinates["1"].$numberDecimal), parseFloat(event.location.coordinates["0"].$numberDecimal)]} icon={this.setIcon(event.eventType["0"])} />
                         )}
@@ -245,8 +255,8 @@ export default class PartyMap extends Component {
                         ""
                     }
                     <div onClick={() => this.setAll()} className={allButton === true ? "filter" : "filter nonSelected"}>
-                        <img alt="" className="filter-icon" src="" placeholder="" />
-                        <span className="filter-text ">All Event Types</span>
+                        <img alt="" className="filter-icon" src={generic_filter} placeholder="" />
+                        <span className="filter-text">All Event Types</span>
                     </div>
 
                 </section>

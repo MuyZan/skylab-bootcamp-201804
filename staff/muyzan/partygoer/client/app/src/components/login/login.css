@@ -1,13 +1,9 @@
 .dark-toast-container{
     background: black
 }
-
-
 .red-toast-container{
     background: rgb(170, 33, 33)
 }
-
-
 
 .main-login input, .main-login label{
     display:inline-block;
@@ -21,14 +17,12 @@
 
 }
 
-
 .main-login button{
     display: inline-block;
     width: 80%;
 }
 
 .main-login h3{
-    /*background: rgba(0, 0, 0, 0.432);*/
     padding: 0.3em;
     font-weight: 400;
 
@@ -47,12 +41,9 @@
     height: 3.2em;
     display: block;
     margin: 1em auto;
-    /*background: rgb(71, 5, 71);*/
     color: var(--btn-font-color);
     border:none;
     border-radius: 0.3em;
-   /* background: rgb(217, 218, 221)*/
-
 }
 
 
@@ -203,7 +194,3 @@
   .field .field-input:focus{
     border-color: var(--borderColorActive);
   }
-  
-
-
-

@@ -1,4 +1,3 @@
-
 const blockparty_filter = require('./../../static/images/filters-icons/blockparty-filter.svg')
 const electronic_filter = require('./../../static/images/filters-icons/electronic-filter.svg')
 const cultural_filter = require('./../../static/images/filters-icons/cultural-filter.svg')
@@ -7,7 +6,6 @@ const concert_filter = require('./../../static/images/filters-icons/concert-filt
 const karaoke_filter = require('./../../static/images/filters-icons/karaoke-filter.svg')
 const generic_filter = require('./../../static/images/filters-icons/generic-filter.svg')
 const atmosphere_filter = require('./../../static/images/filters-icons/atmosphere-filter.svg')
-
 
 const filterIcons = {
 

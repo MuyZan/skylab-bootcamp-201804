@@ -10,7 +10,6 @@ const festival = require('./../../static/images/icons/festival.svg')
 const atmosphere = require('./../../static/images/icons/atmosphere.svg')
 const generic = require('./../../static/images/icons/generic.svg')
 
-
 let mapIcon = L.Icon.extend({
     options: {
         iconSize: [34, 85],

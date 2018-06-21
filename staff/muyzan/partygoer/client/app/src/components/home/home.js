@@ -55,11 +55,9 @@ export default class Home extends Component {
         return (
             <div className="container">
 
-                <nav className="navBar">
                 <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
 
                     <Nav logout={this._logout} listAll={this._handlerSearch} />
-                </nav>
 
                 <main className="main">
 
