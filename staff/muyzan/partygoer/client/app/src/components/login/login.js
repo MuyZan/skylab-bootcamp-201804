@@ -53,14 +53,14 @@ export default class Login extends Component {
                         <form onSubmit={this._handlerLogin}>
 
                             <label className="field">
-                                <input className="field-input" type="text" value={username} name="_username" placeholder="Insert your username" onChange={this._handlerWriteUsername} autocomplete="off" required />
+                                <input className="field-input" type="text" value={username} name="_username" placeholder="Insert your username" onChange={this._handlerWriteUsername} autoComplete="off" required />
                                 <span className="field-label-wrap">
                                     <span className="field-label">Username</span>
                                 </span>
                             </label>
 
                             <label className="field">
-                                <input className="field-input"  type="password" value={password} name="_password" placeholder="Insert your password " onChange={this._handlerWritePassword} autocomplete="off" required />
+                                <input className="field-input"  type="password" value={password} name="_password" placeholder="Insert your password " onChange={this._handlerWritePassword} autoComplete="off" required />
 
                                 <span className="field-label-wrap">
                                     <span className="field-label">Password</span>

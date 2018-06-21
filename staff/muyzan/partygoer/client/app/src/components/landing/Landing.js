@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
+import { ToastContainer, toast, Slide } from 'react-toastify'
+
 import { Link } from 'react-router-dom'
 import Header from './../header/header'
 import Carousel from './carousel/carousel'
 import Footer from './../footer/footer'
 
 import './landing.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 export default class Landing extends Component {
 
@@ -15,8 +18,10 @@ export default class Landing extends Component {
       username: "",
       password: "",
       userId: "",
+
     }
   }
+
 
   _handlerSignIn = () => this.props.history.push("/home")
 
@@ -41,6 +46,7 @@ export default class Landing extends Component {
         </div>
 
         <Footer />
+        <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
 
       </div>
     );

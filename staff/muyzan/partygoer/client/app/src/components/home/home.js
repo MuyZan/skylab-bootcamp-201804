@@ -10,8 +10,6 @@ import './../map/map.css'
 import './home.css'
 import 'react-toastify/dist/ReactToastify.css'
 
-
-
 export default class Home extends Component {
 
     constructor() {
@@ -19,7 +17,7 @@ export default class Home extends Component {
 
         this.state = {
             search: false,
-            event: undefined
+            event: undefined,
         }
     }
 
@@ -32,7 +30,7 @@ export default class Home extends Component {
         const { onLogout, isNotAuth } = this.props
         onLogout()
         logic.logout()
-        isNotAuth()
+        isNotAuth() 
     }
 
     _handlerSearch = () => {
@@ -57,11 +55,11 @@ export default class Home extends Component {
 
                 <ToastContainer autoClose={3000} toastClassName='gradient-toast-container' />
 
-                    <Nav logout={this._logout} listAll={this._handlerSearch} />
+                <Nav logout={this._logout} listAll={this._handlerSearch} />
 
                 <main className="main">
 
-                   <PartyMap onShowEvent={this._showEvent} />
+                    <PartyMap onShowEvent={this._showEvent} />
 
                     {search && <ListResults />}
 

@@ -3,6 +3,11 @@ import './event-card.css'
 import './../../App.css'
 export default class EventCard extends Component {
 
+    _addFavorite = (eventId) =>{
+
+
+    }
+
     render() {
 
         const { closeCard, event } = this.props
@@ -24,8 +29,9 @@ export default class EventCard extends Component {
 
                         <div className="card-content">
                             <h3 className="card-title">{event.name}</h3>
-                            <h5>Date: {event.date}</h5>
-                            <h5>Description: {event.description}</h5>
+                            <h6>Date: {event.date}</h6>
+                            <h6>Adress: {event.adress}</h6>
+                            <h6>Description: {event.description}</h6>
                         </div>
 
                         <button className="more-info">+Info</button>

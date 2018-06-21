@@ -52,7 +52,6 @@ export default class PartyMap extends Component {
         }
 
         /*Geolocation API*/
-
         logic.userPosition()
             .then((position) => {
                 const { coords: { latitude, longitude } } = position
@@ -87,6 +86,9 @@ export default class PartyMap extends Component {
 
             })
             .catch(err => toast.error(`Ups! Something happens: ${err}`))
+
+        //setTimeout added for allow to load the css before the tiles of map (prevents gray tiles)
+        setTimeout(() => this.setState({ readyToRender: true }), 170);
     }
 
     /*Switch icon according to the type of party */
@@ -152,7 +154,7 @@ export default class PartyMap extends Component {
                 eventTypesDisplay[event] = true
                 return eventTypesDisplay;
             })
-            return this.setState({ eventTypesDisplay })
+            this.setState({ eventTypesDisplay })
         }
 
         if (allButton === false) {
@@ -163,6 +165,7 @@ export default class PartyMap extends Component {
     }
 
     filterEvents = (eventTypeId) => {
+        
 
         const { eventTypesDisplay } = this.state
 
@@ -219,9 +222,6 @@ export default class PartyMap extends Component {
 
         const stamenTiles = "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}.png";
         const attribution = '<a href="http://stamen.com">Stamen</a> | <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>';
-
-        //setTimeout added for allow to load the css before the tiles of map (prevents gray tiles)
-        setTimeout(() => this.setState({ readyToRender: true }), 170);
 
         return (
             <div id="section-map">

@@ -2,6 +2,7 @@
     justify-content: center;
     width: 100%;
     display: flex;
+    cursor: pointer;
 }
 
 .header .title {

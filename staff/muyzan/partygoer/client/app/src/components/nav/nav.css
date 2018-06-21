@@ -4,7 +4,7 @@
     background:rgba(0, 0, 0, 0.438);
     display: flex;
     color: white;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center
 }
 
@@ -13,26 +13,37 @@
     width: 50%;
     display: flex;
     justify-content: space-between;
-    align-items: center
+    align-items: center;
 }
 
 .navigation img{
-    height: 60%;
-    width: 20%;
+    height: 70%;
+    width: 10%;
+    margin-left: 0.4em
+}
+.navigation img:hover{
+    cursor:pointer;
 }
 
+.navigation .user {
+    height: 90%;
+    width: 30%
+}
 
 #navContainer span{
     font-size: .6em;
     width: 50%;
+    margin-left: 0.4em
+
 }
 
 
 .nav-logo{
-    justify-content: center;
+    justify-content: flex-end;
     width: 50%;
     height: 100%;
     display: flex;
+    cursor:pointer;
 }
 
 .nav-logo .title{
@@ -42,6 +53,6 @@
 
 .nav-logo img{
     width: 20%;
-    height: 100%;
+    height: 70%;
     align-self: center;
 }
