@@ -1,7 +1,7 @@
 const partygoerApi = require('api')
 
-partygoerApi.url = 'http://localhost:5000/api'
-//partygoerApi.url = 'https://fierce-taiga-60122.herokuapp.com/api'
+//partygoerApi.url = 'http://localhost:5000/api'
+partygoerApi.url = 'https://fierce-taiga-60122.herokuapp.com/api'
 
 const logic = {
     _userId: null,
