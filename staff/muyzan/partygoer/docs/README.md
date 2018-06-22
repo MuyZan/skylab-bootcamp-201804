@@ -170,12 +170,12 @@ Javascript (ES5, ES6), HTML5, CSS3, Git & Github, surge, heroku, Agile Methodolo
 
 >to all my Skylab mates
 
-> [Manu](link) 
+> [Manu](https://github.com/manuelbarzi) 
 
-> [Carlos](link) 
+> [Carlos](https://github.com/Asix94) 
 
-> [Alejandro](link)
+> [Alejandro](https://github.com/agandia9)
 
-> [Alan](link)
+> [Alan](https://github.com/alanbover)
 
-> [David](link)
+> [David](http://www.skylabcoders.com/es)
