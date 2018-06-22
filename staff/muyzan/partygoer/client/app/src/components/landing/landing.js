@@ -22,7 +22,6 @@ export default class Landing extends Component {
     }
   }
 
-
   _handlerSignIn = () => this.props.history.push("/home")
 
   render() {

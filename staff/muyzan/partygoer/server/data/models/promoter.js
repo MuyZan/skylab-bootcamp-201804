@@ -1,7 +1,5 @@
 'use strict'
 
-'use strict'
-
 const mongoose = require('mongoose')
 const { Promoter } = require('./schemas')
 

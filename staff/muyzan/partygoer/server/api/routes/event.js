@@ -27,7 +27,6 @@ eventRouter.post('/nearby-events', jsonBodyParser, jwtValidator, (req, res) => {
         })
  })
 
-
 eventRouter.get('/event-types', jwtValidator, (req, res) => {
     return logic.listEventTypes()
         .then(eventTypes => {
@@ -39,7 +38,6 @@ eventRouter.get('/event-types', jwtValidator, (req, res) => {
             res.json({ status: 'KO', error: message })
         })
  })
-
 
 eventRouter.get('/events', jwtValidator, (req, res) => {
     return logic.listEvents()
@@ -67,6 +65,3 @@ eventRouter.get('/events', jwtValidator, (req, res) => {
  })
 
 module.exports = eventRouter;
-
-
-

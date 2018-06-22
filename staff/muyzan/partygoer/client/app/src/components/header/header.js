@@ -16,6 +16,3 @@ const logoMan = require('./../../static/images/logo/logo.svg')
 }
 
 export default withRouter(Header)
-
-
-

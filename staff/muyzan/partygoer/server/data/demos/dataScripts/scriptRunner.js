@@ -24,7 +24,6 @@ const url = DB_URL;
  */
 const scriptRunner = {
 
-
     createData(data, modelName){
         const dataObjects = []
         for (let i = 0; i < data.length; i++) {
@@ -50,7 +49,6 @@ const scriptRunner = {
         .catch(console.error)
     },
 
-
     /**
     * @function createAndSaveData(array, Model) - This function receives an array of the (-minimum of-) necessary
     * data for required fields from model-Schema and a Model type and creates an array of pending promises of 
@@ -58,7 +56,7 @@ const scriptRunner = {
     * Then resolve this pending promises and return and array of ids.
     * 
     * 
-    * ¡¡¡ARREGLAR!!!! Conseguir que devuelva los IDS!!!!
+    * ¡¡¡TO FIX!!!! Return ids!
     */
 
     createAndSaveData(data, modelName) {
@@ -112,15 +110,3 @@ const scriptRunner = {
 }
 
 module.exports = scriptRunner;
-
-
-
-
-
-
-
-
-
-
-
-

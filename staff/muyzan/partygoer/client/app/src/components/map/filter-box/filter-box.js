@@ -13,12 +13,8 @@ export default class Filterbox extends Component {
     }
 
     componentWillMount() {
-
-        console.log(this.props._eventTypes)
-
-/*
+        /* fix
         const { _eventTypes } = this.props
-        console.log(_eventTypes)
         let eventTypesDisplay = {}
 
         Object.keys(this.props._eventTypes).map((key) => {
@@ -26,8 +22,6 @@ export default class Filterbox extends Component {
         })
 
         this.setState({ eventTypesDisplay })*/
-
-
     }
 
     setFilterIcon = (eventId) => {
@@ -68,8 +62,6 @@ export default class Filterbox extends Component {
             this.props.setState({ eventsDraw: _events })
         }
     }
-
-
 
     filterEvents = (eventTypeId) => {
 
@@ -120,8 +112,6 @@ export default class Filterbox extends Component {
         }
     }
 
-
-
     render() {
 
         const { allButton } = this.state
@@ -148,11 +138,3 @@ export default class Filterbox extends Component {
         )
     }
 }
-
-
-
-
-
-
-
-

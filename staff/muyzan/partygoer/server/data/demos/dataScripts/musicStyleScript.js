@@ -34,8 +34,3 @@ const other = new MusicStyle({type:'Other'})
 const musicStyles = [rock, hiphop, pop, latin, jazz, folk, breakbeat, drumandbass, dub, electro, dancehall, dubstep, hardcore, house, funky, techno, trance, acid, trap, other]
 
 module.exports = musicStyles
-
-
-
-
-

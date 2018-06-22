@@ -34,13 +34,3 @@ mongoose.connect(url)
         })
     })
     .catch(console.error)
-
-
-
-
-
-
-
-
-
-

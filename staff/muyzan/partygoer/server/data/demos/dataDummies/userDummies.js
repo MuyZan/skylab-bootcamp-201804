@@ -7,10 +7,3 @@ const userData2 =  {username: 'Ninja', email: 'alan@alan.com', password: '234', 
 const userData3 =  {username: 'Pato', email: 'pato@pato.com', password: '567', newPassword: '123', name: 'Patito', surname: 'Feo', photo: 'photo3', geolocation: [60,100]};
 
 module.exports = {userData1, userData2, userData3}
-
-
-
-
-
-
-

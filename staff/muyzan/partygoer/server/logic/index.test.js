@@ -95,12 +95,6 @@ describe('logic --- [Partygoer]', () => {
                         new Event(eventData).save()
                     ])
                 })
-
-            //TODO
-
         })
-
     })
-
-
 })

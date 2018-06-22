@@ -20,11 +20,10 @@ const musicStyles = require('./../dataScripts/musicStyleScript')
 
 /*
 scriptRunner.dropCollection(Event)
-scriptRunner.dropCollection(Promoter)*/
-
+scriptRunner.dropCollection(Promoter)
 
 scriptRunner.saveData(eventTypes)
-scriptRunner.saveData(musicStyles)
+scriptRunner.saveData(musicStyles)*/
 
 const [concert, musicalAtmosphere, festival, blockParty, electronicLive, karaoke, culturalEvent] = eventTypes
 const [rock, hiphop, pop, latin, jazz, folk, breakbeat, drumandbass, dub, electro, dancehall, dubstep, hardcore, house, funky, techno, trance, acid, trap, other] = musicStyles
@@ -52,7 +51,6 @@ const ticketTypeData3 = {quantity: 100, price: 30, description: 'entrada sin con
 
 const ticketTypeData = [ticketTypeData1, ticketTypeData2, ticketTypeData3]
 
-
 // [longitude, latitude] !!!
 const eventData1 = {name: 'Day of the Droids', date: eventDay1, promoter: promoter1._id, location: { type: "Point", coordinates: [2.1980124000000387, 41.4004274 ]}, eventType: concert._id, musicStyle: trance._id, image: 'flyer1', description: 'ROC BORONAT 70', ticketTypes: [ticketTypeData1, ticketTypeData3], purchaseType: 4, capacity: 200}
 const eventData2 = {name: 'Razzmatazz II', date: eventDay2, promoter: promoter2._id, location: { type: "Point", coordinates: [2.193671399999971, 41.3946117 ]}, eventType: musicalAtmosphere._id, musicStyle: rock._id, image: 'flyer2', description: 'LLULL 70', purchaseType: 3, capacity: 50 }
@@ -61,7 +59,6 @@ const eventData3 = {name: 'Rave en Palamos', date: eventDay3, promoter: promoter
 const eventsData = [eventData1, eventData2, eventData3];
 const events = scriptRunner.createData(eventsData, Event);
 const [event1, event2, event3] = events
-
 
 scriptRunner.saveData(events);
 

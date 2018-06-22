@@ -74,5 +74,3 @@ module.exports = new Schema({
 
     soldTickets: [Ticket]
 })
-
-

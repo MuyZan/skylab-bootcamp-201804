@@ -217,9 +217,6 @@ const partygoerApi = {
                     } else throw err
                 })
         })
-
-
-
     },
 
     listNearbyEvents(lng, lat) {
@@ -247,5 +244,3 @@ const partygoerApi = {
 }
 
 module.exports = partygoerApi
-
-

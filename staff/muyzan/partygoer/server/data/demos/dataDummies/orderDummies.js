@@ -19,10 +19,6 @@ const event1Id = require('./eventDummies')
 
 //import eventIds from ('./eventDummies')
 
-console.log(event1Id)
-
-//console.log(event1Id)
-
 /*
 const users = scriptRunner.createData(usersData, User)
 scriptRunner.saveData(users)
@@ -45,8 +41,6 @@ const orderData3 = {events: event3_id, user: user3._id, date: orderDate3, paymen
 const ordersData = [orderData1, orderData2, orderData3]
 const orders = scriptRunner.createData(ordersData, Order);
 scriptRunner.saveData(orders)
-
-
 
 module.exports = {orders, ordersData, users}
 */

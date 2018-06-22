@@ -3,10 +3,7 @@ import './event-card.css'
 import './../../App.css'
 export default class EventCard extends Component {
 
-    _addFavorite = (eventId) =>{
-
-
-    }
+    _addFavorite = (eventId) =>{} 
 
     render() {
 

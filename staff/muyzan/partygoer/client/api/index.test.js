@@ -1,12 +1,9 @@
 'use strict'
 
-/*
-TOKEN SETEADO LLAMANDO A partyGoerApi.token(token) (seteo)
-
-los que son get partyGoerapi.token() <--- despues de autentificar. EN LOS QUE HAY TOKEN
-
+/* To fix:
+Token setted calling partyGoerApi.token(token)
+Tokken getter calling partyGoerapi.token()
 */
-
 
 require('dotenv').config()
 
@@ -88,13 +85,7 @@ describe('api client --- [Partygoer]', () => {
             partygoerApi.registerUser(jackData.name)
                 .catch(({ message }) => expect(message).to.equal('user surname is not a string'))
         )
-
-
-
-
     })
-
-
 
 })
 
