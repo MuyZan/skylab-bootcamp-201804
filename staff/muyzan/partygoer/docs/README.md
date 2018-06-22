@@ -135,3 +135,6 @@ Javascript (ES5, ES6), HTML5, CSS3, Git & Github, surge, heroku, Agile Methodolo
 > [Alan](https://github.com/alanbover)
 
 > [David](http://www.skylabcoders.com/es)
+
+Licenses:
+> Flaticon icons
