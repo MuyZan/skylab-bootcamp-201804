@@ -3,7 +3,7 @@
 var axios = require('axios');
 
 var partygoerApi = {
-    url: 'http://localhost:3000/api',
+    url: 'NO-URL',
 
     token: function token(_token) {
         if (_token) {
@@ -44,7 +44,6 @@ var partygoerApi = {
         var _this2 = this;
 
         return Promise.resolve().then(function () {
-
             return axios.post(_this2.url + '/auth', { username: username, password: password }).then(function (_ref2) {
                 var status = _ref2.status,
                     data = _ref2.data;
@@ -75,7 +74,6 @@ var partygoerApi = {
         var _this3 = this;
 
         return Promise.resolve().then(function () {
-
             return axios.get(_this3.url + '/users/' + userId, { headers: { authorization: 'Bearer ' + _this3.token() } }).then(function (_ref3) {
                 var status = _ref3.status,
                     data = _ref3.data;
@@ -99,7 +97,6 @@ var partygoerApi = {
         var _this4 = this;
 
         return Promise.resolve().then(function () {
-
             return axios.patch(_this4.url + '/users/' + userId, { username: username, name: name, surname: surname, email: email, password: password, newPassword: newPassword, photo: photo }, { headers: { authorization: 'Bearer ' + _this4.token() } }).then(function (_ref4) {
                 var status = _ref4.status,
                     data = _ref4.data;
