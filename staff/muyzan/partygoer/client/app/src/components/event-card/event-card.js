@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import './event-card.css'
 import './../../App.css'
 export default class EventCard extends Component {
@@ -8,6 +9,11 @@ export default class EventCard extends Component {
     render() {
 
         const { closeCard, event } = this.props
+
+        const dateString = event.date;
+
+        const date = moment(dateString).format("MMMM D, YYYY, h:mm")
+
 
         return (
             <section id="event-card" className="grid">
@@ -26,9 +32,9 @@ export default class EventCard extends Component {
 
                         <div className="card-content">
                             <h3 className="card-title">{event.name}</h3>
-                            <h6>Date: {event.date}</h6>
-                            <h6>Adress: {event.adress}</h6>
-                            <h6>Description: {event.description}</h6>
+                            <h5>Date:</h5> <p>{date}</p>
+                            <h5>Address:</h5> <p>{event.address}</p>
+                            <h5>Description:</h5><p> {event.description}</p>
                         </div>
 
                         <button className="more-info">+Info</button>
