@@ -69,7 +69,7 @@ The project was built following this layer separation architechture:
 
 ![calendar](./images/calendar.png)
 
-# DESING (screenshots):
+# Design (screenshots):
 
 ![app](./images/design/pagina2.png)
     
