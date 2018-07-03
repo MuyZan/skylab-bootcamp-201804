@@ -1,0 +1,61 @@
+#navContainer, .navigation{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#navContainer{
+    width: 100%;
+    background:rgba(0, 0, 0, 0.438);
+    color: white;
+    justify-content: flex-start;
+}
+
+.navigation{
+    width: 50%;
+    justify-content: space-between;
+}
+
+.navigation star{
+width: 8em;
+}
+
+.navigation img{
+    height: 70%;
+    width: 10%;
+    margin-left: 0.4em
+}
+.navigation img:hover{
+    cursor:pointer;
+}
+
+.navigation .user {
+    height: 90%;
+    width: 30%
+}
+
+#navContainer span{
+    font-size: .6em;
+    width: 30%;
+    margin-left: 0.4em
+
+}
+
+.nav-logo{
+    justify-content: flex-end;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    cursor:pointer;
+}
+
+.nav-logo .title{
+    letter-spacing: 0.1em;
+    align-self: center;
+}
+
+.nav-logo img{
+    width: 20%;
+    height: 70%;
+    align-self: center;
+}

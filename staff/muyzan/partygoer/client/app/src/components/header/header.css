@@ -1,0 +1,12 @@
+.header {
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    cursor: pointer;
+}
+
+.header .title {
+    letter-spacing: 0.1em;
+    align-self: center;
+    font-size: 2em
+}

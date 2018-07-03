@@ -1,0 +1,191 @@
+.main-register input, 
+.main-register label, 
+.main-register form,
+.main-register button{
+  display:inline-block;
+}
+
+.main-register input, 
+.main-register label, 
+.main-register button{
+    width: 80%;
+}
+
+.main-register form{
+    width: 85%;
+}
+
+.main-register h3{
+    padding: 0.3em;
+    font-weight: 400;
+}
+
+.main-register label, 
+.main-register input{
+  font-size: 0.7em;
+}
+
+.main-register input, 
+.main-register button{
+  display: block;
+
+}
+
+.main-register label{
+    text-align: left;
+    font-weight: 300;
+}
+
+.main-register input{
+    padding-left:1em;
+    height: 3.2em;
+    margin: 1em auto;
+    color: var(--btn-font-color);
+    border:none;
+    border-radius: 0.3em;
+}
+
+.main-register input, select, textarea{
+    color: var(--color-salmon);
+    font-weight: bold;
+}
+.main-register button {
+    margin: 2em auto;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  }
+  
+.main-register button:hover {
+    border: none;
+  }
+
+
+/*****/
+
+  .field{
+    --placeholder-color:  #e67171;
+    --borderColor: #D1C4E9;
+    --borderColorActive: var(--color-salmon);
+     display: inline-block;  
+  }
+  
+  .field-input{ 
+    background-color: transparent;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    font-size:0.9em;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    color:white;
+  }
+  
+  .field .field-input:focus{
+    outline: none;
+  }
+  
+  .field-input:focus::-webkit-input-placeholder{
+    color: var(--placeholder-color);
+  }
+  
+  .field-input:focus::-moz-placeholder{
+    color: var(--placeholder-color);
+    opacity: 1;
+  }
+  
+  
+  .field{
+    --uiFieldHeight: 3em;  
+    --uiFieldBorderWidth: 0.15em;
+    --uiborderColor: var(--borderColor);
+  
+    --uiFieldFontSize:  1.2em;
+    --uiFieldHintFontSize: 1em;
+  
+    --uiFieldPaddingRight: 1em;
+    --uiFieldPaddingBottom: 4em;
+    --uiFieldPaddingLeft: 0.6em;   
+    position: relative;
+    box-sizing: border-box;
+    font-size: var(--uiFieldFontSize);
+    padding-top: 1em; 
+  }
+  
+  .field .field-input{
+    border-radius: 0;
+    color: white ;
+
+    height: var(--uiFieldHeight);
+    padding: 0 var(--uiFieldPaddingRight) 0 0.5em;
+    border-bottom: var(--uiFieldBorderWidth) solid var(--uiborderColor); 
+    font-size: 1em; 
+  }
+  
+  .field .field-input::-webkit-input-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field .field-input::-moz-placeholder{
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+  
+  .field .field-input:not(:placeholder-shown) ~ .field-label-wrap .field-label{
+    opacity: 0;
+    bottom: var(--uiFieldPaddingBottom);
+  }
+  
+  .field .field-input:focus::-webkit-input-placeholder{
+    opacity: 1;
+    transition-delay: .1s;
+  }
+  
+  .field .field-input:focus::-moz-placeholder{
+    opacity: 1;
+    transition-delay: .1s;
+  }
+  
+  .field .field-label-wrap{
+    box-sizing: border-box;
+    width: 100%;
+    height: var(--uiFieldHeight);	
+  
+    pointer-events: none;
+    cursor: text;
+  
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .field .field-label{
+    position: absolute;
+    left: var(--uiFieldPaddingLeft);
+    bottom: calc(90% - 0.3em);
+  
+    line-height: 2.5;
+    font-size: 1em;
+    font-weight: 300;
+    pointer-events: none;
+    transition: bottom .2s cubic-bezier(0.9,-0.15, 0.1, 1.15), opacity .2s ease-out;
+    will-change: bottom, opacity;
+  }
+  
+  .field .field-input:focus ~ .field-label-wrap .field-label{
+    opacity: 1;
+    bottom: var(--uiFieldHeight);
+  }
+    
+  .field .field-input{
+    transition: border-color .1s ease-out;
+    will-change: border-color;
+  }
+  
+  .field .field-input:focus{
+    border-color: var(--borderColorActive);
+  }
+  
+
+
+

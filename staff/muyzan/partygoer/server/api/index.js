@@ -6,10 +6,12 @@ const { mongoose } = require('data')
 const express = require('express')
 const { userRouter, eventRouter, promoterRouter, orderRouter} = require('./routes')
 const cors = require('cors')
+const logic = require('logic')
 
-const { env: { PORT, DB_URL } } = process;
+const { env: { PORT, DB_URL, MAX_DISTANCE_NEARBY_SEARCH } } = process;
 const url = DB_URL;
 
+logic.maxDistance = MAX_DISTANCE_NEARBY_SEARCH
 
 mongoose.connect(url)
     .then(() => {
@@ -17,7 +19,7 @@ mongoose.connect(url)
         const port = PORT || process.argv[2] || 3000
         const app = express()
         app.use(cors())
-        app.use('/api', userRouter) //add the rest later
+        app.use('/api', [userRouter, eventRouter]) //add the rest later
 
         app.listen(port, () => console.log(`Hey-Hou! Server running on port ${port}`))
 
@@ -32,13 +34,3 @@ mongoose.connect(url)
         })
     })
     .catch(console.error)
-
-
-
-
-
-
-
-
-
-

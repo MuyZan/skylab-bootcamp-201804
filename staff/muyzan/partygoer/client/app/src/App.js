@@ -1,48 +1,55 @@
 import React, { Component } from 'react';
-import { Route, Switch } from "react-router-dom"
-import logo from './logo.svg';
+import { Route, Switch, withRouter } from "react-router-dom"
+import { Home, Landing, Login, Register } from './components'
+import { ToastContainer, toast } from 'react-toastify'
+
+import logic from './logic'
 import './App.css';
-
-import { Home, Landing } from './components'
-
 import "./components/landing/landing.css"
 import "./components/home/home.css"
-
+import 'react-toastify/dist/ReactToastify.css'
 
 class App extends Component {
-
-  /*
   constructor(){
-    super();
+    super()
 
     this.state = {
-      logged: false,      
-    };
+      authenticated: logic.loggedIn,
+    }
   }
 
+   
+  onLogin = () => {
+    this.setState({ authenticated: true })
 
-  componentDidMount(){
-    const sessionData = sessionStorage.getItem("key")
-    sessionData ? this.setState({ logged: true }) : this.setState({ logged: false })
+    this.props.history.push('/home')  
   }
 
+  onLogout = () => {
+    this.setState({ authenticated: false}, ()=> {
+      toast.success(`See you soon! Don't forget the ibuprofen`)
+    })
+   }
+    
 
-  _isLogged = logged => {
-    logged ? this.setState({ logged: true }) : this.setState({ logged: false})
-            <Route path="/home" component={Home} />
-
-  }*/
-
+  noAuth = () => {
+    this.props.history.push('/')
+  }
 
   render() {
     return (
+      <div>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route path="/home" component={Home}/>
-      </Switch>
-    )
+        <Route exact path="/login" render={(()=> <Login onLogin={this.onLogin}/> )}/>
+        <Route exact path="/register" component={Register}/>
+        <Route exact path="/home" render={(()=> <Home onLogout={this.onLogout} authenticated={this.state.authenticated} isNotAuth={this.noAuth}/> )}/>
 
+      </Switch>
+
+      </div>
+    )
   }
 }
 
-export default App;
+export default withRouter(App);

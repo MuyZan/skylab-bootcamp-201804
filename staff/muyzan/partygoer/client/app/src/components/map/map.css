@@ -1,0 +1,89 @@
+#section-map, #map-container, #section-filter {
+	position: relative;
+}
+
+#section-map, #map-container {
+	width: 100%;
+}
+
+#section-map, .filter {
+	height: 100%;
+}
+
+#map-container {
+	height: 50%;
+	z-index: 0
+}
+
+#section-filter {
+	max-height: 50%;
+	margin: 5%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	overflow: scroll;
+}
+
+#map-container img, .filter-icon {
+	-webkit-filter: none;
+	-moz-filter: none;
+	-o-filter: none;
+	filter: none;
+	mix-blend-mode: normal;
+}
+
+.filter {
+	cursor: pointer;
+	display: flex;
+	align-content: center;
+	align-self: center;
+	width: 45%;
+	margin: 0.4em;
+	margin-bottom: 0.6em;
+	-moz-box-shadow: inset 0 0 10px #080147;
+	-webkit-box-shadow: inset 0 0 10px #080147;
+	box-shadow: inset 0 0 10px #080147;
+	border-radius: 0.6em;
+	color: rgb(168, 92, 164);
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+.filter-icon {
+	width: 2em;
+	height: 2em;
+	margin: 0.4em;
+}
+
+.filter-text {
+	padding-left: 0.4em;
+	margin-right: 0.3em;
+	text-align: left;
+	align-self: center;
+	font-size: 0.8em;
+	overflow: hidden;
+}
+
+.filter:hover {
+	background: rgba(255, 255, 255, 0.117);
+}
+
+.filter:hover, .nonSelected {
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.nonSelected {
+	color: white;
+}
+
+.filter:active {
+	transform: translateY(0.3em)
+}
+
+.filter img {
+	filter: saturate(20%);
+}
+
+.nonSelected img {
+	filter: saturate(100%);
+}

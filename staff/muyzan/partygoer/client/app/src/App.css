@@ -1,28 +1,236 @@
-.App {
-  text-align: center;
+/*********|||| VARIABLES |||||*********/
+
+:root {
+    --main-bg-gradient: linear-gradient(80deg, #d33249, #19016f);
+    --main-gradient: linear-gradient(60deg, #19016f, #d33249);
+    --main-gradient-hover: linear-gradient(60deg, #2d0aac, #ee6478);
+    --border: 0.265em solid;
+    --btn-font-color: white;
+    --btn-color: #d33249;
+    --btn-border-color: #e76175;
+    --btn-hover-color: #e74860;
+    --btn-hover-border-color: white;
+    --btn-padding: 1em 2em;
+    --intro-img-height: 450px;
+    --color-blue: #19016f;
+    --color-salmon: #d33249;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/*********|||| CORE STYLES|||||*********/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+html, body {
+    background-color: white;
+    background: var(--main-bg-gradient);
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5;
+    text-align: center;
+    height: 100%;
+    width: 100%
 }
 
-.App-title {
-  font-size: 1.5em;
+
+
+h1, h2, h3, p {
+    padding: 1em 0 1em;
+    font-family: 'Nunito', sans-serif;
 }
 
-.App-intro {
-  font-size: large;
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+p {
+    padding-left: 1em;
+    padding-right: 1em;
+    letter-spacing: 0.1em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
 }
+
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+}
+
+
+
+button {
+    border-radius: 0.5em;
+    border:none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    background: var(--btn-color);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    display: block;
+    width: 70%;
+    margin: 1em auto;
+    background: var(--main-gradient);
+    color: var(--btn-font-color);
+    padding: var(--btn-padding);
+    text-decoration: none;
+
+}
+
+button:hover {
+    border-color: var(--btn-hover-border-color);
+    background: var(--btn-hover-color);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+button:active {
+    transform: translateY(0.3em)
+}
+
+.logo{
+    width: 2.6em;
+    color: white;
+}
+
+.title{
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    color: white;
+}
+
+/*********|||| COMMON BUTTONS |||||*********/
+
+.more-info, .add-event, .remove-event, .buy-event {
+    display: inline-block;
+    margin: 1em 0 1em;
+    width: 47%;
+    color: var(--btn-font-color);
+    padding: var(--btn-padding);
+    text-decoration: none;
+    border: var(--border);
+    border-color: var(--btn-border-color);
+}
+
+/*IMAGE AND IMAGE CONTAINERS*/
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.img-container {
+    min-height: 15rem;
+    max-height: 20rem;
+    display: flex;
+}
+
+.img-container img {
+    object-fit: cover;
+    max-width: 100%;
+    -webkit-filter: grayscale(50%) contrast(1);
+    -moz-filter: grayscale(50%) contrast(1);
+    -o-filter: grayscale(50%), contrast(1);
+    filter: grayscale(50%) contrast(1);
+    mix-blend-mode: multiply;
+}
+
+/*********|||| IMAGE FILTERS |||||*********/
+
+/*DUOTONE with gradient: Src image mode B/N and blendmode-multiply 
+over div bg-filter(lights) and a div top-layer-filter (an absolute
+position block z-index top) coloring the darkness spots*/
+
+.bg-filter {
+    background-color: rgb(241, 239, 211);
+    z-index: 1;
+    position: relative;
+}
+
+.top-layer-filter, .filter-gradient {
+    width: 100%;
+    height: 100%;
+}
+
+.top-layer-filter {
+    background: var(--main-gradient);
+    position: absolute;
+    z-index: 3;
+    mix-blend-mode: lighten
+}
+
+.filter-gradient {
+    background: var(--main-gradient);
+}
+
+/* Page structure*/
+
+.container {
+    position: absolute;
+    height: 100%;
+    width: 100%
+}
+
+.navBar {
+    position: relative;
+    height: 7%;
+    width: auto;
+}
+
+.header{
+    position: relative;
+    height: 15%;
+    width: auto;
+}
+
+.main {
+    position: relative;
+    height: 90%;
+    overflow: scroll;
+}
+
+.main-landing, .main-register, .main-login{
+    color:white;
+    letter-spacing: 0.1em;
+    position: relative;
+    height: 82%;
+    overflow: scroll;
+}
+
+
+
+.footer {
+    font-size: 2vh;
+    color: white;
+    background-color: var(--color-salmon);
+    position: relative;
+    height: 3%;
+    width: auto;
+    z-index: 0;
+}
+
+
+.Toastify button:hover{
+background: none;
+}
+
+
+.Toastify button{
+    width: 2%;
+    display: block;
+    margin-right: 2em;
+    }
+
+
+.Toastify{
+    font-size: 0.8em;
+    font-weight: 400
+}
+
+ 

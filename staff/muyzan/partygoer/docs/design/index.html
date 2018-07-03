@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#1b0b53">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#1b0b53">
+
+    <!-- icon in the highest resolution we need it for -->
+    <link rel="icon" sizes="192x192" href="icon.png">
+
+    <!-- reuse same icon for Safari -->
+    <link rel="apple-touch-icon" href="ios-icon.png">
+
+    <!-- multiple icons for IE -->
+    <meta name="msapplication-square310x310logo" content="icon_largetile.png">
+
+
+
+    <title>Partygoer</title>
+</head>
+
+<body>
+
+    <!-- Header -->
+
+    <header id="geo-search" class="grid">
+        <div class="bg-image"></div>
+        <div class="content-wrap">
+            <h1>Let's party!</h1>
+            <h2>Look for nearby events </h2>
+        </div>
+        <form class="content-wrap" action="">
+            <select name="eventType-list" id="eventTyp" class="search-option-list">
+                <option value="All" selected="selected">Event type: All</option>
+                <option value="Concert">Concert</option>
+                <option value="Festival">Festival</option>
+            </select>
+            <select name="musicStyle-list[]" id="musicStyle" class="search-option-list">
+                <option value="All" selected="selected">Music style: All</option>
+                <option value="Techno">Techno</option>
+                <option value="Rock">Rock</option>
+            </select>
+            <button class="search-btn">Search!</button>
+        </form>
+    </header>
+
+    <!-- Main Area -->
+
+    <main id="main">
+
+        <!-- Map section -->
+
+        <section id="map" class="grid">
+            <div class="content-wrap">
+                <h2 class="content-title">Here a map</h2>
+            </div>
+            <div class="content-wrap filter-gradient">
+                <img src="https://images.pexels.com/photos/41949/earth-earth-at-night-night-lights-41949.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    alt="">
+            </div>
+        </section>
+
+        <!-- Event showcase section  -->
+
+        <section id="event-showcase" class="grid">
+            <div class="content-wrap">
+                <div class="bg-filter">
+                    <div class="top-layer-filter"></div>
+                    <div class="img-container">
+                        <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                    </div>
+                </div>
+
+
+                <div class="card">
+                    <div class="content-wrap">
+                        <div class="card-content">
+                            <h3 class="card-title">Razzmatazz</h3>
+                            <div class="content-text">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="more-info">+info</button>
+                    <button class="add-event">Add event</button>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Events List showcase section -->
+
+        <section id="events-list-showcase" class="grid">
+            <div class="content-wrap">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
+                                    <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
+                            </div>
+
+                            <div class="card-content">
+                                <h3 class="card-title">List Event 1</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card ">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
+                                    <img src="https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
+                            </div>
+                            <div class="card-content ">
+                                <h3 class="card-title">List Event 2</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
+
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card">
+                            <div class="bg-filter">
+                                    <div class="top-layer-filter"></div>
+
+                                <div class="img-container">
+                                    <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                                </div>
+                           
+                        </div>
+                            <div class="card-content content-wrap">
+                                <h3 class="card-title">List Event 3</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="add-event">Add event</button>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+
+        <!-- Added Events List showcase section -->
+
+        <section id="added-events-list" class="grid">
+            <div class="content-wrap">
+                <ul>
+                    <li>
+                        <div class="card">
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container ">
+                                    <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                                </div>
+                            </div>
+                            <div class="card-content ">
+                                <h3 class="card-title">Added Event</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="remove-event">Remove event</button>
+                        </div>
+                    </li>
+
+                    <li>
+                        <div class="card">
+
+                            <div class="bg-filter">
+                                <div class="top-layer-filter"></div>
+                                <div class="img-container">
+                                    <img src="https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="">
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3 class="card-title">Added Event 2</h3>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, vitae saepe obcaecati,
+                                    iusto aliquid ullam fugit porro a repellendus omnis, ipsam ipsa quam dolor at quibusdam
+                                    maxime necessitatibus aperiam. Autem?</p>
+                            </div>
+                            <button class="more-info">+info</button>
+                            <button class="remove-event">Remove event</button>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Event Info -->
+
+        <section id="event-info" class="grid">
+            <div class="content-wrap">
+
+                <div class="info-card">
+
+                    <h1 class="section-title">Event</h1>
+                        <div class="bg-filter">
+                            <div class="top-layer-filter"></div>
+                        <figure class="img-container">
+                            <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                        </figure>
+                    </div>
+                    <div class="margin">
+                        <div class="content-text">
+                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste natus ea doloremque perspiciatis
+                                temporibus iusto placeat qui libero possimus veritatis quas est fugit ut, incidunt molestiae
+                                cupiditate repellat, hic quibusdam. Voluptatibus omnis ipsam quisquam ut? Quos voluptates
+                                non obcaecati temporibus eius similique reiciendis rem velit, tempora aspernatur vel tenetur
+                                eos adipisci ad reprehenderit porro. Nesciunt numquam saepe ab facilis natus? Reprehenderit
+                                accusamus cumque ullam numquam, nisi sapiente quod molestias nulla qui rerum optio, voluptas
+                                quis voluptatum! Est optio nostrum sint non, quibusdam
+                                <br> quidem a delectus consequuntur temporibus nemo facilis ducimus. Eius distinctio quaerat
+                                laudantium, officia velit illum nisi neque unde odio aperiam exercitationem accusantium dolor
+                                assumenda et voluptate numquam iste cumque beatae reiciendis sequi doloribus! Beatae impedit
+                                voluptatem tempore odio? Fugiat aliquam amet mollitia est quisquam assumenda architecto,
+                                ipsa tenetur, quaerat inventore, rem id ipsam perferendis maxime ullam. Eos nisi error provident
+                                quis at, placeat distinctio nulla harum possimus soluta.</p>
+                        </div>
+                    </div>
+                    <div class="large-btn">
+                            <button class="add-event">Add event</button>
+                            <button class="buy-event animation-buy">Buy ticket for event</button>
+                    </div>
+                
+                </div>
+        </section>
+
+
+        <!-- Purchased Event Info -->
+
+        <section id="purchased-event-info" class="grid">
+            <div class="content-wrap">
+                <div class="info-card">
+
+                    <h1 class="section-title"> Purchased Event</h1>
+
+            <div class="bg-filter">
+                <div class="top-layer-filter"></div>
+                    <figure class="img-container">
+                        <img src="https://images.pexels.com/photos/196652/pexels-photo-196652.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="">
+                    </figure>
+                </div>
+                    <div class="content-text">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti maxime alias odit obcaecati at
+                            cum nesciunt error commodi animi possimus! Ducimus molestiae qui voluptatem laboriosam dignissimos
+                            debitis eveniet eum asperiores! Eligendi temporibus id explicabo eaque quasi iusto nihil facilis
+                            harum, accusantium amet ducimus unde qui neque cum deserunt natus. Neque esse assumenda incidunt
+                            facilis modi accusamus a magni consequatur ullam. Ratione dolores ducimus voluptatibus tempora,
+                            provident deleniti amet qui nihil excepturi repudiandae magni temporibus veritatis illo laboriosam
+                            aperiam illum non sit porro molestias numquam error aut dicta. Adipisci, ipsam ratione!</p>
+
+                    </div>
+
+            <div class="large-btn">                  
+                    <button class="buy-event animation-buy">Buy more tickets for event</button>
+            </div> 
+                </div>
+
+
+            </div>
+
+        </section>
+
+        <!-- Profile -->
+
+        <section id="profile" class="grid">
+            <div class="content-wrap">
+                <section class="info-profile">
+                    <h1 class="section-title">Profile</h1>
+                    <ul>
+                        <li>Name</li>
+                        <li>Surname</li>
+                        <li>Username</li>
+                        <li>Photo</li>
+                        <li>email</li>
+                    </ul>
+                </section>
+                <section class="buttons-profile">
+                    <a href="#added-events" class="profile-btn">Added events</a>
+                    <a href="#purchased-events" class="profile-btn">Purchased events</a>
+                    <a href="#tickets" class="profile-btn">Purchased tickets</a>
+                </section>
+            </div>
+
+        </section>
+
+        <!-- Ticket -->
+
+        <section id="ticket" class="grid">
+            <div class="content-wrap">
+                <div class="ticket-info">
+                    <h1 class="section-title">Ticket</h1>
+                    <ul>
+                        <li>Code 432423532</li>
+                        <li>Info Event</li>
+                        <li>Date Event</li>
+                        <li>Direction event</li>
+                    </ul>
+                </div>
+                <a href="#purchased-event" class="ticket-btn purchased-event-info">Purchased event info</a>
+                <a href="#purchased-event" class="ticket-btn download-ticket">Download ticket</a>
+                <a href="#purchased-event" class="ticket-btn send-ticket">Send ticket</a>
+
+            </div>
+        </section>
+
+
+        <!-- More info -->
+        <section id="event-footer" class="grid">
+            <div class="box">
+                <h2 class="content-tittle">Promoter info</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque facilis a eius animi sed aut
+                    ipsa harum molestiae officia, necessitatibus facere quibusdam dignissimos iusto hic dicta eaque fuga
+                    optio!
+                </p>
+            </div>
+            <div class="box">
+                <h2 class="content-tittle">Place info</h2>
+                <ul>
+                    <li class="event-price">Price: XXX</li>
+                    <li>+18</li>
+                    <li>Drinks price: XXX</li>
+                    <li>Wardrobe: YES</li>
+                </ul>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque facilis a eius animi sed aut
+                    ipsa harum molestiae officia, necessitatibus facere quibusdam dignissimos iusto hic dicta eaque fuga
+                    optio!
+                </p>
+            </div>
+        </section>
+
+        <div id="duotone-image"></div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer id="main-footer" class="grid">
+        <div>Partygoer App</div>
+        <div>Project By
+            <a href="http://www.github.com/muyzan" target="_blank">Zan</a>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

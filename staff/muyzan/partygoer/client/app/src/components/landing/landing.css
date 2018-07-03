@@ -1,29 +1,84 @@
-.App {
-    text-align: center;
-  }
-  
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-    height: 80px;
-  }
-  
-  .App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
-  }
-  
-  .App-title {
-    font-size: 1.5em;
-  }
-  
-  .App-intro {
-    font-size: large;
-  }
-  
-  @keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-  
+#landing h6{
+padding-top: 1.5em;
+font-weight: 300;
+}
+
+/* Carrousel */
+
+#landing-carrousel {
+  min-height: 50%;
+  max-height: 50%;
+}
+
+#landing-carrousel img{
+  height: 8em;
+  margin: auto;
+}
+
+.slick-slider{
+  margin-top: 1em;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: auto;
+}
+
+.slick-slider h3{
+ margin-top: 0.1em;
+ font-size: 1em;
+ padding-right: 0.3em;
+ padding-left: 0.3em;
+ font-weight: 300;
+}
+
+.slick-slider ul{
+  left:0
+ }
+
+.slick-list{
+padding-bottom:0px;
+height:12%;
+}
+
+.slick-dots{
+width: 100%;
+bottom:-0.5em;
+}
+
+#landing-carrousel button{
+  box-shadow: none;
+}
+
+#landing-carrousel button:hover{
+  border-radius: 100%;
+  background: rgba(255, 235, 205, 0.336)
+}
+
+#landing-buttons .line-btn{
+ margin-top:1.5em;
+ background: transparent;
+ box-shadow: none;
+ border: solid 1px white;
+ width: 30%;
+ font-size: 0.6em;
+}
+
+/* buttons */
+
+#landing-buttons{
+  margin-top:1.9em;
+  overflow: scroll;
+  max-height: 50%;
+}
+
+link {
+  text-decoration: none;
+}
+
+#landing-buttons .line-btn:hover{
+  background: var(--btn-hover-color);
+  border: none;
+ }
+
+#landing-buttons button, #landing-buttons .line-btn:hover{
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
